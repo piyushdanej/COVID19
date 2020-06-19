@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "state-demo"
+    }
+  },
+  "defaultProject": "state-demo",
+  "cli": {
+    "analytics": false
+  }
 }
