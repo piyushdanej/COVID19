@@ -1,0 +1,17 @@
+<div id="parent-container">
+  <div id="title">
+    <span>Available Clinicians</span>
+  </div>
+
+  <div>
+    <p id="available">{{clinicians.length}} Available</p>      
+    <ul>
+      <li *ngFor="let clinician of clinicians" class="liItem">
+        <div class="contact-clinician">
+          <span>{{ clinician }}</span>
+          <span class="chat">Chat</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

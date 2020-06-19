@@ -6,4 +6,11 @@ import { Injectable } from '@angular/core';
 export class MainService {
 
   constructor() { }
+
+  getAvailableClinicians(){
+    // get request here.
+    return null;
+  }
+
+
 }
