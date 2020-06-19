@@ -1,0 +1,71 @@
+#patient-container {
+    max-width: 24rem;
+    font-size: 1.2rem;
+    padding:.5rem;
+}
+  
+#title {
+    text-align: center;
+}
+
+#title .wel-div {
+    font-size: 2rem;
+}
+
+#title .username-div {
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+
+ul {
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.liItem {
+    text-align: center;
+}
+  
+.liItem:not(:last-child) {
+    border-bottom: 1px solid black;
+}
+
+.task-div .cont {
+    padding: 1.2em;
+    width: 70%;
+    background: #ffffff;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+.single-button-div {
+    margin: 1.3em;
+}
+
+.single-button-style {
+    padding: 1.2em;
+    width: 70%;
+    cursor: pointer;
+    background: #ffffff;
+}
+
+.profile-settings-button {
+    padding: 1.2em;
+    width: 31%;
+    cursor: pointer;
+    background: #ffffff;
+}
+
+.profile-settings-button.settings-button {
+    margin-left: 10px;    
+}
+  
+@media only screen and (min-width: 520px) {
+    #patient-container{
+        max-width:35rem;
+        margin:auto;
+    }
+}
