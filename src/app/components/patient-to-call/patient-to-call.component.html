@@ -1,10 +1,12 @@
 <div class="parent">
-  <div class="data-holder">
+  <div class="data-holder" id="first">
     <span class="name">{{ patientName }}</span>
     <span class="date">{{ patientDate }}</span>
   </div>
   <div class="data-holder">
-    <div>ICON</div>
+    <div class="icon-holder">
+      <fa-icon [icon]="faPhone" id="call-icon"></fa-icon>
+    </div>
     <span class="call">Call</span>
   </div>
 </div>
