@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from  '@angular/router';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faUser, faCog } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'patient-home',
@@ -9,9 +8,11 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 })
 export class PatientHomeComponent implements OnInit {
 
-  faCoffee = faCoffee;
+  faChevronRight = faChevronRight;
+  faUser = faUser;
+  faCog = faCog;
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
   }

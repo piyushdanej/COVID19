@@ -1,28 +1,24 @@
 <div id="patient-container">
-  <div id="title">
-    <div class="wel-div">Welcome</div>
-    <div class="username-div" id="">abdallah elgamal</div>
+  <div class="title">
+    <div class="wel-div">Welcome <span class="username-span">abdallah</span></div>
   </div>
 
   <div>      
     <ul>
       <li class="liItem">
-        <div class="single-button-div screening-div">
-          <button class="single-button-style" routerLink="">
-            <fa-icon [icon]="faCoffee"></fa-icon>
-            COVID19 Screening<br>
-            Have a quick assess
-          </button>
+        <div class="button-card">
+          <p class="dark-text">COVID19 Screening</p>
+          <p class="light-text">Have a Quick Access</p>
+          <a class="right-arrow-icon" routerLink=""><fa-icon [icon]="faChevronRight"></fa-icon></a>
         </div>
-        <div class="single-button-div available-clinician-div">
-          <button class="single-button-style" routerLink="/available-clinicians">
-            Available Clinician<br>
-            Connect for Advice
-          </button>
+        <div class="button-card">
+          <p class="dark-text">Available Clinicians</p>
+          <p class="light-text">Connect for Advice</p>
+          <a class="right-arrow-icon" routerLink="/available-clinicians"><fa-icon [icon]="faChevronRight"></fa-icon></a>
         </div>
         <div class="profile-settings-div">
-          <button class="profile-settings-button" routerLink="">My Profile</button>
-          <button class="profile-settings-button settings-button" routerLink="">Settings</button>
+          <button class="profile-settings-button profile-button" routerLink=""><fa-icon [icon]="faUser"></fa-icon>My Profile</button>
+          <button class="profile-settings-button settings-button" routerLink=""><fa-icon [icon]="faCog"></fa-icon>Settings</button>
         </div>
       </li>
     </ul>

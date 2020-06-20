@@ -2,18 +2,26 @@
     max-width: 24rem;
     font-size: 1.2rem;
     padding:.5rem;
+    background: #F6F8FA;
 }
   
-#title {
+.title {
     text-align: center;
+    background: #2A4B76;
 }
 
-#title .wel-div {
-    font-size: 2rem;
+.title .wel-div {
+    font-family: "SF Pro Text";
+    font-size: 22px;
+    color: #6898D5;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
-#title .username-div {
-    font-size: 1rem;
+.title .username-span {
+    font-family: "SF Pro Text";
+    font-size: 22px;
+    color: #ffffff !important;
     text-transform: capitalize;
 }
 
@@ -33,6 +41,14 @@ li {
     border-bottom: 1px solid black;
 }
 
+.task-div .cont {
+    padding: 1.2em;
+    width: 70%;
+    background: #ffffff;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
 .single-button-div {
     margin: 1.3em;
 }
@@ -45,14 +61,77 @@ li {
 }
 
 .profile-settings-button {
-    padding: 1.2em;
-    width: 31%;
+    position: relative;
+    font-family: "SF Pro Text";
+    font-size: 18px;
+    width: 138px;
+    height: 82px;
     cursor: pointer;
-    background: #ffffff;
+    color: #ffffff;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 25px;
+}
+
+.profile-settings-button:hover, .profile-settings-button:focus, .profile-settings-button:active, .profile-settings-button:visited, .profile-settings-button:link {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.profile-settings-button fa-icon {
+    position: absolute;
+    bottom: -8px;
+    font-size: 70px;
+    left: 6px;
+    color: #B0B7C4;
+    opacity: 0.2;
+}
+
+.profile-settings-button.profile-button {
+    background: #355E93;
 }
 
 .profile-settings-button.settings-button {
-    margin-left: 10px;    
+    margin-left: 10px;
+    background: #6898D5;    
+}
+
+.button-card {
+    position: relative;
+    width: 310px;
+    height: 110px;
+    background: #ffffff;
+    border-radius: 20px;
+    border-top: 7px solid #355E93;
+    margin: 20px auto;
+}
+
+.dark-text {
+    font-family: "SF Pro Text";
+    font-size: 22px;
+    font-weight: bold;
+    color: #323743;
+    text-align: left;
+    padding-left: 20px;
+    margin: 15px 0px 0px !important;
+}
+
+.light-text {
+    font-family: "SF Pro Text";
+    font-size: 16px;
+    color: #777F8C;
+    text-align: left;
+    padding-left: 20px;
+    margin: 5px 0px 0px !important;
+}
+
+.right-arrow-icon {
+    position: absolute;
+    color: #B0B7C4;
+    right: 5px;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    cursor: pointer;
 }
   
 @media only screen and (min-width: 520px) {
