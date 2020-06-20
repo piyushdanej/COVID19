@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
 import { AvailableCliniciansComponent } from './components/available-clinicians/available-clinicians.component';
@@ -30,7 +31,8 @@ import { ScreeningTabComponent } from './components/screening-tab/screening-tab.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
