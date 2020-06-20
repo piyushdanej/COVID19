@@ -7,15 +7,18 @@
   
 .title {
     text-align: center;
-    background: #2A4B76;
+    background-image: url(../../../assets/images/bg-pattern.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 150px;
 }
 
 .title .wel-div {
     font-family: "SF Pro Text";
     font-size: 22px;
     color: #6898D5;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .title .username-span {
@@ -99,7 +102,7 @@ li {
 .button-card {
     position: relative;
     width: 310px;
-    height: 110px;
+    height: 134px;
     background: #ffffff;
     border-radius: 20px;
     border-top: 7px solid #355E93;
@@ -113,7 +116,7 @@ li {
     color: #323743;
     text-align: left;
     padding-left: 20px;
-    margin: 15px 0px 0px !important;
+    margin: 27px 0px 0px !important;
 }
 
 .light-text {
@@ -132,6 +135,12 @@ li {
     top: 50%;
     transform: translate(-50%,-50%);
     cursor: pointer;
+}
+
+.card-icon {
+    position: absolute;
+    left: 12px;
+    top: -40px;
 }
   
 @media only screen and (min-width: 520px) {
