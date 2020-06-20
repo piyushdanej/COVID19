@@ -1,0 +1,20 @@
+<div class="parent-container">
+  <div class="header">
+    <p id="view">View Screenings</p>
+
+    <div class="tab-container">
+      <ul class="nav nav-tabs">
+        <li *ngFor="let tab of tabs;let i = index" 
+            (click)="selectTab(tab)" 
+            class="tab" 
+            [ngClass]="i== selectedTabIndex ? 'active-class' : null">
+          {{ tab.tabName }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="body-content">
+    <input type="search" name="search" id="search-box" placeholder="Search" />
+    <ng-content> </ng-content>
+  </div>
+</div>
