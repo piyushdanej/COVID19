@@ -1,3 +1,4 @@
+import { PatientDetailsComponent } from './components/patient-details/patient-details.component';
 import { ViewScreeningsComponent } from './components/view-screenings/view-screenings.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: 'patient-home', component: PatientHomeComponent },
   { path: 'screenings' , component : ViewScreeningsComponent},
   { path: 'clinician-home', component: ClinicianHomeComponent },
-  { path: 'available-clinicians', component: AvailableCliniciansComponent }
+  { path: 'available-clinicians', component: AvailableCliniciansComponent },
+  { path: 'my-profile' , component : PatientDetailsComponent}
 ];
 
 @NgModule({

@@ -14,7 +14,9 @@ import { TabListComponent } from './components/tab-list/tab-list.component';
 
 import {ViewScreeningsComponent} from './components/view-screenings/view-screenings.component'
 import { ScreeningTabComponent } from './components/screening-tab/screening-tab.component';
+import { PatientDetailsComponent } from './components/patient-details/patient-details.component';
 
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,15 @@ import { ScreeningTabComponent } from './components/screening-tab/screening-tab.
     PatientToCallComponent,
     TabListComponent,
     ViewScreeningsComponent,
-    ScreeningTabComponent
+    ScreeningTabComponent,
+    PatientDetailsComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
