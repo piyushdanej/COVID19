@@ -1,0 +1,68 @@
+.screen7{
+    position: relative;
+    min-height: 570px;
+    margin-top:30px;
+}
+.screening .main-content{
+    background-image: url(../../../assets/bg_pattern.svg);
+    background-repeat: no-repeat    ;
+    background-position:center;
+}
+.main-content{
+    margin: 0 auto;
+    max-width: 350px;
+    width: 100%;
+    padding: 10px;
+}
+.screen-head p {
+    color: #fff;
+    text-align: center;
+}
+
+.ques-list {
+    border-top: 2px solid #989884;
+    box-shadow: 0px -2px 1px #AEBAC8;
+    margin-bottom: 22px;
+    border-radius: 9px 9px 9px 9px;
+    background-color: #ffffff;
+}
+
+.screen-head {
+    background-color: #2A4B76;
+}
+.screen-step {
+    text-align: center;
+    padding-bottom: 9px;
+}
+.screen-step ul li:focus{
+    background:#355E93;
+    color: #fff;
+    border: none;   
+    outline: none;
+}
+
+.screen-step ul li{    
+    display: inline-block;
+    padding: 5px 11px;
+    background: #fff;
+    /* border: 1px solid; */
+    border-radius: 7px 7px 7px 7px;
+    margin-right: 13%;
+}
+
+.scre-button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.scre-button input[type="submit"]{
+    padding: 6px 20px;
+    border-radius: 27px;
+    background-color: #2A4B76;
+    color: #fff;
+    border: none;
+}
+.screen-que .p1 {
+    margin-top: 15px;
+    margin-bottom: 23px;
+}

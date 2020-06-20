@@ -15,6 +15,8 @@ import { TabListComponent } from './components/tab-list/tab-list.component';
 import {ViewScreeningsComponent} from './components/view-screenings/view-screenings.component'
 import { ScreeningTabComponent } from './components/screening-tab/screening-tab.component';
 import { PatientDetailsComponent } from './components/patient-details/patient-details.component';
+import { LoginComponent } from './components/login/login.component';
+import { ScreeningComponent } from './components/screening/screening.component';
 
 import { FormsModule } from '@angular/forms';
 
@@ -29,7 +31,9 @@ import { FormsModule } from '@angular/forms';
     TabListComponent,
     ViewScreeningsComponent,
     ScreeningTabComponent,
-    PatientDetailsComponent
+    PatientDetailsComponent,
+    LoginComponent,
+    ScreeningComponent
     
   ],
   imports: [
