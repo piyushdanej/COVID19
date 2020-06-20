@@ -1,5 +1,6 @@
 import { MainService } from '../../services/main.service';
 import { Component, OnInit } from '@angular/core';
+import { faArrowLeft , faComment } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'available-clinicians',
@@ -10,8 +11,8 @@ export class AvailableCliniciansComponent implements OnInit {
 
   clinicians : string[];
   dummyClinicians : string[];
-
-
+  faArrowLeft = faArrowLeft;
+  faComment = faComment;
 
   constructor(private mainService : MainService) { 
     this.dummyClinicians = [
@@ -25,6 +26,8 @@ export class AvailableCliniciansComponent implements OnInit {
 
 
   }
+
+  navigateBack()
 
   getAvailableClinicians(){
     return this.mainService.getAvailableClinicians();

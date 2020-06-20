@@ -1,7 +1,7 @@
 *{
     margin:0;
     padding:0;
-
+    font-family: "SF Pro Text";
 }
 
 .header{
@@ -10,10 +10,17 @@
     margin:0;
 }
 
+#back-arrow{
+    color:white;
+    font-size:1.4rem;
+    margin-right:.5rem;
+}
+
 #view{
     font-size:1.6rem;
     margin-bottom: 1.4rem;
     color:white;
+    display:inline-block;
 }
 
 .tab{

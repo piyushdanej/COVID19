@@ -1,3 +1,6 @@
+*{
+   font-family: "SF Pro Text";
+}
 .data-holder{
     display:flex;
     flex-direction:column;

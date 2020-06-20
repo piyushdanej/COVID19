@@ -1,15 +1,29 @@
 <div id="parent-container">
   <div id="title">
-    <span>Available Clinicians</span>
+    <fa-icon
+      [icon]="faArrowLeft"
+      id="back-arrow"
+      (click)="navigateBack()">
+    </fa-icon>
+    <span class="title-heading">Available Clinicians</span>
   </div>
 
-  <div>
-    <p id="available">{{clinicians.length}} Available</p>      
+  <div class="body-content">
+    <div class="counter-container">
+      <span id="available">Available</span>
+      <span class="count-holder">{{ clinicians.length }}</span>
+    </div>
     <ul>
       <li *ngFor="let clinician of clinicians" class="liItem">
         <div class="contact-clinician">
           <span>{{ clinician }}</span>
-          <span class="chat">Chat</span>
+          <div class="icon-holder">
+            <!-- <fa-icon [icon]="faComment" id="comment-icon" (click)="navigateBack()"></fa-icon> -->
+            <div class="icon-div">
+              <img src="../../../assets/comment.svg" alt="Chat" />
+            </div>
+            <span class="chat">Chat</span>
+          </div>
         </div>
       </li>
     </ul>

@@ -7,6 +7,8 @@ import {
   ContentChild,
   ElementRef,
 } from "@angular/core";
+
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Content } from "@angular/compiler/src/render3/r3_ast";
 
 @Component({
@@ -15,10 +17,15 @@ import { Content } from "@angular/compiler/src/render3/r3_ast";
   styleUrls: ["./tab-list.component.css"],
 })
 export class TabListComponent implements OnInit {
-  @ContentChildren(ScreeningTabComponent) tabs: QueryList<ScreeningTabComponent>;
+  @ContentChildren(ScreeningTabComponent) tabs: QueryList<
+    ScreeningTabComponent
+  >;
 
-  @ContentChildren(ScreeningTabComponent , { read: ElementRef }) elTabs: QueryList<ElementRef>;
-  selectedTabIndex : number =0;
+  @ContentChildren(ScreeningTabComponent, { read: ElementRef })
+  elTabs: QueryList<ElementRef>;
+  selectedTabIndex: number = 0;
+
+  faArrowLeft = faArrowLeft;
   constructor() {}
 
   ngOnInit() {}
@@ -26,8 +33,6 @@ export class TabListComponent implements OnInit {
   ngAfterContentInit() {}
 
   selectTab(tab: ScreeningTabComponent) {
-    
-
     this.tabs.forEach((singleTab, index) => {
       singleTab.isActive = false;
       if (singleTab == tab) {
@@ -36,11 +41,9 @@ export class TabListComponent implements OnInit {
     });
 
     tab.isActive = true;
-    // this.elTabs.forEach((eltab, index) => {
-    //   if (index == selectedTabIndex)
-    //     eltab.nativeElement.classList.add("active-class");
-    //   else 
-    //     eltab.nativeElement.classList.remove("active-class");
-    // });
+  }
+
+  navigateBack(){
+    
   }
 }

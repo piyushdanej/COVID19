@@ -1,13 +1,16 @@
 <div class="parent-container">
   <div class="header">
-    <p id="view">View Screenings</p>
-
+    
+      <fa-icon [icon]="faArrowLeft" id="back-arrow" (click)="navigateBack()"></fa-icon>
+      <p id="view">View Screenings</p>
+    
     <div class="tab-container">
       <ul class="nav nav-tabs">
-        <li *ngFor="let tab of tabs;let i = index" 
-            (click)="selectTab(tab)" 
-            class="tab" 
-            [ngClass]="i== selectedTabIndex ? 'active-class' : null">
+        <li
+          *ngFor="let tab of tabs; let i = index"
+          (click)="selectTab(tab)"
+          class="tab"
+          [ngClass]="i == selectedTabIndex ? 'active-class' : null">
           {{ tab.tabName }}
         </li>
       </ul>

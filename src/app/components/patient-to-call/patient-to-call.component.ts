@@ -10,7 +10,7 @@ export class PatientToCallComponent implements OnInit {
   @Input() patientName : string;
   @Input() patientDate : string;
   faPhone = faPhone;
-
+  
   constructor() { }
 
   ngOnInit() {
