@@ -1,5 +1,6 @@
+import { Router , ActivatedRoute} from '@angular/router';
 import { MainService } from '../../services/main.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { faArrowLeft , faComment } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -14,7 +15,9 @@ export class AvailableCliniciansComponent implements OnInit {
   faArrowLeft = faArrowLeft;
   faComment = faComment;
 
-  constructor(private mainService : MainService) { 
+  constructor(private mainService : MainService ,
+              private router : Router,
+              private route : ActivatedRoute) { 
     this.dummyClinicians = [
       "Clinician Name" ,"Clinician Name" ,"Clinician Name" ,"Clinician Name" ,
       "Clinician Name" ,"Clinician Name" ,"Clinician Name" ,"Clinician Name"
@@ -27,7 +30,9 @@ export class AvailableCliniciansComponent implements OnInit {
 
   }
 
-  navigateBack()
+  navigateBack(){
+    this.router.navigate(["../patient-home"] , {relativeTo : this.route});
+  }
 
   getAvailableClinicians(){
     return this.mainService.getAvailableClinicians();
