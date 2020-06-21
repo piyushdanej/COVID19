@@ -24,6 +24,9 @@ import { QuestionComponent } from './components/screening/question/question.comp
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
+import { ClinicianRegistrationComponent } from './components/clinician-registration/clinician-registration.component';
+import { PatientRegistrationComponent } from './components/patient-registration/patient-registration.component';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { environment } from '../environments/environment';
     PatientDetailsComponent,
     LoginComponent,
     ScreeningComponent,
-    QuestionComponent
+    QuestionComponent,
+    ClinicianRegistrationComponent,
+    PatientRegistrationComponent
     
   ],
   imports: [
@@ -50,7 +55,7 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

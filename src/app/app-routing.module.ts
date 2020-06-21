@@ -8,6 +8,10 @@ import { PatientHomeComponent } from './components/patient-home/patient-home.com
 import { ClinicianHomeComponent } from './components/clinician-home/clinician-home.component';
 import { ScreeningComponent } from './components/screening/screening.component';
 
+import {PatientRegistrationComponent} from './components/patient-registration/patient-registration.component';
+import {ClinicianRegistrationComponent} from './components/clinician-registration/clinician-registration.component';
+import { from } from 'rxjs';
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'patient-home'},
   { path: 'patient-home', component: PatientHomeComponent },
@@ -15,7 +19,9 @@ const routes: Routes = [
   { path: 'clinician-home', component: ClinicianHomeComponent },
   { path: 'available-clinicians', component: AvailableCliniciansComponent },
   { path: 'my-profile' , component : PatientDetailsComponent},
-  { path: 'patient-screening' , component : ScreeningComponent}
+  { path: 'patient-screening' , component : ScreeningComponent},
+  { path: 'patient-registration' , component : PatientRegistrationComponent},
+  { path: 'clinician-registration' , component : ClinicianRegistrationComponent}
 ];
 
 @NgModule({

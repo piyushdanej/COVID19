@@ -1,0 +1,100 @@
+<h1>
+    Registration
+</h1>
+
+
+
+<div class="center">
+    <label class="radio-inline">
+        <input name="options" [(ngModel)]="options" type="radio" value="As patient" /> As patient
+    </label>
+
+    <label class="radio-inline">
+        <input name="options" [(ngModel)]="options" type="radio" value="As Clinician" /> As Clinician
+    </label>
+</div>
+
+
+<!-- <h1 *ngIf="options==='As patient'">Hello</h1> -->
+<!-- <h1 *ngIf="options==='As Clinician'">World</h1> -->
+
+
+<div *ngIf="options==='As patient'">
+    <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+        <div class="form-group" style="width: 200px;">
+            <input name="firstName" #firstName="ngModel" [(ngModel)]="formData.firstName" class="form-control"
+                placeholder="First Name">
+        </div>
+
+        <div class="form-group" style="width: 200px;">
+            <input name="lastName" #lastName="ngModel" [(ngModel)]="formData.lastName" class="form-control"
+                placeholder="last Name">
+        </div>
+
+        <div class="form-group" style="width: 200px;">
+            <input name="city" #city="ngModel" [(ngModel)]="formData.city" class="form-control"
+                placeholder="City">
+        </div>
+
+        <div class="form-group" style="width: 200px;">
+            <input name="state" #state="ngModel" [(ngModel)]="formData.state" class="form-control"
+                placeholder="State/Province">
+        </div>
+
+        <div class="form-group" style="width: 200px;">
+            <input name="zipCode" #zipCode="ngModel" [(ngModel)]="formData.zipCode" class="form-control"
+                placeholder="Zip Code" type="number">
+        </div>
+
+
+        <div class="form-group" style="width: 200px;">
+            <input name="mobile" #mobile="ngModel" [(ngModel)]="formData.mobile" class="form-control"
+                placeholder="Mobile" type="number">
+        </div>
+
+        <div class="form-group" style="width: 200px;">
+            <input name="email" #email="ngModel" [(ngModel)]="formData.email" class="form-control"
+                placeholder="Email Id" type="email">
+        </div>
+
+      
+
+            <div class="form-group" style="width: 200px;">
+                <input name="age" #age="ngModel" [(ngModel)]="formData.age" class="form-control"
+                    placeholder="Age">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="sex" style="margin-right: 10px;">Sex</label>
+                <label class="radio-inline">
+                    <input name="sex" #male="ngModel"  [(ngModel)]="formData.male" type="radio" value="Male" /> Male
+                </label>
+            
+                <label class="radio-inline">
+                    <input name="sex" #female="ngModel" [(ngModel)]="formData.female" type="radio" value="Female" /> Female
+                </label>
+            </div>
+
+       
+
+        <div class="form-group" style="width: 200px;">
+            <input name="password" #password="ngModel" [(ngModel)]="formData.password" class="form-control"
+                placeholder="password" type="password">
+        </div>
+
+        <div class="form-group" style="width: 200px;">
+            <input name="password" #password="ngModel" [(ngModel)]="formData.password" class="form-control"
+                placeholder="Confirm Password" type="password">
+        </div>
+
+
+        <div class="form-group" style="width: 200px;">
+            <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info">SUBMIT</button>
+        </div>
+
+    </form>
+</div>
+
+<div *ngIf="options==='As Clinician'">
+    <app-clinician-registration></app-clinician-registration>
+</div>

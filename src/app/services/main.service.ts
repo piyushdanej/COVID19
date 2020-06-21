@@ -8,6 +8,8 @@ import { Patient } from '../interfaces/patient';
 })
 export class MainService {
 
+  
+
   constructor(private firestore: AngularFirestore) { }
 
   getPatients() {
