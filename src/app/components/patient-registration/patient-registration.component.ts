@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup } from '@angular/forms';
 import { MainService } from 'src/app/services/main.service';
 import { Patient } from 'src/app/interfaces/patient';
 
@@ -35,15 +35,22 @@ export class PatientRegistrationComponent implements OnInit {
       emailId:'',
       age:null,
       sex:'',
-      password:''
+      password:'',
+      confirmPass:''
     }
   }
-  
+  checkPasswords(group: FormGroup) { 
+
+    let pass = group.get('password').value; 
+    let confirmPass = group.get('confirmPass').value; 
+    return pass === confirmPass ? null : { notSame: true }  
+  }
 
   onSubmit(form:NgForm){
     let data=form.value;
+    this.checkPasswords(data);
     this.firestore.collection('patients').add(data);
-    this.resetForm(form);
+    // this.resetForm(form);
   }
 
 
