@@ -1,5 +1,7 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { faChevronRight, faUser, faCog } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-clinician-home',
@@ -12,9 +14,12 @@ export class ClinicianHomeComponent implements OnInit {
   faUser = faUser;
   faCog = faCog;
 
-  constructor() { }
+  constructor(private router :Router) { }
 
   ngOnInit() {
   }
-
+  routeToViewScreenings(param: number){
+    debugger;
+    this.router.navigate(["/screenings"] , { queryParams: { id: param}})
+  }
 }
