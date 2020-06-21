@@ -19,6 +19,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ScreeningComponent } from './components/screening/screening.component';
 
 import { FormsModule } from '@angular/forms';
+import { QuestionComponent } from './components/screening/question/question.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -37,7 +38,8 @@ import { environment } from '../environments/environment';
     ScreeningTabComponent,
     PatientDetailsComponent,
     LoginComponent,
-    ScreeningComponent
+    ScreeningComponent,
+    QuestionComponent
     
   ],
   imports: [

@@ -1,0 +1,21 @@
+
+.ques-list {
+    border-top: 2px solid #989884;
+    box-shadow: 0px -2px 1px #AEBAC8;
+    margin-bottom: 22px;
+    border-radius: 9px 9px 9px 9px;
+    background-color: #ffffff;
+    display:flex;
+    
+    align-items:center;
+}
+
+
+.ques-checkbox{
+    /* margin-top:2rem; */
+    
+}
+
+.ques-list p{
+    margin-left: 1rem;
+}

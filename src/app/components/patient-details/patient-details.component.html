@@ -33,10 +33,10 @@
 
     <div class="tab-list-container">
       <ul class="tab-list">
-        <li class="tab">1</li>
-        <li class="tab active-tab">2</li>
-        <li class="tab">3</li>
-        <li class="tab">4</li>
+        <li #tab class="tab" (click)="selectTab($event)">1</li>
+        <li #tab class="tab active-tab" (click)="selectTab($event)">2</li>
+        <li #tab class="tab" (click)="selectTab($event)">3</li>
+        <li #tab class="tab" (click)="selectTab($event)">4</li>
       </ul>
     </div>
 

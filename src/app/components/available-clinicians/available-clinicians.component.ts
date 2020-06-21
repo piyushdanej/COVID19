@@ -19,9 +19,8 @@ export class AvailableCliniciansComponent implements OnInit {
               private router : Router,
               private route : ActivatedRoute) { 
     this.dummyClinicians = [
-      "Clinician Name" ,"Clinician Name" ,"Clinician Name" ,"Clinician Name" ,
-      "Clinician Name" ,"Clinician Name" ,"Clinician Name" ,"Clinician Name"
-    ]
+      "Dave Warner" ,"Michael Smith" ,"Jeff Smith" ,"Tim John" ,
+      "Liza Ann" ,"Jack J" ,"Carl Smith"]
   }
 
   ngOnInit() {

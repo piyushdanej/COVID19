@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { Component, OnInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { faArrowLeft , faComment } from "@fortawesome/free-solid-svg-icons";
 @Component({
   selector: 'app-patient-details',
@@ -7,7 +9,10 @@ import { faArrowLeft , faComment } from "@fortawesome/free-solid-svg-icons";
 })
 export class PatientDetailsComponent implements OnInit {
 
-  constructor() { }
+  @ViewChildren("tab") tabs :QueryList<ElementRef>;
+
+  constructor(private router : Router ,
+              private route : ActivatedRoute) { }
   isTravelHistory:"Yes";
   feedback:"Healthy"
   feedbackDiscription;
@@ -30,5 +35,16 @@ export class PatientDetailsComponent implements OnInit {
   }
   changeFeedback(e){
     this.feedback = e.target.value;
+  }
+  navigateBack(){
+    this.router.navigate(["/patient-home"] , {relativeTo : this.route})
+  }
+  
+  selectTab(event){
+    this.tabs.forEach(tab =>{
+      tab.nativeElement.classList.remove('active-tab');
+    })
+    event.target.classList.add("active-tab");
+    
   }
 }

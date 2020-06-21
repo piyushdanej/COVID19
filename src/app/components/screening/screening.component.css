@@ -1,17 +1,30 @@
 .screen7{
     position: relative;
-    min-height: 570px;
-    margin-top:30px;
+    /* min-height: 570px; */
+    /* margin-top:30px; */
 }
+
+.back-title{
+    display:flex;
+    margin-left:.4rem;
+    align-items:center;
+}
+
+.back-title p{
+    font-size:1.4rem;
+    margin-top:.8rem;
+    margin-left:.5rem;
+}
+
 .screening .main-content{
-    background-image: url(../../../assets/bg_pattern.svg);
-    background-repeat: no-repeat    ;
-    background-position:center;
+    background-image: url("../../../assets/bg_pattern.svg");
+    background-repeat: no-repeat;
+    /* background-position:center; */
 }
 .main-content{
     margin: 0 auto;
-    max-width: 350px;
-    width: 100%;
+    /* max-width: 350px; */
+    /* width: 100%; */
     padding: 10px;
 }
 .screen-head p {
@@ -25,14 +38,27 @@
     margin-bottom: 22px;
     border-radius: 9px 9px 9px 9px;
     background-color: #ffffff;
+    display:flex;
+    
+    align-items:center;
 }
 
-.screen-head {
-    background-color: #2A4B76;
+
+.ques-checkbox{
+    /* margin-top:2rem; */
+    
 }
+
+.ques-list p{
+    margin-left: 1rem;
+}
+/* .screen-head {
+    background-color: #2A4B76;
+} */
 .screen-step {
     text-align: center;
     padding-bottom: 9px;
+    margin-top:2rem;
 }
 .screen-step ul li:focus{
     background:#355E93;
@@ -48,6 +74,11 @@
     /* border: 1px solid; */
     border-radius: 7px 7px 7px 7px;
     margin-right: 13%;
+}
+
+.screen-step ul li.active-tab{
+    background-color:#2A4B76;
+    color:#eee; 
 }
 
 .scre-button {
@@ -66,3 +97,8 @@
     margin-top: 15px;
     margin-bottom: 23px;
 }
+/* 
+.active-tab{
+    background-color:#2A4B76;
+    color:#eee; 
+} */
