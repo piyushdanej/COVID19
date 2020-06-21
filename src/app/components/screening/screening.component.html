@@ -4,7 +4,11 @@
       <div class="main-content">
         <div class="screen-head">
           <span class="back-title">
-            <img src="../../../assets/arrow-back screen.svg" alt="back-arrow" (click)="navigateBack()" />
+            <img
+              src="../../../assets/arrow-back screen.svg"
+              alt="back-arrow"
+              (click)="navigateBack()"
+            />
             <p>Screening</p>
           </span>
 
@@ -35,7 +39,8 @@
               <div *ngFor="let question of questionsForTab1">
                 <question
                   [questionText]="question"
-                  (answerEvent)="addData($event)">
+                  (answerEvent)="addData($event)"
+                >
                 </question>
               </div>
             </div>
@@ -44,7 +49,8 @@
               <div *ngFor="let question of questionsForTab2">
                 <question
                   [questionText]="question"
-                  (answerEvent)="addData($event)">
+                  (answerEvent)="addData($event)"
+                >
                 </question>
               </div>
             </div>
@@ -53,7 +59,8 @@
               <div *ngFor="let question of questionsForTab3">
                 <question
                   [questionText]="question"
-                  (answerEvent)="addData($event)">
+                  (answerEvent)="addData($event)"
+                >
                 </question>
               </div>
             </div>
@@ -62,7 +69,8 @@
               <div *ngFor="let question of questionsForTab4">
                 <question
                   [questionText]="question"
-                  (answerEvent)="addData($event)">
+                  (answerEvent)="addData($event)"
+                >
                 </question>
               </div>
             </div>
@@ -71,9 +79,18 @@
             <input type="submit" name="Submit" (click)="submitData()" />
           </div>
         </div>
+        <div #modal class="modalContainer display-none">
+            <div class="modalBody">
+              <p>Your Data has been submitted to a clinician.</p>
+              <button class="modalClose" (click)="closeModal()">OK</button>
+            </div>
+          </div>
       </div>
+    
     </div>
   </div>
+
+
 </div>
 
 <!-- <div class="ques1 ques-list">

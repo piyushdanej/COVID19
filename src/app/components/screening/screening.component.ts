@@ -1,7 +1,8 @@
 import { Router } from '@angular/router';
 import { surveyQuestion } from './../../interfaces/surveyQuestion';
 import { QuestionComponent } from './question/question.component';
-import { Component, OnInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, ElementRef, ViewChild } from '@angular/core';
+
 
 @Component({
   selector: 'app-screening',
@@ -12,7 +13,11 @@ export class ScreeningComponent implements OnInit {
 
   dataQA = {};
   tabId : number = 1;
+  showModal: boolean = false;
+  @ViewChild("modal" , {static : false})  modalControl : ElementRef;
   @ViewChildren('tab') elTabs : QueryList<ElementRef>;
+
+
 
   constructor(private router : Router) { }
 
@@ -60,10 +65,17 @@ questionsForTab4: string[] = [
   }
   submitData(){
     // send data to db
+    this.showModal = true;
+    console.log(this.showModal);
     console.log(this.dataQA);
+    this.modalControl.nativeElement.classList.remove("display-none")
   }
   navigateBack(){
     this.router.navigate(["/patient-home"] );
   }
-
+  closeModal(){
+    this.showModal = false;
+    this.modalControl.nativeElement.classList.add("display-none");
+    this.router.navigate(["/patient-home"] );
+  }
 }
