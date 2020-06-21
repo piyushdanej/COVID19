@@ -15,8 +15,7 @@ export class AvailableCliniciansComponent implements OnInit {
   faArrowLeft = faArrowLeft;
   faComment = faComment;
 
-  constructor(private mainService : MainService ,
-              private router : Router,
+  constructor(private router : Router,
               private route : ActivatedRoute) { 
     this.dummyClinicians = [
       "Dave Warner" ,"Michael Smith" ,"Jeff Smith" ,"Tim John" ,
@@ -24,7 +23,8 @@ export class AvailableCliniciansComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.clinicians = this.getAvailableClinicians() || this.dummyClinicians;
+    this.clinicians =  this.dummyClinicians;
+    // clinician-home
 
 
   }
@@ -34,7 +34,7 @@ export class AvailableCliniciansComponent implements OnInit {
   }
 
   getAvailableClinicians(){
-    return this.mainService.getAvailableClinicians();
+    // return this.mainService.getAvailableClinicians();
   }
 
 

@@ -15,18 +15,18 @@
                 </div>
                 <div class="login-sec">
                     <p>Please Login to Continue</p>
-                    <form>
+                    <!-- <form> -->
                         <div class = "username">
                             
-                            <input type="text" id="email" placeholder="EmailID/Mobile Number">
+                            <input type="text" id="email" [(ngModel)]="userName" placeholder="EmailID/Mobile Number">
                         </div>
                         <div class = "password">
-                            <input type="password" id ="pass" placeholder="Password">
+                            <input type="password" [(ngModel)]="password" id ="pass" placeholder="Password">
                         </div>
                        <div class="login-btn">
-                        <input type="submit" id ="login" value ="Login">
+                        <input type="submit"  (click)="submitCredentials()" id ="login" value ="Login">
                        </div>
-                    </form>
+                    <!-- </form> -->
                 </div>
                 <div class="end-content">
                     <div class="last-sec">

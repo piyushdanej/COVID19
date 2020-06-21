@@ -1,12 +1,14 @@
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Component, OnInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
-import { faArrowLeft , faComment } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+
 @Component({
   selector: 'app-patient-details',
   templateUrl: './patient-details.component.html',
   styleUrls: ['./patient-details.component.css']
 })
+
 export class PatientDetailsComponent implements OnInit {
 
   @ViewChildren("tab") tabs :QueryList<ElementRef>;
@@ -37,7 +39,7 @@ export class PatientDetailsComponent implements OnInit {
     this.feedback = e.target.value;
   }
   navigateBack(){
-    this.router.navigate(["/patient-home"] , {relativeTo : this.route})
+    this.router.navigate(["/screenings"] , { queryParams: { id: 0} , relativeTo : this.route})
   }
   
   selectTab(event){

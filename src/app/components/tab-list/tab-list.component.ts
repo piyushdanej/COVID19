@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ScreeningTabComponent } from "../screening-tab/screening-tab.component";
 import {
   Component,
@@ -6,10 +7,11 @@ import {
   QueryList,
   ContentChild,
   ElementRef,
+  Input,
 } from "@angular/core";
 
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { Content } from "@angular/compiler/src/render3/r3_ast";
+
 
 @Component({
   selector: "tab-list",
@@ -17,16 +19,14 @@ import { Content } from "@angular/compiler/src/render3/r3_ast";
   styleUrls: ["./tab-list.component.css"],
 })
 export class TabListComponent implements OnInit {
-  @ContentChildren(ScreeningTabComponent) tabs: QueryList<
-    ScreeningTabComponent
-  >;
+  @ContentChildren(ScreeningTabComponent) tabs: QueryList<ScreeningTabComponent>;
 
   @ContentChildren(ScreeningTabComponent, { read: ElementRef })
   elTabs: QueryList<ElementRef>;
-  selectedTabIndex: number = 0;
+  @Input() selectedTabIndex: number;
 
   faArrowLeft = faArrowLeft;
-  constructor() {}
+  constructor(private router : Router) {}
 
   ngOnInit() {}
 
@@ -44,6 +44,6 @@ export class TabListComponent implements OnInit {
   }
 
   navigateBack(){
-    
+   this.router.navigate(["/clinician-home"]);
   }
 }

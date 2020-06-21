@@ -25,7 +25,7 @@
 
 .tab{
     display:inline-block;
-    width:18%;
+    width:24%;
     padding:.5rem;
     font-size:1rem;
     background-color:#2a4b76;
@@ -35,7 +35,7 @@
     text-align:center;
 }
 
-.tab-container{
+.tabContainer{
     display:inline-block;
     padding:0;
     width:100%;
@@ -59,6 +59,6 @@
     width:90%;
     
 }
-.body-content{
+.bodyContent{
     padding:.5rem;
 }

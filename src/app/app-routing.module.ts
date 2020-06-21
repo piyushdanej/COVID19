@@ -1,3 +1,4 @@
+import { LoginComponent } from './components/login/login.component';
 import { PatientDetailsComponent } from './components/patient-details/patient-details.component';
 import { ViewScreeningsComponent } from './components/view-screenings/view-screenings.component';
 import { NgModule } from '@angular/core';
@@ -13,7 +14,8 @@ import {ClinicianRegistrationComponent} from './components/clinician-registratio
 import { from } from 'rxjs';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'patient-home'},
+  { path: '', pathMatch: 'full', redirectTo: 'login'},
+  { path: 'login' , component : LoginComponent},
   { path: 'patient-home', component: PatientHomeComponent },
   { path: 'screenings' , component : ViewScreeningsComponent},
   { path: 'clinician-home', component: ClinicianHomeComponent },
@@ -29,3 +31,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+// /:id

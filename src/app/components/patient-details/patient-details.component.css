@@ -12,9 +12,9 @@
     font-size : 1.3rem;
 }
 #patient-container {
-    max-width: 24rem;
+    /* max-width: 24rem; */
     font-size: 1.2rem;
-    padding:.5rem;
+   padding:1rem;
     font-size: 14px;
 }
 @media only screen and (min-width: 520px) {
@@ -30,7 +30,8 @@
     padding-top:1rem;
 }
 .patient-detail{
-    min-height: 100px;
+    /* min-height:10rem; */
+    display: flex;
     background: #2A4B76;
     color: white;
     padding: 10px;

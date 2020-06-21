@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-screenings.component.css']
 })
 export class ViewScreeningsComponent implements OnInit {
+  tabIndexHighlight : number
 
-  constructor() { }
+  constructor(private route : ActivatedRoute) {
+    debugger; 
+    console.log("ViewScreenings constructor")
+    this.route.queryParams.subscribe(params =>{
+      debugger;
+      this.tabIndexHighlight = params["id"]
+    })
+  }
 
   ngOnInit() {
+   
   }
 
 }
