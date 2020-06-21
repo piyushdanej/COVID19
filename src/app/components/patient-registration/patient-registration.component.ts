@@ -1,51 +1,55 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { NgForm } from '@angular/forms';
-import { MainService } from 'src/app/services/main.service';
-import { Patient } from 'src/app/interfaces/patient';
+import { Router } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+import { AngularFirestore } from "@angular/fire/firestore";
+import { NgForm } from "@angular/forms";
+import { MainService } from "src/app/services/main.service";
+import { Patient } from "src/app/interfaces/patient";
 
 @Component({
-  selector: 'app-patient-registration',
-  templateUrl: './patient-registration.component.html',
-  styleUrls: ['./patient-registration.component.css']
+  selector: "app-patient-registration",
+  templateUrl: "./patient-registration.component.html",
+  styleUrls: ["./patient-registration.component.css"],
 })
 export class PatientRegistrationComponent implements OnInit {
-  options='As patient';
+  options = "As patient";
 
-  formData:Patient;
+  formData: Patient;
 
-  constructor(public service:MainService,public firestore:AngularFirestore) { }
+  constructor(
+    public service: MainService,
+    public firestore: AngularFirestore,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-
     this.resetForm();
   }
 
-  resetForm(form?:NgForm){
-    if(form!=null)
-    form.resetForm();
-    this.formData={
-      id:null,
-      firstName:'',
-      lastName:'',
-      city:'',
-      state:'',
-      zipCode:'',
-      mobileNumber:'',
-      emailId:'',
-      age:null,
-      sex:'',
-      password:''
-    }
+  resetForm(form?: NgForm) {
+    if (form != null) form.resetForm();
+    this.formData = {
+      id: null,
+      firstName: "",
+      lastName: "",
+      city: "",
+      state: "",
+      zipCode: "",
+      mobileNumber: "",
+      emailId: "",
+      age: null,
+      sex: "",
+      password: "",
+    };
   }
-  
 
-  onSubmit(form:NgForm){
-    let data=form.value;
-    this.firestore.collection('patients').add(data);
+  onSubmit(form: NgForm) {
+    let data = form.value;
+    this.firestore.collection("patients").add(data);
     this.resetForm(form);
+    debugger;
+    // if (this.options === "As Clinician") {
+    //   this.router.navigate(["/clinician-home"]);
+    //   return;
+    this.router.navigate(["/patient-home"]);
   }
-
-
-
 }

@@ -21,5 +21,9 @@ export class LoginComponent implements OnInit {
       this.router.navigate(["/clinician-home"]);
 
   }
+  routeToRegistration(){
+    this.router.navigate(["/patient-registration"])
+  }
+
 
 }

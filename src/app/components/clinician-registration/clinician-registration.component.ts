@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
@@ -13,7 +14,7 @@ import { Clinician } from 'src/app/interfaces/clinician';
 export class ClinicianRegistrationComponent implements OnInit {
 
   formData: Clinician;
-  constructor(public service:MainService,public firestore:AngularFirestore) { }
+  constructor(public service:MainService,public firestore:AngularFirestore , private router : Router) { }
 
   ngOnInit(): void {
     this.resetForm();
@@ -40,6 +41,9 @@ export class ClinicianRegistrationComponent implements OnInit {
     let data=form.value;
     this.firestore.collection('clinicians').add(data);
     this.resetForm(form);
+
+    this.router.navigate(["/clinician-home"]);
+      
   }
 
 }

@@ -1,61 +1,61 @@
 
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
 
-    <div class="form-group" style="width: 200px;">
+    <div class="form-group" style="">
         <input name="firstName" #firstName="ngModel" [(ngModel)]="formData.firstName" class="form-control" placeholder="First Name" required>
         <div *ngIf="firstName.invalid && firstName.touched" class="validation-error">This field is required</div>
     </div>
 
-    <div class="form-group" style="width: 200px;">
+    <div class="form-group" style="">
         <input name="lastName" #lastName="ngModel" [(ngModel)]="formData.lastName" class="form-control" placeholder="Last Name" required>
         <div *ngIf="lastName.invalid && lastName.touched" class="validation-error">This field is required</div>
     </div>
 
-    <div class="form-group" style="width: 200px;">
+    <div class="form-group" style="">
         <input name="registrationNo" #registrationNo="ngModel" type="number" [(ngModel)]="formData.registrationNo" class="form-control" placeholder="Registration Number" required>
         <div *ngIf="registrationNo.invalid && registrationNo.touched" class="validation-error">This field is required</div>
     </div>
 
 
-    <div class="form-group" style="width: 200px;">
+    <div class="form-group" style="">
         <input name="city" #city="ngModel" [(ngModel)]="formData.city" class="form-control" placeholder="City" required>
         <div *ngIf="city.invalid && city.touched" class="validation-error">This field is required</div>
     </div>
 
 
-    <div class="form-group" style="width: 200px;">
+    <div class="form-group" style="">
         <input name="state" #state="ngModel" [(ngModel)]="formData.state" class="form-control" placeholder="State/Province" required>
         <div *ngIf="state.invalid && state.touched" class="validation-error">This field is required</div>
     </div>
 
 
-    <div class="form-group" style="width: 200px;">
+    <div class="form-group" style="">
         <input name="zipCode" #zipCode="ngModel" [(ngModel)]="formData.zipCode" class="form-control" placeholder="Zip Code" required>
         <div *ngIf="zipCode.invalid && zipCode.touched" class="validation-error">This field is required</div>
     </div>
 
-    <div class="form-group" style="width: 200px;">
+    <div class="form-group" style="">
         <input name="mobile" #mobile="ngModel" [(ngModel)]="formData.mobile" class="form-control" placeholder="mobile No">
     </div>
 
-    <div class="form-group" style="width: 200px;">
+    <div class="form-group" style="">
         <input name="email" #email="ngModel" [(ngModel)]="formData.email" class="form-control" placeholder="Email Id" required>
         <div *ngIf="email.invalid && email.touched" class="validation-error">This field is required</div>
     </div>
 
-    <div class="form-group" style="width: 200px;">
+    <div class="form-group" style="">
         <input name="password" #password="ngModel" [(ngModel)]="formData.password" class="form-control" placeholder="Enter password" required>
         <div *ngIf="password.invalid && password.touched" class="validation-error">This field is required</div>
     </div>
 
 
-     <div class="form-group" style="width: 200px;">
+     <div class="form-group" style="">
         <input name="password" #password="ngModel" [(ngModel)]="formData.password" class="form-control" placeholder="Confirm password" required>
         <div *ngIf="password.invalid && password.touched" class="validation-error">This field is required</div>
     </div> 
 
 
-    <div class="form-group" style="width: 200px;">
+    <div class="form-group" style="">
         <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info">SUBMIT</button>
     </div>
 
