@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Patient } from '../interfaces/patient';
+import { Clinician } from '../interfaces/clinician';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
-
-  
 
   constructor(private firestore: AngularFirestore) { }
 
@@ -34,5 +33,8 @@ export class MainService {
     return null;
   }
 
+  createClinician(clinician: Clinician){
+    return this.firestore.collection('clinicians').doc(clinician.mobileNumber).set(clinician);
+  }
 
 }
