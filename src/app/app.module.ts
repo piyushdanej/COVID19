@@ -30,6 +30,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     BrowserAnimationsModule,
-    MatStepperModule
+    MatStepperModule,
+    MatAutocompleteModule
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]
