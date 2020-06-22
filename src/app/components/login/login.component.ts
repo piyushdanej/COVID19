@@ -1,5 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import {  faUserCircle  } from '@fortawesome/free-regular-svg-icons';
+import {  faUnlockAlt ,faEye} from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-login',
@@ -9,6 +12,13 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
   userName : string;
   password : string;
+
+  // faChevronRight = faChevronRight;
+  faUser = faUserCircle;
+  // faCog = faCog;
+  faEye =faEye;
+  faUnlock = faUnlockAlt;
+
   constructor(private router : Router) { }
 
   ngOnInit(): void {

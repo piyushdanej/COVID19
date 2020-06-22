@@ -1,10 +1,13 @@
 /* Main section CSS Wrapper */
 .screen4{
+    background-color: #143663;
     border: 1px solid;
     position: relative;
-    min-height: 570px;
-    margin-top:30px;
-    background: #050d38d9;
+    min-height: 100vh;
+    /* margin-top:30px; */
+    /* background-image: url("../../../assets/bg_pattern.svg"); */
+    background-repeat: no-repeat;
+    background-position:center;
 }
 .main-sec {
     margin: 0 auto;
@@ -44,14 +47,20 @@ input#email,input#pass {
     background: white;
     padding: 10px;
     border:none;    
-    max-width: 324px;
+    /* max-width: 324px; */
     width: 100%;
+    padding-left: 35px;
 }
 input#email{
     border-bottom: 1px solid #dedbdb ;
     border-radius: 14px 14px 0 0;
-    
 }
+
+.username, .password {
+    position: relative;
+    padding: 0px;
+}
+
 #pass{
     border-radius: 0 0 14px 14px;
 }
@@ -60,7 +69,7 @@ input#login {
     margin-top: 20px;
     border: none;
     border-radius: 28px;
-    background: #444486eb;
+    background: #355E93;
     width:100%;
     box-sizing:border-box;
     padding: 10px;
@@ -117,7 +126,22 @@ input#email,input#pass,input#login {
 #register {
     border-radius: 28px;
     padding: 6px 30px;
-    background: #444486eb;
+    background: #355E93;
     border: none;
     color: #ffffff;
+}
+/* Font awesm */
+.username, .password {
+    position: relative;
+    padding: 0px;
+}
+#fa-user, #fa-unlk, #fa-eye{
+    position: absolute;
+    top: 11px;
+    left: 6px;
+    opacity: 0.5;    
+}
+#fa-eye{
+    right: 28px;
+    left: auto;
 }

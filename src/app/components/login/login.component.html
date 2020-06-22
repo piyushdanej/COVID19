@@ -5,7 +5,7 @@
             <div class="main-sec">
                 <div class="mtec-head">
                     <div class="img-div">
-                        <!-- <img src="../../../assets/MTEc logo.svg"  alt="back-arrow"> -->
+                        <img src="../../../assets/MTEc logo.svg"  alt="back-arrow">
                     </div>
                     <!-- <div class="head-con">
                         <h3>MTEC</h3>
@@ -16,11 +16,13 @@
                     <p>Please Login to Continue</p>
                     <!-- <form> -->
                         <div class = "username">
-                            
-                            <input type="text" id="email" [(ngModel)]="userName" placeholder="EmailID/Mobile Number">
+                            <fa-icon id= "fa-user" [icon]="faUser"></fa-icon>
+                            <input type="text" id="email" [(ngModel)]="userName" placeholder="Enter UserName">
                         </div>
                         <div class = "password">
-                            <input type="password" [(ngModel)]="password" id ="pass" placeholder="Password">
+                            <fa-icon id="fa-unlk" [icon]="faUnlock"></fa-icon>
+                            <fa-icon id="fa-eye" [icon]="faEye"></fa-icon>
+                            <input type="password" [(ngModel)]="password" id ="pass" placeholder="Enter Password">
                         </div>
                        <div class="login-btn">
                         <input type="submit"  (click)="submitCredentials()" id ="login" value ="Login">
