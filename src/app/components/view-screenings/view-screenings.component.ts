@@ -12,7 +12,7 @@ export class ViewScreeningsComponent implements OnInit {
   tabIndexHighlight: number;
   patients: Patient[];
 
-  healthDivisionFactor : number = 100/16;
+  healthDivisionFactor : number = 100/28;
 
   patientCategories = {
     Healthy: [],
