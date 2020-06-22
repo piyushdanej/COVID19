@@ -15,6 +15,10 @@ export class MainService {
     return this.firestore.collection('patients').snapshotChanges();
   }
 
+  getPatient(patient: Patient) {
+    return this.firestore.collection('patients').doc(patient.mobileNumber).get();
+  }
+
   createPatient(patient: Patient){
     return this.firestore.collection('patients').doc(patient.mobileNumber).set(patient);
   }
