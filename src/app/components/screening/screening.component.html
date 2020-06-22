@@ -32,7 +32,7 @@
                 </span>
               3</li>
               <li #tab (click)="selectTab($event, 4)">
-                <span class="tick-mark t4 display-none">
+                <span class="tick-mark t4 " [hidden] = "isShow3">
                   <img src="../../../assets/Green Circle Tick.svg">
                 </span>
               4</li>
@@ -81,7 +81,7 @@
               <label for="Yes"> No</label>
             </div> 
  -->
-            <div *ngIf="tabId == 1" class="questionarie-list {{this.showQue}}" >
+            <div *ngIf="tabId == 1" class="questionarie-list {{this.showQue}}">
               <div *ngFor="let question of questionsForTab1">
                 <question
                   [questionText]="question"
@@ -92,27 +92,31 @@
               </div>
             </div>
 
-            <div *ngIf="tabId == 2" class="questionarie-list" >
+            <div *ngIf="tabId == 2" class="questionarie-list {{this.showQue}}" >
               <div *ngFor="let question of questionsForTab2">
                 <question
                   [questionText]="question"
                   (answerEvent)="addData($event)"
+                  
                 >
+
                 </question>
+                
               </div>
             </div>
 
-            <div *ngIf="tabId == 3" class="questionarie-list">
+            <div *ngIf="tabId == 3" class="questionarie-list {{this.showQue}}">
               <div *ngFor="let question of questionsForTab3">
                 <question
                   [questionText]="question"
                   (answerEvent)="addData($event)"
                 >
                 </question>
+                
               </div>
             </div>
 
-            <div *ngIf="tabId == 4" class="questionarie-list"> 
+            <div *ngIf="tabId == 4" class="questionarie-list {{this.showQue}}"> 
               <div *ngFor="let question of questionsForTab4">
                 <question
                   [questionText]="question"

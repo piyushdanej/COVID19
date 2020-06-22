@@ -39,10 +39,9 @@
 
 }
 .icon-holder{
-    border-radius: 50%;
-    background-color: #E9EDEE;
+    
     vertical-align: center;
-    transform: rotate(90deg);
+    
     width: 2.5rem;
     height: 2.5rem;
     text-align: center;
@@ -56,6 +55,22 @@
     cursor:pointer;
     transform: rotate(90deg);
 }
+
+.healthPercent{
+    font-size:1.3rem;
+}
+
+.green{
+    color:green;
+}
+
+.orange{
+    color:orange;
+}
+.red{
+    color:red;
+}
+
 #call-icon{
     color:#355E93;
 }
