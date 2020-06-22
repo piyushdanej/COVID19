@@ -19,7 +19,7 @@ export class ClinicianHomeComponent implements OnInit {
   ngOnInit() {
   }
   routeToViewScreenings(param: number){
-    debugger;
+   
     this.router.navigate(["/screenings"] , { queryParams: { id: param}})
   }
 }

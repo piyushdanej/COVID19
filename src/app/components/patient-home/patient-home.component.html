@@ -1,6 +1,6 @@
 <div id="patient-container">
   <div class="title">
-    <div class="wel-div">Welcome <span class="username-span">abdallah</span></div>
+    <div class="wel-div">Welcome <span class="username-span">{{patientName}}</span></div>
   </div>
 
   <div>      
@@ -19,7 +19,7 @@
           <a class="right-arrow-icon" routerLink="/available-clinicians"><fa-icon [icon]="faChevronRight"></fa-icon></a>
         </div>
         <div class="profile-settings-div">
-          <button class="profile-settings-button profile-button" routerLink="/my-profile"><fa-icon [icon]="faUser"></fa-icon>My Profile</button>
+          <button class="profile-settings-button profile-button" (click)="routeToProfile()"><fa-icon [icon]="faUser"></fa-icon>My Profile</button>
           <button class="profile-settings-button settings-button" routerLink=""><fa-icon [icon]="faCog"></fa-icon>Settings</button>
         </div>
       </li>
