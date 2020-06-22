@@ -14,7 +14,12 @@ export class ScreeningComponent implements OnInit {
 
   dataQA = {};
   tabId : number = 1;
-  showModal: boolean = false;
+  isShow:boolean = true;
+  isShow1:boolean = true;
+  isShow2:boolean = true;
+  isShow3:boolean = true;
+  showModal: boolean ;
+  showQue:boolean = false;
   @ViewChild("modal" , {static : false})  modalControl : ElementRef;
   @ViewChildren('tab') elTabs : QueryList<ElementRef>;
 
@@ -49,18 +54,26 @@ questionsForTab4: string[] = [
   "I have fever or symptoms like headache , dry cough , body ache .4",
   "I have medical history like Diabetes , Heart problems ,  blood pressure4"
 ]
-
-
+ 
   loopArray : number[] = [1,2,3,4,5,6,7];
   ngOnInit(): void {
   }
 
   selectTab(event , id: number) {
     this.tabId = id;
+    this.isShow =false; 
+    if(id==3){
+      this.isShow1 = false;
+    }
+    if(id==4){
+      this.isShow2 = false;
+    }
+    
+    
     this.elTabs.forEach(tab => tab.nativeElement.classList.remove("active-tab"))
- 
-    event.target.classList.add("active-tab")
-  }
+    
+    event.target.classList.add("active-tab");
+  } 
   addData(event){
     this.dataQA[event.question] = event.answer;
   }
@@ -82,5 +95,14 @@ questionsForTab4: string[] = [
     this.showModal = false;
     this.modalControl.nativeElement.classList.add("display-none");
     this.router.navigate(["/patient-home"] );
+  }
+
+  ChangeVisiblity(e){
+    if(e.target.value =="Yes"){
+      this.showQue = true;
+    }else{  
+      this.showQue = false;
+    }
+    
   }
 }
