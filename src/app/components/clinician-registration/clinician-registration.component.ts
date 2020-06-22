@@ -27,7 +27,8 @@ export class ClinicianRegistrationComponent implements OnInit {
       zipCode: ['', Validators.required],
       mobileNumber: ['', Validators.required],
       emailId: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      userType : ['clinician']
     });
   }
 
@@ -38,6 +39,7 @@ export class ClinicianRegistrationComponent implements OnInit {
 
   onSubmit(){
     this.mainService.createClinician(this.insertForm.value).then( data => {
+      debugger;
       console.log(data);
       if(this.insertForm.invalid){
         return;

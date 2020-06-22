@@ -33,4 +33,10 @@ export class ViewScreeningsComponent implements OnInit {
     });
   }
 
+  selectPatient(patient){
+   
+    this.mainService.setSelectedPatient(patient);
+  }
+
+
 }

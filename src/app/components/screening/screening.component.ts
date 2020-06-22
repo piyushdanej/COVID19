@@ -1,3 +1,4 @@
+import { MainService } from 'src/app/services/main.service';
 import { Router } from '@angular/router';
 import { surveyQuestion } from './../../interfaces/surveyQuestion';
 import { QuestionComponent } from './question/question.component';
@@ -19,7 +20,7 @@ export class ScreeningComponent implements OnInit {
 
 
 
-  constructor(private router : Router) { }
+  constructor(private router : Router , private mainService : MainService) { }
 
   questionsForTab1 : string[] = [
     "I share the same house with a person infected with the virus or is member of my family.1",
@@ -68,6 +69,8 @@ questionsForTab4: string[] = [
     this.showModal = true;
     console.log(this.showModal);
     console.log(this.dataQA);
+    const qaDataObj = {surveyData : this.dataQA}
+    // this.mainService.updatePatientByMobileNumber("333333" , qaDataObj);
     this.modalControl.nativeElement.classList.remove("display-none")
   }
   navigateBack(){

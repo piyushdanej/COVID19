@@ -1,8 +1,15 @@
+
+
+
 <tab-list [selectedTabIndex]="tabIndexHighlight">
     <!--  [isActive]="tabInidex ==1" -->
     <screening-tab tabName="Pending" [isActive]="tabIndexHighlight == 0">
         <div *ngFor="let patient of patients">
-            <patient-to-call [routerLink]="['/my-profile', {firstName: patient.firstName, lastName: patient.lastName, age: patient.age}]" patientName="{{patient.firstName}} {{patient.lastName}}" patientDate="27/4/20"></patient-to-call>
+            <patient-to-call routerLink="/my-profile" 
+            patientName="{{patient.firstName}} {{patient.lastName}}" 
+            patientDate="27/4/20"
+            (click)="selectPatient(patient)">
+        </patient-to-call>
         </div>
     </screening-tab>
 
