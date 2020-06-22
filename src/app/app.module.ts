@@ -27,6 +27,9 @@ import { environment } from '../environments/environment';
 import { ClinicianRegistrationComponent } from './components/clinician-registration/clinician-registration.component';
 import { PatientRegistrationComponent } from './components/patient-registration/patient-registration.component';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    BrowserAnimationsModule,
+    MatStepperModule
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]

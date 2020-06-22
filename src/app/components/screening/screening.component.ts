@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { surveyQuestion } from './../../interfaces/surveyQuestion';
 import { QuestionComponent } from './question/question.component';
 import { Component, OnInit, ViewChildren, QueryList, ElementRef, ViewChild } from '@angular/core';
-
+import{MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-screening',
@@ -25,7 +25,7 @@ export class ScreeningComponent implements OnInit {
 
 
 
-  constructor(private router : Router) { }
+  constructor(private router : Router ,private mainService : MainService) { }
 
   questionsForTab1 : string[] = [
     "I share the same house with a person infected with the virus or is a member of my family",
@@ -95,6 +95,10 @@ questionsForTab4: string[] = [
     this.showModal = true;
     console.log(this.showModal);
     console.log(this.dataQA);
+    const qaDataObj = {surveyData : this.dataQA}
+    // this.mainService.updatePatientByMobileNumber("333333" , qaDataObj);
+    let userId = this.mainService.getLoggedInPatient().mobileNumber;
+    this.mainService.updatePatientByMobileNumber(userId , qaDataObj);
     this.modalControl.nativeElement.classList.remove("display-none")
   }
   navigateBack(){

@@ -1,183 +1,130 @@
 <div class="parent">
-  <p class="heading">
-    Registration
-  </p>
-  <div class="form-body"> 
-    <div class="center row">
-      <div class="col-xs-5">
-        <input
-          name="options"
-          [(ngModel)]="options"
-          type="radio"
-          value="As patient"
-        />
-        <label class="radio-inline"> As patient </label>
-      </div>
+    <p class="heading">
+        Registration
+    </p>
+    <div class="form-body">
+        <div class="center row">
+            <div class="col-xs-5">
+                <input name="options" [(ngModel)]="options" type="radio" value="As patient" />
+                <label class="radio-inline"> As patient </label>
+            </div>
 
-      <div class="col-xs-5">
-        <input
-          name="options"
-          [(ngModel)]="options"
-          type="radio"
-          value="As Clinician"
-        />
-        <label>As Clinician</label>
-      </div>
+            <div class="col-xs-5">
+                <input name="options" [(ngModel)]="options" type="radio" value="As Clinician" />
+                <label>As Clinician</label>
+            </div>
+        </div>
+
+        <div *ngIf="options === 'As patient'">
+            <form [formGroup]="insertForm" (ngSubmit)="onSubmit()" autocomplete="off">
+
+                <mat-horizontal-stepper>
+
+
+
+                    <mat-step label="Personal Details">
+
+
+
+
+                        <div class="form-group">
+                            <input formControlName="firstName" name="firstName" id="firstName"
+                                class="form-control col-xs-12 col-md-12" placeholder="First Name" />
+                        </div>
+
+                        <div class="form-group">
+                            <input formControlName="lastName" name="lastName" id="lastName"
+                                class="form-control col-xs-12 col-md-12" placeholder="Last Name" />
+                        </div>
+
+                        <div class="form-group">
+                            <input formControlName="city" name="city" id="city" class="form-control col-xs-12 col-md-12"
+                                placeholder="City" />
+                        </div>
+                        <div class="form-group">
+                            <input formControlName="state" name="state" id="state"
+                                class="form-control col-xs-12 col-md-12" placeholder="State/Province" />
+                        </div>
+
+                        <div class="form-group">
+                            <input formControlName="zipCode" name="zipCode" id="zipCode"
+                                class="form-control col-xs-12 col-md-12" placeholder="Zip Code" type="number" />
+                        </div>
+
+                        <div class="form-group">
+                            <input formControlName="mobileNumber" name="mobileNumber" id="mobileNumber"
+                                class="form-control col-xs-12 col-md-12" placeholder="Mobile Number" />
+                        </div>
+
+                        <div class="form-group">
+                            <input formControlName="emailId" name="emailId" id="emailId"
+                                class="form-control col-xs-12 col-md-12" placeholder="Email" type="email" />
+                        </div>
+
+                        <div class="form-group">
+                            <input formControlName="age" name="age" id="age" class="form-control col-xs-12 col-md-12"
+                                placeholder="Age" />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="sex" style="margin-right: 10px;">Sex</label>
+                            <label class="radio-inline">
+                                <input formControlName="sex" name="sex" id="male" type="radio" value="Male" style="margin: 0 0px 0 10px;"/> Male
+                            </label>
+
+                            <label class="radio-inline">
+                                <input formControlName="sex" name="sex" id="female" type="radio" value="Female" style="margin: 0 0px 0 10px;"/> Female
+                            </label>
+
+                            <label class="radio-inline">
+                                <input formControlName="sex" name="sex" id="other" type="radio" value="Other" style="margin: 0 0px 0 10px;" /> Other
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <input formControlName="password" name="password" id="password"
+                                class="form-control col-xs-12 col-md-12" placeholder="Password" type="password" />
+                        </div>
+
+                        <div class="form-group">
+                            <input formControlName="password" name="password" id="confirmPassword"
+                                class="form-control col-xs-12 col-md-12" placeholder="Confirm Password"
+                                type="password" />
+                        </div>
+
+
+
+                    </mat-step>
+                    <mat-step label="Family Details">
+
+                        <div class="form-group">
+                            <input formControlName="fullName" name="fullName" id="fullName"
+                                class="form-control col-xs-12 col-md-12" placeholder="Full Name" />
+                        </div>
+
+                        <div class="form-group">
+                            <input formControlName="familyMemberAge" name="familyMemberAge" id="familyMemberAge"
+                                class="form-control col-xs-12 col-md-12" placeholder="Age" />
+                        </div>
+                        <div class="form-group">
+                            <input formControlName="relation" name="relation" id="relation"
+                                class="form-control col-xs-12 col-md-12" placeholder="Relation" />
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-lg btn-block btn-info">
+                                SUBMIT
+                            </button>
+                        </div>
+
+                    </mat-step>
+
+                </mat-horizontal-stepper>
+            </form>
+        </div>
+
+
     </div>
-
-    <div *ngIf="options === 'As patient'">
-      <form [formGroup]="insertForm" (ngSubmit)="onSubmit()" autocomplete="off">
-        <div class="form-group">
-          <input
-            formControlName="firstName"
-            name="firstName" 
-            id="firstName"
-            class="form-control col-xs-12 col-md-12"
-            placeholder="First Name"
-          />
-        </div>
-
-        <div class="form-group">
-          <input
-            formControlName="lastName"
-            name="lastName" 
-            id="lastName"
-            class="form-control col-xs-12 col-md-12"
-            placeholder="Last Name"
-          />
-        </div>
-
-        <div class="form-group">
-          <input
-            formControlName="city"
-            name="city" 
-            id="city"
-            class="form-control col-xs-12 col-md-12"
-            placeholder="City"
-          />
-        </div>
-        <div class="form-group">
-          <input
-            formControlName="state"
-            name="state" 
-            id="state"
-            class="form-control col-xs-12 col-md-12"
-            placeholder="State/Province"
-          />
-        </div>
-
-        <div class="form-group">
-          <input
-            formControlName="zipCode"
-            name="zipCode" 
-            id="zipCode"
-            class="form-control col-xs-12 col-md-12"
-            placeholder="Zip Code"
-            type="number"
-          />
-        </div>
-
-        <div class="form-group">
-          <input
-            formControlName="mobileNumber"
-            name="mobileNumber" 
-            id="mobileNumber"
-            class="form-control col-xs-12 col-md-12"
-            placeholder="Mobile Number"
-          />
-        </div>
-
-        <div class="form-group">
-          <input
-            formControlName="emailId"
-            name="emailId" 
-            id="emailId"
-            class="form-control col-xs-12 col-md-12"
-            placeholder="Email"
-            type="email"
-          />
-        </div>
-
-        <div class="form-group">
-          <input
-            formControlName="age"
-            name="age" 
-            id="age"
-            class="form-control col-xs-12 col-md-12"
-            placeholder="Age"
-          />
-        </div>
-
-        <div class="form-group col-md-6">
-          <label for="sex" style="margin-right: 10px;">Sex</label>
-          <label class="radio-inline">
-            <input
-              formControlName="sex"
-              name="sex" 
-              id="male"
-              type="radio"
-              value="Male"
-            />
-            Male
-          </label>
-
-          <label class="radio-inline">
-            <input
-              formControlName="sex"
-              name="sex" 
-              id="female"
-              type="radio"
-              value="Female"
-            />
-            Female
-          </label>
-
-          <label class="radio-inline">
-            <input
-              formControlName="sex"
-              name="sex" 
-              id="other"
-              type="radio"
-              value="Other"
-            />
-            Other
-          </label>
-        </div>
-
-        <div class="form-group">
-          <input
-            formControlName="password"
-            name="password" 
-            id="password"
-            class="form-control col-xs-12 col-md-12"
-            placeholder="Password"
-            type="password"
-          />
-        </div>
-
-        <div class="form-group">
-          <input
-            formControlName="password"
-            name="password" 
-            id="confirmPassword"
-            class="form-control col-xs-12 col-md-12"
-            placeholder="Confirm Password"
-            type="password"
-          />
-        </div>
-
-        <div class="form-group">
-          <button
-            type="submit"
-            class="btn btn-lg btn-block btn-info"
-          >
-            SUBMIT
-          </button>
-        </div>
-      </form>
+    <div *ngIf="options === 'As Clinician'">
+        <app-clinician-registration></app-clinician-registration>
     </div>
-  </div>
-</div>
-<div *ngIf="options === 'As Clinician'">
-  <app-clinician-registration></app-clinician-registration>
-</div>

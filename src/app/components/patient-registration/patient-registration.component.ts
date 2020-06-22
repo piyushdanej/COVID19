@@ -35,6 +35,9 @@ export class PatientRegistrationComponent implements OnInit {
       mobileNumber: ['', Validators.required],
       emailId: ['', Validators.required],
       password: ['', Validators.required],
+      fullName: ['', Validators.required],
+      familyMemberAge: ['', Validators.required],
+      relation: ['', Validators.required], 
       userType : ['patient']
     });
   }
