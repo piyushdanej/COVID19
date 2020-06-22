@@ -41,7 +41,7 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
     private changeDetectorRef: ChangeDetectorRef,
     private ngZone: NgZone
   ) {
-    this.meterList = Array(16).fill(1);
+    this.meterList = Array(28).fill(1);
   }
   isTravelHistory: "Yes";
   feedback: "Healthy";

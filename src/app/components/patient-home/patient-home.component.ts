@@ -23,7 +23,7 @@ export class PatientHomeComponent implements OnInit {
   }
 
   routeToProfile(){
-    this.router.navigate(["/my-profile"],{ queryParams: { path : "home"}});
+    // this.router.navigate(["/my-profile"],{ queryParams: { path : "home"}});
     // routerLink="/my-profile"
   }
 

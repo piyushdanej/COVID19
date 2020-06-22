@@ -20,10 +20,10 @@ export class PatientToCallComponent implements OnInit {
 
   getColor(healthScore){
     debugger;
-    if(healthScore < 4)
+    if(healthScore < 40)
       return 'green';
    
-    else if(healthScore < 12)
+    else if(healthScore < 70)
       return  'orange';
     else
       return 'red';

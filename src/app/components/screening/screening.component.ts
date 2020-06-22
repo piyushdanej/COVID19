@@ -17,6 +17,7 @@ export class ScreeningComponent implements OnInit {
   isShow1:boolean = true;
   isShow2:boolean = true;
   isShow3:boolean = true;
+  showSurvey : boolean = false;
   showModal: boolean ;
   showQue:boolean = false;
   @ViewChild("modal" , {static : false})  modalControl : ElementRef;
@@ -97,9 +98,11 @@ questionsForTab4: string[] = [
     console.log(this.dataQA);
     const qaDataObj = {surveyData : this.dataQA}
     // this.mainService.updatePatientByMobileNumber("333333" , qaDataObj);
+    
+    
+    this.modalControl.nativeElement.classList.remove("display-none")
     let userId = this.mainService.getLoggedInPatient().mobileNumber;
     this.mainService.updatePatientByMobileNumber(userId , qaDataObj);
-    this.modalControl.nativeElement.classList.remove("display-none")
   }
   navigateBack(){
     this.router.navigate(["/patient-home"] );
@@ -113,6 +116,7 @@ questionsForTab4: string[] = [
   ChangeVisiblity(e){
     if(e.target.value =="Yes"){
       this.showQue = true;
+
       
     }else{  
       this.showQue = false;

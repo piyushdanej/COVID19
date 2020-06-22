@@ -99,8 +99,7 @@ export class ViewScreeningsComponent implements OnInit {
   }
 
   routeToProfile() {
-    this.router.navigate(["/my-profile"], {queryParams: { path: "view-screenings" },
-    });
+    this.router.navigate(["/my-profile"], {queryParams: { path: "view-screenings" }});
     // routerLink="/my-profile"
   }
 }
