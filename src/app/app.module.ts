@@ -18,7 +18,7 @@ import { PatientDetailsComponent } from './components/patient-details/patient-de
 import { LoginComponent } from './components/login/login.component';
 import { ScreeningComponent } from './components/screening/screening.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuestionComponent } from './components/screening/question/question.component';
 
 import { AngularFireModule } from '@angular/fire';
@@ -52,6 +52,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule
   ],

@@ -17,7 +17,7 @@ export class MainService {
   }
 
   createPatient(patient: Patient){
-    return this.firestore.collection('patients').doc(patient.id).set(patient);
+    return this.firestore.collection('patients').doc(patient.mobileNumber).set(patient);
   }
 
   updatePatient(patient: Patient){

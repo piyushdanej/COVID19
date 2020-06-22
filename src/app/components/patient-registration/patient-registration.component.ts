@@ -1,7 +1,7 @@
 import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFirestore } from "@angular/fire/firestore";
-import { NgForm } from "@angular/forms";
 import { MainService } from "src/app/services/main.service";
 import { Patient } from "src/app/interfaces/patient";
 
@@ -13,43 +13,43 @@ import { Patient } from "src/app/interfaces/patient";
 export class PatientRegistrationComponent implements OnInit {
   options = "As patient";
 
-  formData: Patient;
+  patients: Patient[];
+  insertForm: FormGroup;
 
   constructor(
-    public service: MainService,
+    private mainService: MainService, 
+    private formBuilder: FormBuilder,
     public firestore: AngularFirestore,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.resetForm();
+    this.insertForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      sex: ['', Validators.required],
+      age: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      zipCode: ['', Validators.required],
+      mobileNumber: ['', Validators.required],
+      emailId: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
-  resetForm(form?: NgForm) {
-    if (form != null) form.resetForm();
-    this.formData = {
-      id: null,
-      firstName: "",
-      lastName: "",
-      city: "",
-      state: "",
-      zipCode: "",
-      mobileNumber: "",
-      emailId: "",
-      age: null,
-      sex: "",
-      password: "",
-    };
+  get formControls() { 
+    console.log(this.insertForm.controls)
+    return this.insertForm.controls; 
   }
 
-  onSubmit(form: NgForm) {
-    let data = form.value;
-    this.firestore.collection("patients").add(data);
-    this.resetForm(form);
-    debugger;
-    // if (this.options === "As Clinician") {
-    //   this.router.navigate(["/clinician-home"]);
-    //   return;
-    this.router.navigate(["/patient-home"]);
+  onSubmit(){
+    this.mainService.createPatient(this.insertForm.value).then( data => {
+      console.log(data);
+      if(this.insertForm.invalid){
+        return;
+      }
+      this.router.navigate(["/patient-home"]);
+    });
   }
 }

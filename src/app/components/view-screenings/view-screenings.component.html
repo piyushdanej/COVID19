@@ -1,48 +1,27 @@
 <tab-list [selectedTabIndex]="tabIndexHighlight">
     <!--  [isActive]="tabInidex ==1" -->
-    <screening-tab tabName="Pending" [isActive]="tabIndexHighlight ==0">
-        <patient-to-call routerLink="/my-profile" patientName="John Doe" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call routerLink="/my-profile" patientName="John Doe" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call routerLink="/my-profile" patientName="Brenden Bone" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call routerLink="/my-profile" patientName="Amira Castaneda" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call routerLink="/my-profile" patientName="Destiny Payne" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call routerLink="/my-profile" patientName="Yvonne Shields" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call routerLink="/my-profile" patientName="Lynn Mcnamara" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call routerLink="/my-profile" patientName="Aoife Whitfield" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call routerLink="/my-profile" patientName="Mindy Randall" patientDate="27/4/20"></patient-to-call>
-
+    <screening-tab tabName="Pending" [isActive]="tabIndexHighlight == 0">
+        <div *ngFor="let patient of patients">
+            <patient-to-call routerLink="/my-profile" patientName="{{patient.firstName}} {{patient.lastName}}" patientDate="27/4/20"></patient-to-call>
+        </div>
     </screening-tab>
 
     <screening-tab tabName="Ward" [isActive]="tabIndexHighlight == 1">
-        <patient-to-call routerLink="/my-profile" patientName="Lynn Mcnamara" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call routerLink="/my-profile" patientName="Aoife Whitfield" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call routerLink="/my-profile" patientName="Mindy Randall" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call routerLink="/my-profile" patientName="Amira Castaneda" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call routerLink="/my-profile" patientName="Destiny Payne" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call routerLink="/my-profile" patientName="Yvonne Shields" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call routerLink="/my-profile" patientName="Lynn Mcnamara" patientDate="27/4/20"></patient-to-call>
+        <div *ngFor="let patient of patients">
+            <patient-to-call routerLink="/my-profile" patientName="{{patient.firstName}} {{patient.lastName}}" patientDate="27/4/20"></patient-to-call>
+        </div>
     </screening-tab>
   
     <screening-tab tabName="ICU" [isActive]="false">
-        <patient-to-call  routerLink="/my-profile" patientName="Brenden Bone" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call  routerLink="/my-profile" patientName="Amira Castaneda" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call  routerLink="/my-profile" patientName="Destiny Payne" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call  routerLink="/my-profile" patientName="Yvonne Shields" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call  routerLink="/my-profile" patientName="Brenden Bone" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call  routerLink="/my-profile" patientName="Amira Castaneda" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call  routerLink="/my-profile" patientName="Destiny Payne" patientDate="27/4/20"></patient-to-call>
+        <div *ngFor="let patient of patients">
+            <patient-to-call routerLink="/my-profile" patientName="{{patient.firstName}} {{patient.lastName}}" patientDate="27/4/20"></patient-to-call>
+        </div>
     </screening-tab>
   
     <screening-tab tabName="Healthy" [isActive]="false">
-        <patient-to-call patientName="Mindy Randall" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call patientName="Amira Castaneda" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call patientName="Destiny Payne" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call patientName="Yvonne Shields" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call patientName="Amira Castaneda" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call patientName="Destiny Payne" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call patientName="Yvonne Shields" patientDate="27/4/20"></patient-to-call>
-        <patient-to-call patientName="Lynn Mcnamara" patientDate="27/4/20"></patient-to-call>
+        <div *ngFor="let patient of patients">
+            <patient-to-call routerLink="/my-profile" patientName="{{patient.firstName}} {{patient.lastName}}" patientDate="27/4/20"></patient-to-call>
+        </div>
     </screening-tab>
-
     
 </tab-list>
