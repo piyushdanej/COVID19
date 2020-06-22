@@ -12,6 +12,8 @@ export class ViewScreeningsComponent implements OnInit {
   tabIndexHighlight: number;
   patients: Patient[];
 
+  healthDivisionFactor : number = 100/16;
+
   patientCategories = {
     Healthy: [],
     Ward: [],
@@ -49,7 +51,7 @@ export class ViewScreeningsComponent implements OnInit {
   classifyPatients(patients: Patient[]) {
     this.patients = patients.map((p) => {
       // if(p.surveryData){
-      debugger;
+      
       if (p.surveyData) {
         let keys = Object.keys(p.surveyData);
 
@@ -64,20 +66,27 @@ export class ViewScreeningsComponent implements OnInit {
         );
 
         if (category.count < 4) {
+
           category.label = "Healthy";
+          p.healthPercent = this.healthDivisionFactor * category.count;
           this.patientCategories["Healthy"].push(p);
         } else if (category.count < 8) {
+          
           category.label = "Pending";
+          p.healthPercent = this.healthDivisionFactor * category.count;
           this.patientCategories["Pending"].push(p);
         } else if (category.count < 12) {
           category.label = "Ward";
+          p.healthPercent = this.healthDivisionFactor * category.count;
           this.patientCategories["Ward"].push(p);
         } else {
           category.label = "ICU";
+          p.healthPercent = this.healthDivisionFactor * category.count;
           this.patientCategories["ICU"].push(p);
         }
       } else {
         p.category = "Healthy";
+        p.healthPercent = 0;
         this.patientCategories["Healthy"].push(p);
       }
       return p;

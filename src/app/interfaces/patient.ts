@@ -15,5 +15,6 @@ export interface Patient {
     relation:string;
     surveyData?: any;
     userType : string;
-    category?:string
+    category?:string;
+    healthPercent ?: number;
 }
