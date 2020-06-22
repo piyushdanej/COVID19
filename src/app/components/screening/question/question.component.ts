@@ -22,4 +22,6 @@ export class QuestionComponent implements OnInit {
       answer : this.answer
     });
   }
+
+  
 }
