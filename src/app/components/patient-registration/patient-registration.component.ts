@@ -39,16 +39,11 @@ export class PatientRegistrationComponent implements OnInit {
       confirmPass:''
     }
   }
-  checkPasswords(group: FormGroup) { 
-
-    let pass = group.get('password').value; 
-    let confirmPass = group.get('confirmPass').value; 
-    return pass === confirmPass ? null : { notSame: true }  
-  }
+ 
 
   onSubmit(form:NgForm){
     let data=form.value;
-    this.checkPasswords(data);
+    
     this.firestore.collection('patients').add(data);
     // this.resetForm(form);
   }
