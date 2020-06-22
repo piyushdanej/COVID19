@@ -10,6 +10,7 @@ export interface Patient {
     age: number;
     sex: string;
     password: string;
-    surveryData?: any;
+    surveyData?: any;
     userType : string;
+    category?:string
 }
