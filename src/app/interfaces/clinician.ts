@@ -9,4 +9,5 @@ export interface Clinician {
     mobileNumber: string;
     emailId: string;
     password: string;
+    userType : string;
 }

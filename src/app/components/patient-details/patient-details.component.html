@@ -10,14 +10,15 @@
     <div class="patient-image">
       <img src="../../../assets/userImage.png" />
     </div>
+
+    <!-- *ngIf="(this.mainService.getSelectedPatient() | async) as patientDetail" -->
     <div class="patient-info">
-      <label> Annie Hall </label>
-      <!-- <span> | </span> -->
-      <span id="age-span"> <span id="pillar"> |</span> 29 years </span>
+      <label> {{patientDetails.firstName}} {{patientDetails.lastName}}</label>
+      <span id="age-span"> <span id="pillar"> |</span> {{patientDetails.age}} years </span>
       <span class="info-label">Submitted: </span>
       <label>06/20/2020</label>
       <span class="info-label">Location: </span>
-      <span> 690 west Albany St. Lawrence, NJ 08648</span>
+      <span> {{patientDetails.city}} {{patientDetails.state}} </span>
     </div>
   </div>
   <div class="assestment-report">
@@ -29,7 +30,7 @@
       <ul class="risk-meter">
         <li *ngFor="let item of meterList;let i = index" 
             class="meter"
-            [ngClass]="i < 14 ? 'red-health' : null">
+            [ngClass]="i < healthScore ? 'red-health' : null">
         </li>
       </ul>
      
