@@ -1,3 +1,4 @@
+import { MainService } from './../../services/main.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Component, OnInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
@@ -12,9 +13,12 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 export class PatientDetailsComponent implements OnInit {
 
   @ViewChildren("tab") tabs :QueryList<ElementRef>;
-
+  meterList;
   constructor(private router : Router ,
-              private route : ActivatedRoute) { }
+              private route : ActivatedRoute ,
+              private mainService : MainService) { 
+                this.meterList = Array(16).fill(1);
+              }
   isTravelHistory:"Yes";
   feedback:"Healthy"
   feedbackDiscription;
@@ -25,6 +29,9 @@ export class PatientDetailsComponent implements OnInit {
     this.isTravelHistory = "Yes";
     this.feedback = "Healthy";
     this.feedbackDiscription = "";
+
+    this.getAllPatients();
+
   }
   submitSurvey(){
     console.log("Submit survey called");
@@ -49,4 +56,15 @@ export class PatientDetailsComponent implements OnInit {
     event.target.classList.add("active-tab");
     
   }
+
+  getAllPatients(){
+    // this.mainService.getAllPatients().subscribe(snapshot =>{
+      
+    //   snapshot.docs.forEach(doc => {
+
+    //     console.log(doc.data());
+    //   })
+    // })
+  }
+
 }

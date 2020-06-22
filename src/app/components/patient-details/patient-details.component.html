@@ -26,7 +26,13 @@
       <span>Covid-19 Risk Meter</span><span>High Risk</span>
     </p>
     <div class="risk-meter-image">
-      <img src="../../../assets/covidMeter.PNG" />
+      <ul class="risk-meter">
+        <li *ngFor="let item of meterList;let i = index" 
+            class="meter"
+            [ngClass]="i < 14 ? 'red-health' : null">
+        </li>
+      </ul>
+     
     </div>
 
 
