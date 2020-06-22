@@ -5,6 +5,8 @@ import { MainService } from "src/app/services/main.service";
 import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { forkJoin , zip } from "rxjs";
+import {  faUserCircle} from '@fortawesome/free-regular-svg-icons';
+import { faUnlockAlt ,faEye} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: "app-login",
@@ -15,7 +17,9 @@ export class LoginComponent implements OnInit {
   userName: string;
   password: string;
   patients: Patient[];
-
+  faUser = faUserCircle;
+  faUnlock =faUnlockAlt;
+  faEye =faEye;
   constructor(private router: Router, private mainService: MainService) {}
 
   ngOnInit(): void {
@@ -46,6 +50,7 @@ export class LoginComponent implements OnInit {
         let person;
         let users = [...patients, ...clinicians];
   
+        debugger;
         person = users.find((existingUser) => {
           return ((existingUser.emailId === this.userName && existingUser.password === this.password) ||
                   (existingUser.mobileNumber === this.userName && existingUser.password === this.password));

@@ -1,7 +1,13 @@
 <div class="ques2 ques-list">
+
+    <label class="chk-container">   
+        <span class="que-no">A</span>
     <input type="checkbox" 
     class="ques-checkbox" 
     [(ngModel)]="answer"
     (change)="getAnswer()">
+        <span class="checkmark"></span>
+      </label>
+      
     <p>{{questionText}}</p>
-</div>
+</div> 

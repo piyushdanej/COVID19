@@ -18,7 +18,7 @@ export class QuestionComponent implements OnInit {
 
   getAnswer() {
     this.answerEvent.emit({ 
-      question: this.questionText ,
+      question: this.questionText,
       answer : this.answer
     });
   }
