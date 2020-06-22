@@ -26,12 +26,12 @@
     </div>
 
     <div *ngIf="options === 'As patient'">
-      <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+      <form [formGroup]="insertForm" (ngSubmit)="onSubmit()" autocomplete="off">
         <div class="form-group">
           <input
-            name="firstName"
-            #firstName="ngModel"
-            [(ngModel)]="formData.firstName"
+            formControlName="firstName"
+            name="firstName" 
+            id="firstName"
             class="form-control col-xs-12 col-md-12"
             placeholder="First Name"
           />
@@ -39,29 +39,28 @@
 
         <div class="form-group">
           <input
-            name="lastName"
-            #lastName="ngModel"
-            [(ngModel)]="formData.lastName"
+            formControlName="lastName"
+            name="lastName" 
+            id="lastName"
             class="form-control col-xs-12 col-md-12"
-            placeholder="last Name"
+            placeholder="Last Name"
           />
         </div>
 
         <div class="form-group">
           <input
-            name="city"
-            #city="ngModel"
-            [(ngModel)]="formData.city"
+            formControlName="city"
+            name="city" 
+            id="city"
             class="form-control col-xs-12 col-md-12"
             placeholder="City"
           />
         </div>
-
         <div class="form-group">
           <input
-            name="state"
-            #state="ngModel"
-            [(ngModel)]="formData.state"
+            formControlName="state"
+            name="state" 
+            id="state"
             class="form-control col-xs-12 col-md-12"
             placeholder="State/Province"
           />
@@ -69,9 +68,9 @@
 
         <div class="form-group">
           <input
-            name="zipCode"
-            #zipCode="ngModel"
-            [(ngModel)]="formData.zipCode"
+            formControlName="zipCode"
+            name="zipCode" 
+            id="zipCode"
             class="form-control col-xs-12 col-md-12"
             placeholder="Zip Code"
             type="number"
@@ -80,31 +79,30 @@
 
         <div class="form-group">
           <input
-            name="mobile"
-            #mobile="ngModel"
-            [(ngModel)]="formData.mobile"
+            formControlName="mobileNumber"
+            name="mobileNumber" 
+            id="mobileNumber"
             class="form-control col-xs-12 col-md-12"
-            placeholder="Mobile"
-            type="number"
+            placeholder="Mobile Number"
           />
         </div>
 
         <div class="form-group">
           <input
-            name="email"
-            #email="ngModel"
-            [(ngModel)]="formData.email"
+            formControlName="emailId"
+            name="emailId" 
+            id="emailId"
             class="form-control col-xs-12 col-md-12"
-            placeholder="Email Id"
+            placeholder="Email"
             type="email"
           />
         </div>
 
         <div class="form-group">
           <input
-            name="age"
-            #age="ngModel"
-            [(ngModel)]="formData.age"
+            formControlName="age"
+            name="age" 
+            id="age"
             class="form-control col-xs-12 col-md-12"
             placeholder="Age"
           />
@@ -114,9 +112,9 @@
           <label for="sex" style="margin-right: 10px;">Sex</label>
           <label class="radio-inline">
             <input
-              name="sex"
-              #male="ngModel"
-              [(ngModel)]="formData.male"
+              formControlName="sex"
+              name="sex" 
+              id="male"
               type="radio"
               value="Male"
             />
@@ -125,32 +123,43 @@
 
           <label class="radio-inline">
             <input
-              name="sex"
-              #female="ngModel"
-              [(ngModel)]="formData.female"
+              formControlName="sex"
+              name="sex" 
+              id="female"
               type="radio"
               value="Female"
             />
             Female
           </label>
+
+          <label class="radio-inline">
+            <input
+              formControlName="sex"
+              name="sex" 
+              id="other"
+              type="radio"
+              value="Other"
+            />
+            Other
+          </label>
         </div>
 
         <div class="form-group">
           <input
-            name="password"
-            #password="ngModel"
-            [(ngModel)]="formData.password"
+            formControlName="password"
+            name="password" 
+            id="password"
             class="form-control col-xs-12 col-md-12"
-            placeholder="password"
+            placeholder="Password"
             type="password"
           />
         </div>
 
         <div class="form-group">
           <input
-            name="password"
-            #password="ngModel"
-            [(ngModel)]="formData.password"
+            formControlName="password"
+            name="password" 
+            id="confirmPassword"
             class="form-control col-xs-12 col-md-12"
             placeholder="Confirm Password"
             type="password"
@@ -160,7 +169,6 @@
         <div class="form-group">
           <button
             type="submit"
-            [disabled]="form.invalid"
             class="btn btn-lg btn-block btn-info"
           >
             SUBMIT
