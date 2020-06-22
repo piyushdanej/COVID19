@@ -1,6 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MainService } from 'src/app/services/main.service';
 import { Clinician } from 'src/app/interfaces/clinician';
@@ -12,34 +12,40 @@ import { Clinician } from 'src/app/interfaces/clinician';
 })
 export class ClinicianRegistrationComponent implements OnInit {
 
-  formData: Clinician;
-  constructor(public service:MainService,public firestore:AngularFirestore) { }
+  clinicians: Clinician[];
+  insertForm: FormGroup;
+
+  constructor(private mainService: MainService, private formBuilder: FormBuilder, public firestore:AngularFirestore , private router : Router) { }
 
   ngOnInit(): void {
-    this.resetForm();
+    this.insertForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      registrationNo: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      zipCode: ['', Validators.required],
+      mobileNumber: ['', Validators.required],
+      emailId: ['', Validators.required],
+      password: ['', Validators.required],
+      userType : ['clinician']
+    });
   }
 
-  resetForm(form?:NgForm){
-    if(form!=null)
-    form.resetForm();
-    this.formData={
-      id:null,
-      firstName:'',
-      lastName:'',
-      registrationNo:'',
-      city:'',
-      state:'',
-      zipCode:'',
-      mobile: '',
-      email:'',
-      password:''
-    }
+  get formControls() { 
+    console.log(this.insertForm.controls)
+    return this.insertForm.controls; 
   }
 
-  onSubmit(form:NgForm){
-    let data=form.value;
-    this.firestore.collection('clinicians').add(data);
-    this.resetForm(form);
+  onSubmit(){
+    this.mainService.createClinician(this.insertForm.value).then( data => {
+      debugger;
+      console.log(data);
+      if(this.insertForm.invalid){
+        return;
+      }
+      this.router.navigate(["/clinician-home"]);
+    });
   }
 
 }

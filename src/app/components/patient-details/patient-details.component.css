@@ -23,6 +23,8 @@
         margin:auto;
     }
 }
+
+
 .patient-header{
     background: #2A4B76;
     color: white;
@@ -117,6 +119,38 @@
 }
 
 
+.risk-meter{
+  margin:auto;
+  padding:0;
+  width:90%;
+
+  
+}
+.meter{
+  list-style: none;
+  display:inline-block;
+  width:calc(100%/16);
+  height:.8rem;
+  border-top:1px solid grey;
+  border-bottom:1px solid grey;
+}
+
+.meter:first-of-type{
+  border-left:1px solid grey;
+  border-top-left-radius : 6px;
+  border-bottom-left-radius: 6px;
+}
+.meter:last-of-type{
+  border-right:1px solid grey;
+  border-bottom-right-radius : 6px;
+  border-top-right-radius: 6px;
+}
+
+.red-health{
+  background-color:#CA3433
+}
+
+
 .risk-meter-text span:nth-child(1) {
     float: left;
   }
@@ -126,6 +160,8 @@
   .risk-meter-image{
       float: left;
       width: 100%;
+      margin:auto;
+      text-align:center;
   }
   .risk-meter-image img{
     width: 100%;
