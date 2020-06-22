@@ -46,7 +46,6 @@ export class PatientRegistrationComponent implements OnInit {
 
   onSubmit(){
     this.mainService.createPatient(this.insertForm.value).then( data => {
-      console.log(data);
       if(this.insertForm.invalid){
         return;
       }
