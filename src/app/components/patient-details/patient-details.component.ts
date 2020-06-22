@@ -39,7 +39,7 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private mainService: MainService,
     private changeDetectorRef: ChangeDetectorRef,
-    private ngZone: NgZone
+    private ngZone: NgZone 
   ) {
     this.meterList = Array(16).fill(1);
   }
@@ -54,12 +54,27 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
     this.feedback = "Healthy";
     this.feedbackDiscription = "";
 
-    this.mainService.getSelectedPatient().subscribe((data) => {
-      this.patientDetails = data;
-      console.log("Patient details : ", this.firstName);
-      debugger;
-      this.healthScore = Object.keys(this.patientDetails.surveyData).length || 0;
-    });
+    this.route.queryParams.subscribe(params =>{
+      let path = params["path"]
+      if(path =="home"){
+        this.patientDetails = this.mainService.getLoggedInPatient()
+        this.healthScore = Object.keys(this.patientDetails.surveyData).length || 0;
+      }
+      else if(path =="view-screenings"){
+        this.mainService.getSelectedPatient().subscribe((data) => {
+          this.patientDetails = data;
+          console.log("Patient details : ", this.firstName);
+          
+          this.healthScore = Object.keys(this.patientDetails.surveyData).length || 0;
+        });
+      }
+    })
+    // this.mainService.getSelectedPatient().subscribe((data) => {
+    //   this.patientDetails = data;
+    //   console.log("Patient details : ", this.firstName);
+    //   debugger;
+    //   this.healthScore = Object.keys(this.patientDetails.surveyData).length || 0;
+    // });
   }
 
   submitSurvey() {

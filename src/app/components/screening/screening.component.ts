@@ -71,6 +71,8 @@ questionsForTab4: string[] = [
     console.log(this.dataQA);
     const qaDataObj = {surveyData : this.dataQA}
     // this.mainService.updatePatientByMobileNumber("333333" , qaDataObj);
+    let userId = this.mainService.getLoggedInPatient().mobileNumber;
+    this.mainService.updatePatientByMobileNumber(userId , qaDataObj);
     this.modalControl.nativeElement.classList.remove("display-none")
   }
   navigateBack(){

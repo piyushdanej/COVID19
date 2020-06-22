@@ -5,7 +5,8 @@
     <!--  [isActive]="tabInidex ==1" -->
     <screening-tab tabName="Pending" [isActive]="tabIndexHighlight == 0">
         <div *ngFor="let patient of patients">
-            <patient-to-call routerLink="/my-profile" 
+            <patient-to-call 
+            (click)="routeToProfile()" 
             patientName="{{patient.firstName}} {{patient.lastName}}" 
             patientDate="27/4/20"
             (click)="selectPatient(patient)">
@@ -15,19 +16,19 @@
 
     <screening-tab tabName="Ward" [isActive]="tabIndexHighlight == 1">
         <div *ngFor="let patient of patients">
-            <patient-to-call routerLink="/my-profile" patientName="{{patient.firstName}} {{patient.lastName}}" patientDate="27/4/20"></patient-to-call>
+            <patient-to-call   (click)="routeToProfile()" patientName="{{patient.firstName}} {{patient.lastName}}" patientDate="27/4/20"></patient-to-call>
         </div>
     </screening-tab>
   
     <screening-tab tabName="ICU" [isActive]="false">
         <div *ngFor="let patient of patients">
-            <patient-to-call routerLink="/my-profile" patientName="{{patient.firstName}} {{patient.lastName}}" patientDate="27/4/20"></patient-to-call>
+            <patient-to-call   (click)="routeToProfile()" patientName="{{patient.firstName}} {{patient.lastName}}" patientDate="27/4/20"></patient-to-call>
         </div>
     </screening-tab>
   
     <screening-tab tabName="Healthy" [isActive]="false">
         <div *ngFor="let patient of patients">
-            <patient-to-call routerLink="/my-profile" patientName="{{patient.firstName}} {{patient.lastName}}" patientDate="27/4/20"></patient-to-call>
+            <patient-to-call  (click)="routeToProfile()" patientName="{{patient.firstName}} {{patient.lastName}}" patientDate="27/4/20"></patient-to-call>
         </div>
     </screening-tab>
     

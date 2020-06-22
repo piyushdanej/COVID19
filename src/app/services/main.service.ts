@@ -1,10 +1,13 @@
+import { NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { Patient } from 'src/app/interfaces/patient';
 import { Injectable } from '@angular/core';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 
 import { Clinician } from '../interfaces/clinician';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { filter} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +15,8 @@ import { Subject, BehaviorSubject } from 'rxjs';
 export class MainService {
   selectedPatient : BehaviorSubject<any> = new BehaviorSubject<any>({});
   loggedInPatient : Patient ;
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore ,
+              private router : Router) { }
 
   getPatients() {
     return this.firestore.collection('patients').snapshotChanges();
@@ -21,7 +25,7 @@ export class MainService {
   getPatient(patient: Patient) {
     return this.firestore.collection('patients').doc(patient.mobileNumber).get();
   }
-  
+
   getAllClinicians(){
     return this.firestore.collection('clinicians').snapshotChanges();
   }
@@ -67,6 +71,22 @@ export class MainService {
     this.loggedInPatient = patient;
     console.log(this.loggedInPatient);  
   }
+
+    getLoggedInPatient(){
+      return this.loggedInPatient;
+    }
+
+  getLastRoute(){
+   return this.router.events
+        .pipe(filter((event : any) =>  event instanceof NavigationEnd))
+        .subscribe(data =>{
+          debugger;
+          console.log("*****" ,data);
+          return data;
+        })
+  }
+
+
 
 
 }

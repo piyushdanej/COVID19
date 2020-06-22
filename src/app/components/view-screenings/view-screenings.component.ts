@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MainService } from '../../services/main.service';
 import { Patient } from '../../interfaces/patient';
@@ -13,7 +13,7 @@ export class ViewScreeningsComponent implements OnInit {
   tabIndexHighlight : number
   patients: Patient[];
 
-  constructor(private route : ActivatedRoute, private mainService: MainService) {
+  constructor( private router : Router ,private route : ActivatedRoute, private mainService: MainService) {
     debugger; 
     console.log("ViewScreenings constructor")
     this.route.queryParams.subscribe(params =>{
@@ -38,5 +38,9 @@ export class ViewScreeningsComponent implements OnInit {
     this.mainService.setSelectedPatient(patient);
   }
 
+  routeToProfile(){
+    this.router.navigate(["/my-profile"] , { queryParams: { path : "view-screenings"}})
+    // routerLink="/my-profile" 
+  }
 
 }
