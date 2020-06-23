@@ -1,20 +1,18 @@
 
-<div class="container scr-4-sec">
-    <div class="row">
-        <div class="col-lg-4 col-12 screen4"> 
-            <div class="main-sec">
+<div class="scr-4-sec">
+    <!-- <div class="row"> -->
+        <!-- col-lg-4 col-12 -->
+        <div class=" screen4"> 
+            <div class="mainSec">
                 <div class="mtec-head">
                     <div class="img-div">
                         <img src="../../../assets/MTEc logo.svg"  alt="back-arrow">
                     </div>
-                    <!-- <div class="head-con">
-                        <h3>MTEC</h3>
-                        <p>Medical Technology Enterprise Consortum</p>
-                    </div> -->
+              
                 </div>
                 <div class="login-sec">
                     <p>Please Login to Continue</p>
-                    <!-- <form> -->
+                  
                         <div class = "username">
                             <fa-icon id= "fa-user" [icon]="faUser"></fa-icon>
                             <input type="text" id="email" [(ngModel)]="userName" placeholder="Enter UserName">
@@ -27,21 +25,21 @@
                        <div class="login-btn">
                         <input type="submit"  (click)="submitCredentials()" id ="login" value ="Login">
                        </div>
-                    <!-- </form> -->
+                  
                 </div>
                 <div class="end-content">
                     <div class="last-sec">
-                        <p>First time user?</p>
+                        <p class="first-time-user">First time user?</p>
                         <button name="Register" id ="register" (click)="routeToRegistration()" value="Register"> Register</button>
                     </div>
                     <div class="last-sec2">
                         <span> 
                             <img src="../../../assets/powerd by ge.svg"  alt="back-arrow">
                         </span>
-                        <!-- <p>Powered by General Electric</p> -->
+                      
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
-    </div>
+    <!-- </div> -->
 </div>

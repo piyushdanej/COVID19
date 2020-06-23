@@ -29,12 +29,16 @@ export class ViewScreeningsComponent implements OnInit {
   ) {
     console.log("ViewScreenings constructor");
     this.route.queryParams.subscribe((params) => {
+      console.log("ViewScreenings constructor -> inside queryParams");
       this.tabIndexHighlight = params["id"];
     });
+    console.log("ViewScreenings constructor end");
   }
 
   ngOnInit() {
+    console.log("Vie Screenings -> ngOnInit")
     this.mainService.getPatients().subscribe((data) => {
+      console.log("View Screenings inside ngOnInit's service call start")
       this.patients = data.map((e) => {
         return {
           id: e.payload.doc.id,
@@ -44,10 +48,13 @@ export class ViewScreeningsComponent implements OnInit {
         // this.classifyPatients(this.patients);
       });
       this.classifyPatients(this.patients);
+      console.log("View Screenings inside ngOnInit's service call end")
     });
+    console.log("Vie Screenings -> ngOnInit end")
   }
 
   classifyPatients(patients: Patient[]) {
+    console.log("Vie Screenings -> classifyPatients Function start")
     this.patients = patients.map((p) => {
      
       if (p.surveyData) {
@@ -72,6 +79,7 @@ export class ViewScreeningsComponent implements OnInit {
     });
     console.log("Patient categories are : " , this.patientCategories);
     this.changeDetectionRef.detectChanges();
+    console.log("Vie Screenings -> classifyPatients Function end")
   }
 
   selectPatient(patient) {
