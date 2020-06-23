@@ -23,16 +23,6 @@
 
     <div class="form-group">
         <input
-            formControlName="registrationNo"
-            name="registrationNo" 
-            id="registrationNo"
-            class="form-control col-xs-12 col-md-12"
-            placeholder="Registration Number"
-        />
-    </div>
-
-    <div class="form-group">
-        <input
             formControlName="city"
             name="city" 
             id="city"
@@ -50,6 +40,16 @@
           placeholder="State/Province"
           [value]="California" [(ngModel)]="tempState"
         ><option  *ngFor="let state of states" value="state" >{{state}}</option> </select>
+    </div>
+
+    <div class="form-group">
+        <input
+            formControlName="registrationNo"
+            name="registrationNo" 
+            id="registrationNo"
+            class="form-control col-xs-12 col-md-12"
+            placeholder="Registration Number"
+        />
     </div>
 
     <div class="form-group">
