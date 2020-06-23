@@ -30,6 +30,11 @@
                         <div class="form-group">
                             <input formControlName="firstName" name="firstName" id="firstName"
                                 class="form-control col-xs-12 col-md-12" placeholder="First Name" />
+                            
+                                <div *ngIf="formControls.firstName.touched && formControls.firstName.invalid" class="alert alert-danger">
+                                    <div *ngIf="formControls.firstName.errors.required">First name is required.</div>
+                            </div>
+                        
                         </div>
 
                         <div class="form-group">
