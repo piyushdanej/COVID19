@@ -38,6 +38,7 @@ export class ViewScreeningsComponent implements OnInit {
   ngOnInit() {
     console.log("Vie Screenings -> ngOnInit")
     this.mainService.getPatients().subscribe((data) => {
+      console.log("View Screenings inside ngOnInit's service call start")
       this.patients = data.map((e) => {
         return {
           id: e.payload.doc.id,
@@ -47,6 +48,7 @@ export class ViewScreeningsComponent implements OnInit {
         // this.classifyPatients(this.patients);
       });
       this.classifyPatients(this.patients);
+      console.log("View Screenings inside ngOnInit's service call end")
     });
     console.log("Vie Screenings -> ngOnInit end")
   }
