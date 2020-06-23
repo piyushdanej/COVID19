@@ -63,22 +63,26 @@ li {
     background: #ffffff;
 }
 
+.profile-settings-div {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .profile-settings-button {
     position: relative;
     font-family: "SF Pro Text";
     font-size: 18px;
-    width: 138px;
-    height: 82px;
+    width: 201px;
+    height: 145px;
     cursor: pointer;
     color: #ffffff;
-    border: none !important;
-    box-shadow: none !important;
-    border-radius: 25px;
-}
-
-.profile-settings-button:hover, .profile-settings-button:focus, .profile-settings-button:active, .profile-settings-button:visited, .profile-settings-button:link {
-    border: none !important;
-    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .profile-settings-button fa-icon {
@@ -91,22 +95,34 @@ li {
 }
 
 .profile-settings-button.profile-button {
-    background: #355E93;
+    /* background: #355E93; */
+    background: url('../../../assets/btn_profile.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
 }
 
 .profile-settings-button.settings-button {
-    margin-left: 10px;
-    background: #6898D5;    
+    /* background: #6898D5;     */
+    background: url('../../../assets/btn_settings.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
 }
 
 .button-card {
     position: relative;
-    width: 310px;
-    height: 134px;
-    background: #ffffff;
-    border-radius: 20px;
-    border-top: 7px solid #355E93;
-    margin: 20px auto;
+    width: 353px;
+    height: 197px;
+    background: url('../../../assets/btn_homescreen.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    /* background: #ffffff; */
+    /* border-radius: 20px;
+    border-top: 7px solid #355E93; */
+    margin: 0px auto;
+    cursor: pointer;
 }
 
 .dark-text {
@@ -115,8 +131,9 @@ li {
     font-weight: bold;
     color: #323743;
     text-align: left;
-    padding-left: 20px;
-    margin: 27px 0px 0px !important;
+    padding-left: 55px;
+    padding-top: 55px;
+    margin-bottom: 0px !important;
 }
 
 .light-text {
@@ -124,8 +141,8 @@ li {
     font-size: 16px;
     color: #777F8C;
     text-align: left;
-    padding-left: 20px;
-    margin: 5px 0px 0px !important;
+    padding-left: 55px;
+    margin-bottom: 0px !important;
 }
 
 .right-arrow-icon {
@@ -139,8 +156,13 @@ li {
 
 .card-icon {
     position: absolute;
-    left: 12px;
-    top: -40px;
+    left: 52px;
+    top: -7px;
+}
+
+.button-par {
+    margin-top: 54px;
+    margin-left: 24px;
 }
   
 @media only screen and (min-width: 520px) {

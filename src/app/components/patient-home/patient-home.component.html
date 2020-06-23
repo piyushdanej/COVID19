@@ -6,21 +6,21 @@
   <div>      
     <ul>
       <li class="liItem">
-        <div class="button-card">
+        <div class="button-card" routerLink="/patient-screening">
           <div class="card-icon"><img src="../../../assets/images/icon_screening.svg"></div>
           <p class="dark-text">COVID19 Screening</p>
           <p class="light-text">Have a Quick Access</p>
-          <a class="right-arrow-icon" routerLink="/patient-screening"><fa-icon [icon]="faChevronRight"></fa-icon></a>
+          <!-- <a class="right-arrow-icon" routerLink="/patient-screening"><fa-icon [icon]="faChevronRight"></fa-icon></a> -->
         </div>
-        <div class="button-card">
+        <div class="button-card" routerLink="/available-clinicians">
           <div class="card-icon"><img src="../../../assets/images/icon_clinician.svg"></div>
           <p class="dark-text">Available Clinicians</p>
           <p class="light-text">Connect for Advice</p>
-          <a class="right-arrow-icon" routerLink="/available-clinicians"><fa-icon [icon]="faChevronRight"></fa-icon></a>
+          <!-- <a class="right-arrow-icon" routerLink="/available-clinicians"><fa-icon [icon]="faChevronRight"></fa-icon></a> -->
         </div>
         <div class="profile-settings-div">
-          <button class="profile-settings-button profile-button" (click)="routeToProfile()"><fa-icon [icon]="faUser"></fa-icon>My Profile</button>
-          <button class="profile-settings-button settings-button" routerLink=""><fa-icon [icon]="faCog"></fa-icon>Settings</button>
+          <div class="profile-settings-button profile-button" (click)="routeToProfile()"><p class="button-par">My Profile</p></div>
+          <div class="profile-settings-button settings-button" routerLink=""><p class="button-par">Settings</p></div>
         </div>
       </li>
     </ul>
