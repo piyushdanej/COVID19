@@ -75,7 +75,7 @@ export class ClinicianRegistrationComponent implements OnInit {
       state: ['California', Validators.required],
       registrationNo: ['', Validators.required],
       zipCode: ['', Validators.required],
-      mobileNumber: ['', Validators.required],
+      mobileNumber: ['', [Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
       emailId: ['', Validators.required],
       password: ['', Validators.required],
       userType : ['clinician']
