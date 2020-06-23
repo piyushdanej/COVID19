@@ -71,9 +71,9 @@ export class ClinicianRegistrationComponent implements OnInit {
     this.insertForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      registrationNo: ['', Validators.required],
       city: ['', Validators.required],
       state: ['California', Validators.required],
+      registrationNo: ['', Validators.required],
       zipCode: ['', Validators.required],
       mobileNumber: ['', Validators.required],
       emailId: ['', Validators.required],
