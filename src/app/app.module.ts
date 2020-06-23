@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
 import { AvailableCliniciansComponent } from './components/available-clinicians/available-clinicians.component';
@@ -63,7 +63,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatStepperModule,
     MatAutocompleteModule
   ],
-  providers: [AngularFirestore],
+  providers: [AngularFirestore, FontAwesomeModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
