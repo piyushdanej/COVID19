@@ -1,3 +1,7 @@
 .comp{
     width:100%;
 }
+
+.mainContainer{
+    min-height: 100%;
+}
