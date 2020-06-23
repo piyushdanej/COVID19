@@ -65,7 +65,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatAutocompleteModule,
     MatDatepickerModule,
   ],
-  providers: [AngularFirestore, FontAwesomeModule],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -20,7 +20,7 @@ export class ScreeningComponent implements OnInit {
   showSurvey : boolean = false;
   showModal: boolean ;
   showQue:boolean = false;
-  @ViewChild("modal" , {static : false})  modalControl : ElementRef;
+  @ViewChild("modal")  modalControl : ElementRef;
   @ViewChildren('tab') elTabs : QueryList<ElementRef>;
   disableQue: boolean = false;
 
