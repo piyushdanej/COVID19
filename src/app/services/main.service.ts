@@ -12,7 +12,7 @@ import { filter} from "rxjs/operators";
 @Injectable({
   providedIn: 'root'
 })
-export class MainService {
+export class MainService { 
   selectedPatient : BehaviorSubject<any> = new BehaviorSubject<any>({});
   loggedInPatient : Patient ;
   constructor(private firestore: AngularFirestore ,
@@ -25,6 +25,7 @@ export class MainService {
   getPatient(patient: Patient) {
     return this.firestore.collection('patients').doc(patient.mobileNumber).get();
   }
+  
 
   getAllClinicians(){
     return this.firestore.collection('clinicians').snapshotChanges();

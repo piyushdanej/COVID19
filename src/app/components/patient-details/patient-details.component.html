@@ -35,6 +35,14 @@
       </ul>
      
     </div>
+    <div class="ans-que">
+      <ul class="ans-que-ul">
+        <li *ngFor="let que of quesArray" class="slct-li">
+          <input type="checkbox" name="SelectedQue"  aria-selected="true" [checked]="true"> 
+          <p> {{que}} </p>
+        </li>
+      </ul>
+    </div>
 
 
     <!-- <div class="tab-list-container">

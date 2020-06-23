@@ -26,14 +26,16 @@ import { Subscription } from "rxjs";
 export class PatientDetailsComponent implements OnInit, OnDestroy {
   @ViewChildren("tab") tabs: QueryList<ElementRef>;
   meterList;
-
+  surveyData:any;
   patientDetails: Patient;
+  id:any;
   firstName: string = "hello";
   lastName: string = "";
   patientDetailsSubscription: Subscription;
   disableSubmit: boolean = true;
   healthScore: number;
   showLocationDetails: boolean = false;
+  quesArray=[];
 
   facilityDetails: any = {
     faciliy: "",
@@ -70,11 +72,14 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
           this.patientDetails.category == undefined ||
           this.patientDetails.category === "Pending" ? "" : this.patientDetails.category;
         this.calculateFacilityDetails(this.feedback , this.patientDetails)
-
+        this.id = this.patientDetails.id;
         this.healthScore = this.getHealthScore(this.patientDetails);
+        this.surveyData = this.surveyData;
+        console.log("Survey Daayta1", this.surveyData);
       } else if (path == "view-screenings") {
         this.mainService.getSelectedPatient().subscribe((data) => {
           this.patientDetails = data;
+          
           console.log("Patient details : ", this.firstName);
           this.feedback =
             this.patientDetails.category == undefined ||
@@ -84,6 +89,9 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
           this.calculateFacilityDetails(this.feedback , this.patientDetails);
 
           this.healthScore = this.getHealthScore(this.patientDetails);
+          this.surveyData = this.patientDetails.surveyData;
+          this.quesArray= Object.keys(this.surveyData);
+
         });
       }
     });
