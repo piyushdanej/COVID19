@@ -1,3 +1,4 @@
+import { locationDetails } from "./../../interfaces/locationDetails";
 import { surveyQuestion } from "./../../interfaces/surveyQuestion";
 import { MainService } from "./../../services/main.service";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -34,9 +35,10 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
   disableSubmit: boolean = true;
   healthScore: number;
   showLocationDetails: boolean = false;
+  getPatientsSubscription: Subscription;
 
-  facilityDetails: any = {
-    faciliy: "",
+  facilityDetails: locationDetails = {
+    facility: "",
     unit: "",
     room: "",
     bed: "",
@@ -68,31 +70,36 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
         this.patientDetails = this.mainService.getLoggedInPatient();
         this.feedback =
           this.patientDetails.category == undefined ||
-          this.patientDetails.category === "Pending" ? "" : this.patientDetails.category;
-        this.calculateFacilityDetails(this.feedback , this.patientDetails)
+          this.patientDetails.category === "Pending"
+            ? ""
+            : this.patientDetails.category;
+        this.calculateFacilityDetails(this.feedback, this.patientDetails);
 
         this.healthScore = this.getHealthScore(this.patientDetails);
       } else if (path == "view-screenings") {
-        this.mainService.getSelectedPatient().subscribe((data) => {
-          this.patientDetails = data;
-          console.log("Patient details : ", this.firstName);
-          this.feedback =
-            this.patientDetails.category == undefined ||
-            this.patientDetails.category == "Pending"
-              ? ""
-              : this.patientDetails.category;
-          this.calculateFacilityDetails(this.feedback , this.patientDetails);
+        this.getPatientsSubscription = this.mainService
+          .getSelectedPatient()
+          .subscribe((data) => {
+            this.patientDetails = data;
+            console.log("Patient details : ", this.firstName);
+            this.feedback =
+              this.patientDetails.category == undefined ||
+              this.patientDetails.category == "Pending"
+                ? ""
+                : this.patientDetails.category;
+            this.calculateFacilityDetails(this.feedback, this.patientDetails);
 
-          this.healthScore = this.getHealthScore(this.patientDetails);
-        });
+            this.healthScore = this.getHealthScore(this.patientDetails);
+          });
       }
     });
   }
 
-  calculateFacilityDetails(feedback , patientDetails : Patient) {
+  calculateFacilityDetails(feedback, patientDetails: Patient) {
     if (feedback === "ICU") {
       this.showLocationDetails = true;
-      this.facilityDetails = patientDetails.location;
+      this.disableSubmit = true;
+      this.facilityDetails = patientDetails.location || this.facilityDetails;
     }
   }
 
@@ -117,12 +124,18 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
     console.log(this.feedback);
     console.log(this.feedbackDiscription);
 
-    if (this.feedback !== "ICU")
-      this.mainService.updatePatientByMobileNumber(
-        this.patientDetails.mobileNumber,
-        { category: this.feedback }
-      );
-    else
+    if (this.feedback !== "ICU") {
+      if (this.patientDetails.location)
+        this.mainService.updatePatientByMobileNumber(
+          this.patientDetails.mobileNumber,
+          { category: this.feedback, location: null }
+        );
+      else
+        this.mainService.updatePatientByMobileNumber(
+          this.patientDetails.mobileNumber,
+          { category: this.feedback }
+        );
+    } else
       this.mainService.updatePatientByMobileNumber(
         this.patientDetails.mobileNumber,
         { category: this.feedback, location: this.facilityDetails }
@@ -170,5 +183,6 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     // this.patientDetailsSubscription.unsubscribe();
+    this.getPatientsSubscription.unsubscribe();
   }
 }
