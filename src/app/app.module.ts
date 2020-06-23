@@ -31,6 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     AngularFireDatabaseModule,
     BrowserAnimationsModule,
     MatStepperModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatDatepickerModule,
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]
