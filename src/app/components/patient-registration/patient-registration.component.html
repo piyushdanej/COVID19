@@ -72,7 +72,7 @@
 
                         <div class="form-group">
                             <input formControlName="mobileNumber" name="mobileNumber" id="mobileNumber"
-                                class="form-control col-xs-12 col-md-12" placeholder="Mobile Number" />
+                                class="form-control col-xs-12 col-md-12" placeholder="Mobile Number" maxlength="10" />
                             <div *ngIf="formControls.mobileNumber.touched && formControls.mobileNumber.invalid" class="alert alert-danger">
                                 <div *ngIf="formControls.mobileNumber.errors.required">Mobile Number is required.</div>
                                 <div *ngIf="formControls.mobileNumber.errors.pattern">Please, Enter 10 digit Mobile Number.</div>
