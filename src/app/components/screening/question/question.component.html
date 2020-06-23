@@ -5,11 +5,11 @@
     <input type="checkbox" 
     class="ques-checkbox" 
     [(ngModel)]="answer"
-    (change)="getAnswer()"
-    [disabled]="disableQue == true">
+    (change)="getAnswer()">
+    <!-- [disabled]="disableQue == true" -->
         <span class="checkmark"></span>
 
-        <input type="text" value="{{this.disableQue}}">
+        <!-- <input type="text" value="{{this.disableQue}}"> -->
       </label>
       
     <p>{{questionText}}</p>
