@@ -87,7 +87,8 @@ export class PatientRegistrationComponent implements OnInit {
       fullName: ['', Validators.required],
       familyMemberAge: ['', Validators.required],
       relation: ['', Validators.required], 
-      userType : ['patient']
+      userType : ['patient'],
+      category : ['Pending']
     });
   }
 

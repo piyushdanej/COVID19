@@ -9,17 +9,18 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PatientToCallComponent implements OnInit {
   @Input() patientName : string;
   @Input() patientDate : string;
-  @Input() healthPercent : number;
+  @Input() healthPercent : number | string;
   faPhone = faPhone;
   
   constructor() { }
 
   ngOnInit() {
-    this.healthPercent = Math.floor(this.healthPercent);
+    this.healthPercent = Math.floor(Number(this.healthPercent));
+    
   }
 
   getColor(healthScore){
-    debugger;
+   
     if(healthScore < 40)
       return 'green';
    

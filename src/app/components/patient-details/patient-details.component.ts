@@ -27,11 +27,11 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
   @ViewChildren("tab") tabs: QueryList<ElementRef>;
   meterList;
 
-  patientDetails: any = { firstName: "hello" };
+  patientDetails: Patient ;
   firstName: string = "hello";
   lastName: string = "";
   patientDetailsSubscription: Subscription;
-
+  disableSubmit : boolean = true;
   healthScore: number;
 
   constructor(
@@ -44,14 +44,14 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
     this.meterList = Array(28).fill(1);
   }
   isTravelHistory: "Yes";
-  feedback: "Healthy";
+  feedback: "";
   feedbackDiscription;
 
   faArrowLeft = faArrowLeft;
 
   ngOnInit() {
     this.isTravelHistory = "Yes";
-    this.feedback = "Healthy";
+    // this.feedback = "";
     this.feedbackDiscription = "";
 
     this.route.queryParams.subscribe((params) => {
@@ -95,12 +95,27 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
     console.log(this.isTravelHistory);
     console.log(this.feedback);
     console.log(this.feedbackDiscription);
+
+    this.mainService.updatePatientByMobileNumber(this.patientDetails.mobileNumber , {"category" : this.feedback})
+
+    let calculateRouteParam ;
+    let categoryMap = {
+      "Pending" : 0,
+      "Virtual Ward" : 1,
+      "ICU" : 2 , 
+      "Healthy" : 3
+    }
+    calculateRouteParam = categoryMap[this.feedback];
+    // this.router.navigate(["/screenings"] , {queryParams : {id : calculateRouteParam}});
+    this.router.navigate(["/clinician-home"]);
   }
   changeTravelHistory(e) {
     this.isTravelHistory = e.target.value;
   }
   changeFeedback(e) {
     this.feedback = e.target.value;
+    console.log("type : " , this.feedback)
+    this.disableSubmit = false;
   }
   navigateBack() {
     this.router.navigate(["/screenings"], {
@@ -114,6 +129,7 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
       tab.nativeElement.classList.remove("active-tab");
     });
     event.target.classList.add("active-tab");
+
   }
 
   getAllPatients() {}

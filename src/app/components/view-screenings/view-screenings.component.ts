@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { MainService } from "../../services/main.service";
 import { Patient } from "../../interfaces/patient";
 
@@ -12,11 +12,11 @@ export class ViewScreeningsComponent implements OnInit {
   tabIndexHighlight: number;
   patients: Patient[];
 
-  healthDivisionFactor : number = 100/28;
+  healthDivisionFactor: number = 100 / 28;
 
   patientCategories = {
     Healthy: [],
-    Ward: [],
+    "Virtual Ward": [],
     ICU: [],
     Pending: [],
   };
@@ -24,12 +24,11 @@ export class ViewScreeningsComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private mainService: MainService
+    private mainService: MainService,
+    private changeDetectionRef : ChangeDetectorRef
   ) {
-   
     console.log("ViewScreenings constructor");
     this.route.queryParams.subscribe((params) => {
-     
       this.tabIndexHighlight = params["id"];
     });
   }
@@ -50,8 +49,7 @@ export class ViewScreeningsComponent implements OnInit {
 
   classifyPatients(patients: Patient[]) {
     this.patients = patients.map((p) => {
-      // if(p.surveryData){
-      
+     
       if (p.surveyData) {
         let keys = Object.keys(p.surveyData);
 
@@ -65,33 +63,15 @@ export class ViewScreeningsComponent implements OnInit {
           { count: 0, label: "" }
         );
 
-        if (category.count < 4) {
-
-          category.label = "Healthy";
-          p.healthPercent = this.healthDivisionFactor * category.count;
-          this.patientCategories["Healthy"].push(p);
-        } else if (category.count < 8) {
-          
-          category.label = "Pending";
-          p.healthPercent = this.healthDivisionFactor * category.count;
-          this.patientCategories["Pending"].push(p);
-        } else if (category.count < 12) {
-          category.label = "Ward";
-          p.healthPercent = this.healthDivisionFactor * category.count;
-          this.patientCategories["Ward"].push(p);
-        } else {
-          category.label = "ICU";
-          p.healthPercent = this.healthDivisionFactor * category.count;
-          this.patientCategories["ICU"].push(p);
-        }
+        p.healthPercent = this.healthDivisionFactor * category.count;
       } else {
-        p.category = "Healthy";
         p.healthPercent = 0;
-        this.patientCategories["Healthy"].push(p);
       }
+      this.patientCategories[p.category || "Pending"].push(p);
       return p;
     });
-    console.log(this.patientCategories);
+    console.log("Patient categories are : " , this.patientCategories);
+    this.changeDetectionRef.detectChanges();
   }
 
   selectPatient(patient) {
@@ -99,7 +79,25 @@ export class ViewScreeningsComponent implements OnInit {
   }
 
   routeToProfile() {
-    this.router.navigate(["/my-profile"], {queryParams: { path: "view-screenings" }});
+    this.router.navigate(["/my-profile"], {
+      queryParams: { path: "view-screenings" },
+    });
     // routerLink="/my-profile"
   }
 }
+
+//    // this.patientCategories["Healthy"].push(p);
+// } else if (category.count < 8) {
+
+//   // category.label = "Pending";
+//   p.healthPercent = this.healthDivisionFactor * category.count;
+//   // this.patientCategories["Pending"].push(p);
+// } else if (category.count < 12) {
+//   // category.label = "Ward";
+//   p.healthPercent = this.healthDivisionFactor * category.count;
+//   // this.patientCategories["Ward"].push(p);
+// } else {
+//   // category.label = "ICU";
+//   p.healthPercent = this.healthDivisionFactor * category.count;
+//   // this.patientCategories["ICU"].push(p);
+// }

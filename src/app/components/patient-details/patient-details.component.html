@@ -98,16 +98,15 @@
           type="radio"
           name="radio"
           value="Healthy"
-          (change)="changeFeedback($event)"
-          checked="checked"
-        />
+          (change)="changeFeedback($event)"/>
+        <!-- checked="checked" -->
         <span class="checkmark"></span>
       </label>
       <label class="container-chk"
         >Virtual Ward
         <input
           type="radio"
-          value="Virtual World"
+          value="Virtual Ward"
           (change)="changeFeedback($event)"
           name="radio"
         />
@@ -130,7 +129,10 @@
       rows="4"
       placeholder="Enter Feedback"
     ></textarea>
-    <button type="button" class="submit-btn" (click)="submitSurvey()">
+    <button type="button" 
+            class="submit-btn" 
+            [disabled]="disableSubmit"
+            (click)="submitSurvey()">
       Submit
     </button>
   </div>
