@@ -17,4 +17,5 @@ export interface Patient {
     userType : string;
     category?: "Pending" | "Healthy" | "Virtual Ward" | "ICU";
     healthPercent ?: number;
+    location?: any;
 }

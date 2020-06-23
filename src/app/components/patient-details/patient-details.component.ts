@@ -27,12 +27,20 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
   @ViewChildren("tab") tabs: QueryList<ElementRef>;
   meterList;
 
-  patientDetails: Patient ;
+  patientDetails: Patient;
   firstName: string = "hello";
   lastName: string = "";
   patientDetailsSubscription: Subscription;
-  disableSubmit : boolean = true;
+  disableSubmit: boolean = true;
   healthScore: number;
+  showLocationDetails: boolean = false;
+
+  facilityDetails: any = {
+    faciliy: "",
+    unit: "",
+    room: "",
+    bed: "",
+  };
 
   constructor(
     private router: Router,
@@ -44,7 +52,7 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
     this.meterList = Array(28).fill(1);
   }
   isTravelHistory: "Yes";
-  feedback: "";
+  feedback: string;
   feedbackDiscription;
 
   faArrowLeft = faArrowLeft;
@@ -58,36 +66,49 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
       let path = params["path"];
       if (path == "home") {
         this.patientDetails = this.mainService.getLoggedInPatient();
+        this.feedback =
+          this.patientDetails.category == undefined ||
+          this.patientDetails.category === "Pending" ? "" : this.patientDetails.category;
+        this.calculateFacilityDetails(this.feedback , this.patientDetails)
+
         this.healthScore = this.getHealthScore(this.patientDetails);
       } else if (path == "view-screenings") {
         this.mainService.getSelectedPatient().subscribe((data) => {
           this.patientDetails = data;
           console.log("Patient details : ", this.firstName);
+          this.feedback =
+            this.patientDetails.category == undefined ||
+            this.patientDetails.category == "Pending"
+              ? ""
+              : this.patientDetails.category;
+          this.calculateFacilityDetails(this.feedback , this.patientDetails);
 
           this.healthScore = this.getHealthScore(this.patientDetails);
         });
       }
     });
-    // this.mainService.getSelectedPatient().subscribe((data) => {
-    //   this.patientDetails = data;
-    //   console.log("Patient details : ", this.firstName);
-    //   debugger;
-    //   this.healthScore = Object.keys(this.patientDetails.surveyData).length || 0;
-    // });
+  }
+
+  calculateFacilityDetails(feedback , patientDetails : Patient) {
+    if (feedback === "ICU") {
+      this.showLocationDetails = true;
+      this.facilityDetails = patientDetails.location;
+    }
   }
 
   getHealthScore(patientDetails): number {
     if (patientDetails.surveyData) {
-      let sum2 =  Object.keys(this.patientDetails.surveyData).reduce((sum, key) => {
-        console.log(sum);
-        if( this.patientDetails.surveyData[key] === true)
-          sum = sum+1;
-        return sum;
-      }, 0);
-      console.log("Sum 2 : " , sum2);
+      let sum2 = Object.keys(this.patientDetails.surveyData).reduce(
+        (sum, key) => {
+          console.log(sum);
+          if (this.patientDetails.surveyData[key] === true) sum = sum + 1;
+          return sum;
+        },
+        0
+      );
+      console.log("Sum 2 : ", sum2);
       return sum2;
-    } 
-    else return 0;
+    } else return 0;
   }
 
   submitSurvey() {
@@ -96,15 +117,24 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
     console.log(this.feedback);
     console.log(this.feedbackDiscription);
 
-    this.mainService.updatePatientByMobileNumber(this.patientDetails.mobileNumber , {"category" : this.feedback})
+    if (this.feedback !== "ICU")
+      this.mainService.updatePatientByMobileNumber(
+        this.patientDetails.mobileNumber,
+        { category: this.feedback }
+      );
+    else
+      this.mainService.updatePatientByMobileNumber(
+        this.patientDetails.mobileNumber,
+        { category: this.feedback, location: this.facilityDetails }
+      );
 
-    let calculateRouteParam ;
+    let calculateRouteParam;
     let categoryMap = {
-      "Pending" : 0,
-      "Virtual Ward" : 1,
-      "ICU" : 2 , 
-      "Healthy" : 3
-    }
+      Pending: 0,
+      "Virtual Ward": 1,
+      ICU: 2,
+      Healthy: 3,
+    };
     calculateRouteParam = categoryMap[this.feedback];
     // this.router.navigate(["/screenings"] , {queryParams : {id : calculateRouteParam}});
     this.router.navigate(["/clinician-home"]);
@@ -114,7 +144,12 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
   }
   changeFeedback(e) {
     this.feedback = e.target.value;
-    console.log("type : " , this.feedback)
+    console.log("type : ", this.feedback);
+    if (this.feedback === "ICU") {
+      this.showLocationDetails = true;
+    } else {
+      this.showLocationDetails = false;
+    }
     this.disableSubmit = false;
   }
   navigateBack() {
@@ -129,7 +164,6 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
       tab.nativeElement.classList.remove("active-tab");
     });
     event.target.classList.add("active-tab");
-
   }
 
   getAllPatients() {}

@@ -118,13 +118,10 @@
     color:#eee; 
 }
 
-
 .risk-meter{
   margin:auto;
   padding:0;
   width:90%;
-
-  
 }
 .meter{
   list-style: none;
@@ -262,6 +259,21 @@
     border:none;
     margin-top:.5rem;
   }
+
+  .locationDetails{
+   
+    margin:1rem auto;
+    width: 90%;
+    display:grid;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-template-columns: 20% 80%;
+    grid-row-gap : .5rem;
+  }
+
+
+
+
   .feedback-section{
       margin-top: 10px;
       padding: 10px 0px;
