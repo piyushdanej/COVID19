@@ -53,8 +53,8 @@ html , body{
 }
 /* Login sec */
 .login-sec{
-    position: relative;
-    bottom:4rem;
+    /* position: relative;
+    bottom:4rem; */
 }
 
 .login-sec p {
