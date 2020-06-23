@@ -46,7 +46,11 @@ export class LoginComponent implements OnInit {
             ...(data.payload.doc.data() as Clinician),
           } as Clinician;
         });
+        
+        this.mainService.storeAllClinicians(clinicians);
+        
         let person;
+
         let users = [...patients, ...clinicians];
   
         debugger;
