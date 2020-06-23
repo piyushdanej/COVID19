@@ -81,7 +81,7 @@ export class PatientRegistrationComponent implements OnInit {
       city: ['', Validators.required],
       state: ['California', Validators.required],
       zipCode: ['', Validators.required],
-      mobileNumber: ['', Validators.required],
+      mobileNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
       emailId: ['', Validators.required],
       password: ['', Validators.required],
       fullName: ['', Validators.required],

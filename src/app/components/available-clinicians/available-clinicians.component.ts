@@ -1,3 +1,4 @@
+import { Clinician } from 'src/app/interfaces/clinician';
 import { Router , ActivatedRoute} from '@angular/router';
 import { MainService } from '../../services/main.service';
 import { Component, OnInit} from '@angular/core';
@@ -10,22 +11,23 @@ import { faArrowLeft , faComment } from "@fortawesome/free-solid-svg-icons";
 })
 export class AvailableCliniciansComponent implements OnInit {
 
-  clinicians : string[];
+  clinicians : Clinician[];
   dummyClinicians : string[];
   faArrowLeft = faArrowLeft;
   faComment = faComment;
 
   constructor(private router : Router,
-              private route : ActivatedRoute) { 
+              private route : ActivatedRoute ,
+              private mainService : MainService) { 
     this.dummyClinicians = [
       "Dave Warner" ,"Michael Smith" ,"Jeff Smith" ,"Tim John" ,
       "Liza Ann" ,"Jack J" ,"Carl Smith"]
   }
 
   ngOnInit() {
-    this.clinicians =  this.dummyClinicians;
+    // this.clinicians =  this.dummyClinicians;
     // clinician-home
-
+    this.getAvailableClinicians();
 
   }
 
@@ -34,7 +36,7 @@ export class AvailableCliniciansComponent implements OnInit {
   }
 
   getAvailableClinicians(){
-    // return this.mainService.getAvailableClinicians();
+    this.clinicians = this.mainService.getAllStoredClinicians();
   }
 
 

@@ -1,3 +1,4 @@
+import { locationDetails } from "./../../interfaces/locationDetails";
 import { surveyQuestion } from "./../../interfaces/surveyQuestion";
 import { MainService } from "./../../services/main.service";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -36,9 +37,10 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
   healthScore: number;
   showLocationDetails: boolean = false;
   quesArray=[];
+  getPatientsSubscription: Subscription;
 
-  facilityDetails: any = {
-    faciliy: "",
+  facilityDetails: locationDetails = {
+    facility: "",
     unit: "",
     room: "",
     bed: "",
@@ -76,8 +78,8 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
         this.healthScore = this.getHealthScore(this.patientDetails);
         this.surveyData = this.surveyData;
         console.log("Survey Daayta1", this.surveyData);
-      } else if (path == "view-screenings") {
-        this.mainService.getSelectedPatient().subscribe((data) => {
+      } else if (path == "view-screenings") { 
+        this.getPatientsSubscription = this.mainService.getSelectedPatient().subscribe((data) => {
           this.patientDetails = data;
           
           console.log("Patient details : ", this.firstName);
@@ -97,10 +99,11 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
-  calculateFacilityDetails(feedback , patientDetails : Patient) {
+  calculateFacilityDetails(feedback, patientDetails: Patient) {
     if (feedback === "ICU") {
       this.showLocationDetails = true;
-      this.facilityDetails = patientDetails.location;
+      this.disableSubmit = true;
+      this.facilityDetails = patientDetails.location || this.facilityDetails;
     }
   }
 
@@ -125,12 +128,18 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
     console.log(this.feedback);
     console.log(this.feedbackDiscription);
 
-    if (this.feedback !== "ICU")
-      this.mainService.updatePatientByMobileNumber(
-        this.patientDetails.mobileNumber,
-        { category: this.feedback }
-      );
-    else
+    if (this.feedback !== "ICU") {
+      if (this.patientDetails.location)
+        this.mainService.updatePatientByMobileNumber(
+          this.patientDetails.mobileNumber,
+          { category: this.feedback, location: null }
+        );
+      else
+        this.mainService.updatePatientByMobileNumber(
+          this.patientDetails.mobileNumber,
+          { category: this.feedback }
+        );
+    } else
       this.mainService.updatePatientByMobileNumber(
         this.patientDetails.mobileNumber,
         { category: this.feedback, location: this.facilityDetails }
@@ -178,5 +187,6 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     // this.patientDetailsSubscription.unsubscribe();
+    this.getPatientsSubscription.unsubscribe();
   }
 }

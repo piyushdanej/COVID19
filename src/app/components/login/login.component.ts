@@ -5,8 +5,7 @@ import { MainService } from "src/app/services/main.service";
 import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { forkJoin , zip } from "rxjs";
-import { faUserCircle} from '@fortawesome/free-solid-svg-icons';
-import { faUnlockAlt ,faEye} from '@fortawesome/free-solid-svg-icons';
+import { faUnlockAlt, faEye, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: "app-login",
@@ -47,7 +46,11 @@ export class LoginComponent implements OnInit {
             ...(data.payload.doc.data() as Clinician),
           } as Clinician;
         });
+        
+        this.mainService.storeAllClinicians(clinicians);
+        
         let person;
+
         let users = [...patients, ...clinicians];
   
         debugger;

@@ -1,24 +1,38 @@
+html , body{
+    height:100%;
+}
+
+
 /* Main section CSS Wrapper */
 .screen4{
     /* background-color: #143663; */
     /* border: 1px solid; */
     position: relative;
-    min-height: 100vh;
+    height: 100%;
+    width:100%;
+    
     /* margin-top:30px; */
     background-image: url("../../../assets/login_bg.png");
     background-repeat: no-repeat;
     background-position:center;
+    
 }
-.main-sec {
+.mainSec {
     margin: 0 auto;
     max-width: 350px;
     width: 100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
 }
 /* Head Section Css */
 .mtec-head {
     /* width: 250px; */
     padding: 15px;
     text-align: center;
+    margin-bottom: 40px;
+   
 }
 .img-div {
     display: inline-block;
@@ -38,6 +52,11 @@
     font-size: 13px;
 }
 /* Login sec */
+.login-sec{
+    /* position: relative;
+    bottom:4rem; */
+}
+
 .login-sec p {
     color:#ffffff;
 }
@@ -84,8 +103,10 @@ input#email,input#pass,input#login {
     font-weight: 700;
     margin-bottom: 12px;
 }
-.container.scr-4-sec{
+.scr-4-sec{
     background: #fafafa;
+    height:100%;
+    
 }
 /* 
 .scr-4-sec .row{
@@ -97,18 +118,14 @@ input#email,input#pass,input#login {
 .mtec-head h4{
     margin-bottom: 0;
 }
-.mtec-head {
-    margin-bottom: 40px;
-}   
+   
 
 /* last section */
 
 .last-sec {
-    position: absolute;
-    left: 0;
-    right: 0;
+   
     text-align: center;
-    bottom: 71px;
+   
 }
 .last-sec p{
     color: #ffffff;
@@ -116,10 +133,7 @@ input#email,input#pass,input#login {
     font-size: 14px;
 }
 .last-sec2 {
-    position: absolute;
-    bottom: 12px;
-    left: 0;
-    right: 0;
+   
     text-align: center;
     color: #fff;
 }
@@ -145,3 +159,10 @@ input#email,input#pass,input#login {
     right: 28px;
     left: auto;
 }
+
+.last-sec .first-time-user{
+    color:black;
+}
+.end-content{
+ 
+} 

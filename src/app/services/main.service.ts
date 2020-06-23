@@ -1,3 +1,4 @@
+import { Clinician } from 'src/app/interfaces/clinician';
 import { NavigationEnd } from '@angular/router';
 import { Router } from '@angular/router';
 import { Patient } from 'src/app/interfaces/patient';
@@ -5,7 +6,7 @@ import { Injectable } from '@angular/core';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 
-import { Clinician } from '../interfaces/clinician';
+
 import { BehaviorSubject } from 'rxjs';
 import { filter} from "rxjs/operators";
 
@@ -15,6 +16,8 @@ import { filter} from "rxjs/operators";
 export class MainService { 
   selectedPatient : BehaviorSubject<any> = new BehaviorSubject<any>({});
   loggedInPatient : Patient ;
+
+  allClinicians : Clinician[] = [];
   constructor(private firestore: AngularFirestore ,
               private router : Router) { }
 
@@ -87,7 +90,11 @@ export class MainService {
         })
   }
 
+  storeAllClinicians(clinicians : Clinician[]){
+    this.allClinicians = clinicians;
+  }
 
-
-
+  getAllStoredClinicians(){
+    return this.allClinicians;
+  }
 }
