@@ -41,7 +41,7 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
     private changeDetectorRef: ChangeDetectorRef,
     private ngZone: NgZone
   ) {
-    this.meterList = Array(16).fill(1);
+    this.meterList = Array(28).fill(1);
   }
   isTravelHistory: "Yes";
   feedback: "Healthy";
@@ -54,12 +54,40 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
     this.feedback = "Healthy";
     this.feedbackDiscription = "";
 
-    this.mainService.getSelectedPatient().subscribe((data) => {
-      this.patientDetails = data;
-      console.log("Patient details : ", this.firstName);
-      debugger;
-      this.healthScore = Object.keys(this.patientDetails.surveyData).length || 0;
+    this.route.queryParams.subscribe((params) => {
+      let path = params["path"];
+      if (path == "home") {
+        this.patientDetails = this.mainService.getLoggedInPatient();
+        this.healthScore = this.getHealthScore(this.patientDetails);
+      } else if (path == "view-screenings") {
+        this.mainService.getSelectedPatient().subscribe((data) => {
+          this.patientDetails = data;
+          console.log("Patient details : ", this.firstName);
+
+          this.healthScore = this.getHealthScore(this.patientDetails);
+        });
+      }
     });
+    // this.mainService.getSelectedPatient().subscribe((data) => {
+    //   this.patientDetails = data;
+    //   console.log("Patient details : ", this.firstName);
+    //   debugger;
+    //   this.healthScore = Object.keys(this.patientDetails.surveyData).length || 0;
+    // });
+  }
+
+  getHealthScore(patientDetails): number {
+    if (patientDetails.surveyData) {
+      let sum2 =  Object.keys(this.patientDetails.surveyData).reduce((sum, key) => {
+        console.log(sum);
+        if( this.patientDetails.surveyData[key] === true)
+          sum = sum+1;
+        return sum;
+      }, 0);
+      console.log("Sum 2 : " , sum2);
+      return sum2;
+    } 
+    else return 0;
   }
 
   submitSurvey() {

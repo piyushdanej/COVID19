@@ -42,8 +42,11 @@
                                 placeholder="City" />
                         </div>
                         <div class="form-group">
-                            <input formControlName="state" name="state" id="state"
-                                class="form-control col-xs-12 col-md-12" placeholder="State/Province" />
+                            <select formControlName="state" name="state" id="state"
+                                class="form-control col-xs-12 col-md-12" placeholder="State/Province" [value]="California" [(ngModel)]="tempState"> 
+                                
+                                <option  *ngFor="let state of states" value="state" >{{state}}</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -69,18 +72,18 @@
                         <div class="form-group col-md-6">
                             <label for="sex" style="margin-right: 10px;">Sex</label>
                             <label class="radio-inline">
-                                <input formControlName="sex" name="sex" id="male" type="radio" value="Male" />
-                                Male
+                                <input formControlName="sex" name="sex" id="male" type="radio" value="Male"
+                                    style="margin: 0 0px 0 10px;" /> Male
                             </label>
 
                             <label class="radio-inline">
-                                <input formControlName="sex" name="sex" id="female" type="radio" value="Female" />
-                                Female
+                                <input formControlName="sex" name="sex" id="female" type="radio" value="Female"
+                                    style="margin: 0 0px 0 10px;" /> Female
                             </label>
 
                             <label class="radio-inline">
-                                <input formControlName="sex" name="sex" id="other" type="radio" value="Other" />
-                                Other
+                                <input formControlName="sex" name="sex" id="other" type="radio" value="Other"
+                                    style="margin: 0 0px 0 10px;" /> Other
                             </label>
                         </div>
 
@@ -95,25 +98,37 @@
                                 type="password" />
                         </div>
 
-
+                        <div>
+                            <button class="btn-block btn-lg btn-info" mat-button matStepperNext>Next</button>
+                        </div>
 
                     </mat-step>
                     <mat-step label="Family Details">
 
-                        <div class="form-group">
-                            <input formControlName="fullName" name="fullName" id="fullName"
-                                class="form-control col-xs-12 col-md-12" placeholder="Full Name" />
+                        <div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-lg btn-block btn-info">+ Add Family Member</button>
+                            </div>
+
+                            <div class="form-group">
+                                <input formControlName="fullName" name="fullName" id="fullName"
+                                    class="form-control col-xs-12 col-md-12" placeholder="Full Name" />
+                            </div>
+
+                            <div class="form-group">
+                                <input formControlName="familyMemberAge" name="familyMemberAge" id="familyMemberAge"
+                                    class="form-control col-xs-12 col-md-12" placeholder="Age" />
+                            </div>
+                            <div class="form-group">
+                                <input formControlName="relation" name="relation" id="relation"
+                                    class="form-control col-xs-12 col-md-12" placeholder="Relation" />
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <input formControlName="familyMemberAge" name="familyMemberAge" id="familyMemberAge"
-                                class="form-control col-xs-12 col-md-12" placeholder="Age" />
+                        <div>
+                            <button mat-button matStepperPrevious class="btn-block btn-lg btn-info">Back</button>
                         </div>
-                        <div class="form-group">
-                            <input formControlName="relation" name="relation" id="relation"
-                                class="form-control col-xs-12 col-md-12" placeholder="Relation" />
-                        </div>
-
+                        <br>
                         <div class="form-group">
                             <button type="submit" class="btn btn-lg btn-block btn-info">
                                 SUBMIT

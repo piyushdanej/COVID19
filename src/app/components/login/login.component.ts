@@ -5,7 +5,7 @@ import { MainService } from "src/app/services/main.service";
 import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { forkJoin , zip } from "rxjs";
-import {  faUserCircle} from '@fortawesome/free-regular-svg-icons';
+import { faUserCircle} from '@fortawesome/free-solid-svg-icons';
 import { faUnlockAlt ,faEye} from '@fortawesome/free-solid-svg-icons';
 
 @Component({

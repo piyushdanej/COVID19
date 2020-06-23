@@ -15,27 +15,31 @@
           <div class="screen-step">
             <ul>
               <li #tab (click)="selectTab($event, 1)" class="active-tab">
-                <span class="tick-mark t1" [hidden] = "isShow">
-                    <img src="../../../assets/Green Circle Tick.svg">
+                <span class="tick-mark t1" [hidden]="isShow">
+                  <img src="../../../assets/Green Circle Tick.svg" />
                 </span>
                 <!-- <span [hidden] = “isShow” ></span> -->
 
-                1</li>
+                1
+              </li>
               <li #tab (click)="selectTab($event, 2)">
-                <span class="tick-mark t2 " [hidden]= "isShow1">
-                  <img src="../../../assets/Green Circle Tick.svg">
+                <span class="tick-mark t2" [hidden]="isShow1">
+                  <img src="../../../assets/Green Circle Tick.svg" />
                 </span>
-              2</li>
+                2
+              </li>
               <li #tab (click)="selectTab($event, 3)">
-                <span class="tick-mark  t3 " [hidden]="isShow2">
-                  <img src="../../../assets/Green Circle Tick.svg">
+                <span class="tick-mark t3" [hidden]="isShow2">
+                  <img src="../../../assets/Green Circle Tick.svg" />
                 </span>
-              3</li>
+                3
+              </li>
               <li #tab (click)="selectTab($event, 4)">
-                <span class="tick-mark t4 display-none">
-                  <img src="../../../assets/Green Circle Tick.svg">
+                <span class="tick-mark t4" [hidden]="isShow3">
+                  <img src="../../../assets/Green Circle Tick.svg" />
                 </span>
-              4</li>
+                4
+              </li>
             </ul>
           </div>
         </div>
@@ -46,7 +50,8 @@
               what is applicable to you)
             </p>
             <div class="radio-sec">
-              <label class="container-chk"> Yes
+              <label class="container-chk">
+                Yes
                 <input
                   type="radio"
                   value="Yes"
@@ -55,8 +60,9 @@
                 />
                 <span class="checkmark"></span>
               </label>
-              
-              <label class="container-chk"> No
+
+              <label class="container-chk">
+                No
                 <input
                   type="radio"
                   value="No"
@@ -65,12 +71,12 @@
                 />
                 <span class="checkmark"></span>
               </label>
-  
             </div>
-            
-            <div class="comn-cnt"> 
+
+            <div class="comn-cnt">
               <p>
-                If your answer is yes,Choose what is applicable to you from the following.
+                If your answer is yes,Choose what is applicable to you from the
+                following.
               </p>
             </div>
             <!-- <div class="radio-btn">
@@ -81,18 +87,24 @@
               <label for="Yes"> No</label>
             </div> 
  -->
-            <div *ngIf="tabId == 1" class="questionarie-list {{this.showQue}}" >
+
+            <div
+              *ngIf="tabId == 1"
+              class="questionarie-list {{ this.showQue }}"
+            >
               <div *ngFor="let question of questionsForTab1">
                 <question
                   [questionText]="question"
                   (answerEvent)="addData($event)"
-                
                 >
                 </question>
               </div>
             </div>
 
-            <div *ngIf="tabId == 2" class="questionarie-list" >
+            <div
+              *ngIf="tabId == 2"
+              class="questionarie-list {{ this.showQue }}"
+            >
               <div *ngFor="let question of questionsForTab2">
                 <question
                   [questionText]="question"
@@ -102,7 +114,10 @@
               </div>
             </div>
 
-            <div *ngIf="tabId == 3" class="questionarie-list">
+            <div
+              *ngIf="tabId == 3"
+              class="questionarie-list {{ this.showQue }}"
+            >
               <div *ngFor="let question of questionsForTab3">
                 <question
                   [questionText]="question"
@@ -112,7 +127,10 @@
               </div>
             </div>
 
-            <div *ngIf="tabId == 4" class="questionarie-list"> 
+            <div
+              *ngIf="tabId == 4"
+              class="questionarie-list {{ this.showQue }}"
+            >
               <div *ngFor="let question of questionsForTab4">
                 <question
                   [questionText]="question"
@@ -126,21 +144,22 @@
             <input type="submit" name="Submit" (click)="submitData()" />
           </div>
         </div>
-        <div #modal class="modalContainer  modal-dialog-centered display-none">
-          
-            <div class="modalBody">
-              <img src="../../../assets/Green Circle Tick.svg" class="tick-complt" >
-              <p>Thank You for submitting the survey.We will get back to you soon.</p>
-              <p>Have a nice day!</p>
-              <button class="modalClose" (click)="closeModal()">OK</button>
-            </div>
+        <div #modal class="modalContainer modal-dialog-centered display-none">
+          <div class="modalBody">
+            <img
+              src="../../../assets/Green Circle Tick.svg"
+              class="tick-complt"
+            />
+            <p>
+              Thank You for submitting the survey.We will get back to you soon.
+            </p>
+            <p>Have a nice day!</p>
+            <button class="modalClose" (click)="closeModal()">OK</button>
           </div>
+        </div>
       </div>
-    
     </div>
   </div>
-
-
 </div>
 
 <!-- <div class="ques1 ques-list">
