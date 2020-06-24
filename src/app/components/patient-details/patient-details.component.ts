@@ -1,3 +1,4 @@
+import { Clinician } from "./../../interfaces/clinician";
 import { locationDetails } from "./../../interfaces/locationDetails";
 import { surveyQuestion } from "./../../interfaces/surveyQuestion";
 import { MainService } from "./../../services/main.service";
@@ -27,17 +28,19 @@ import { Subscription } from "rxjs";
 export class PatientDetailsComponent implements OnInit, OnDestroy {
   @ViewChildren("tab") tabs: QueryList<ElementRef>;
   meterList;
-  surveyData:any;
+  surveyData: any;
   patientDetails: Patient;
-  id:any;
+  id: any;
   firstName: string = "hello";
   lastName: string = "";
   patientDetailsSubscription: Subscription;
   disableSubmit: boolean = true;
   healthScore: number;
   showLocationDetails: boolean = false;
-  quesArray=[];
+  quesArray = [];
   getPatientsSubscription: Subscription;
+
+  patientAge : number ; 
 
   facilityDetails: locationDetails = {
     facility: "",
@@ -70,31 +73,37 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
       let path = params["path"];
       if (path == "home") {
         this.patientDetails = this.mainService.getLoggedInPatient();
+
+        this.patientAge = new Date().getFullYear() - new Date(this.patientDetails.age).getFullYear()
+        
         this.feedback =
           this.patientDetails.category == undefined ||
-          this.patientDetails.category === "Pending" ? "" : this.patientDetails.category;
-        this.calculateFacilityDetails(this.feedback , this.patientDetails)
+          this.patientDetails.category === "Pending"
+            ? ""
+            : this.patientDetails.category;
+        this.calculateFacilityDetails(this.feedback, this.patientDetails);
         this.id = this.patientDetails.id;
         this.healthScore = this.getHealthScore(this.patientDetails);
         this.surveyData = this.surveyData;
         console.log("Survey Daayta1", this.surveyData);
-      } else if (path == "view-screenings") { 
-        this.getPatientsSubscription = this.mainService.getSelectedPatient().subscribe((data) => {
-          this.patientDetails = data;
-          
-          console.log("Patient details : ", this.firstName);
-          this.feedback =
-            this.patientDetails.category == undefined ||
-            this.patientDetails.category == "Pending"
-              ? ""
-              : this.patientDetails.category;
-          this.calculateFacilityDetails(this.feedback , this.patientDetails);
+      } else if (path == "view-screenings") {
+        this.getPatientsSubscription = this.mainService
+          .getSelectedPatient()
+          .subscribe((data) => {
+            this.patientDetails = data;
+            this.patientAge = new Date().getFullYear() - new Date(this.patientDetails.age).getFullYear();
+            console.log("Patient details : ", this.firstName);
+            this.feedback =
+              this.patientDetails.category == undefined ||
+              this.patientDetails.category == "Pending"
+                ? ""
+                : this.patientDetails.category;
+            this.calculateFacilityDetails(this.feedback, this.patientDetails);
 
-          this.healthScore = this.getHealthScore(this.patientDetails);
-          this.surveyData = this.patientDetails.surveyData;
-          this.quesArray= Object.keys(this.surveyData);
-
-        });
+            this.healthScore = this.getHealthScore(this.patientDetails);
+            this.surveyData = this.patientDetails.surveyData;
+            this.quesArray = Object.keys(this.surveyData);
+          });
       }
     });
   }
@@ -134,16 +143,21 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
           this.patientDetails.mobileNumber,
           { category: this.feedback, location: null }
         );
-      else
+      else {
         this.mainService.updatePatientByMobileNumber(
           this.patientDetails.mobileNumber,
           { category: this.feedback }
         );
-    } else
+      }
+    } else {
       this.mainService.updatePatientByMobileNumber(
         this.patientDetails.mobileNumber,
         { category: this.feedback, location: this.facilityDetails }
       );
+      
+      // let requestObject = this.formRequestObject(patientDetails , clinicianDetails);
+
+    }
 
     let calculateRouteParam;
     let categoryMap = {
@@ -156,6 +170,61 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
     // this.router.navigate(["/screenings"] , {queryParams : {id : calculateRouteParam}});
     this.router.navigate(["/clinician-home"]);
   }
+
+  // formRequestObject(patientDetails: Patient, clinicianDetails: Clinician): any {
+  //   let requestObj = {};
+
+  //   let patientDetailsObj = {
+  //     givenName: patientDetails.firstName,
+  //     familyName: patientDetails.lastName,
+  //     gender: patientDetails.sex,
+  //     mobileNumber: patientDetails.mobileNumber,
+  //     email: patientDetails.emailId,
+  //     // CHANGE TO DATE OF BIRTH
+  //     dateOfBirth: patientDetails.age,
+  //     ssn: "123-45-6789",
+  //     address: {
+  //       street1: "9900 West",
+  //       street2: "innovation Drive",
+  //       city: patientDetails.city,
+  //       state: patientDetails.state,
+  //       zipCode: patientDetails.zipCode,
+  //     },
+  //     bedLocation: {
+  //       facility: patientDetails.location.facility,
+  //       unit: patientDetails.location.unit,
+  //       room: patientDetails.location.room,
+  //       bed: patientDetails.location.bed,
+  //     },
+  //   };
+
+  //   let admittingDoctorDetailsObj = {
+  //     id: clinicianDetails.id,
+  //     givenName: clinicianDetails.firstName,
+  //     familyName: clinicianDetails.lastName,
+  //     registrationNumber: clinicianDetails.registrationNo,
+  //     email: clinicianDetails.emailId,
+  //     mobileNumber: clinicianDetails.mobileNumber,
+  //     address: {
+  //       street1: "9900 West",
+  //       street2: "innovation Drive",
+  //       city: clinicianDetails.city,
+  //       state: clinicianDetails.state,
+  //       zipCode: clinicianDetails.zipCode,
+  //     },
+  //   };
+
+  //   // let attendingDoctorDetailsObj = JSON.parse(JSON.stringify(admittingDoctorDetailsObj));
+
+  //   let mainRequestObject = {
+  //     ...patientDetailsObj,
+  //     "admittingDoctor":{...admittingDoctorDetailsObj },
+  //     "attendingDoctor":{...admittingDoctorDetailsObj}
+  //   }
+  //   return mainRequestObject;
+
+  // }
+
   changeTravelHistory(e) {
     this.isTravelHistory = e.target.value;
   }
