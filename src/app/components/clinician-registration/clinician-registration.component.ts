@@ -66,8 +66,6 @@ export class ClinicianRegistrationComponent implements OnInit {
   "Wisconsin", 
   "Wyoming"];
 
-  tempState='California';
-
   constructor(private mainService: MainService, private formBuilder: FormBuilder, public firestore:AngularFirestore , private router : Router) { }
 
   ngOnInit(): void {
@@ -75,7 +73,7 @@ export class ClinicianRegistrationComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       city: ['', Validators.required],
-      state: ['California', Validators.required],
+      state: ['Alabama', Validators.required],
       registrationNo: ['', Validators.required],
       zipCode: ['', Validators.required],
       mobileNumber: ['', [Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
@@ -86,14 +84,11 @@ export class ClinicianRegistrationComponent implements OnInit {
   }
 
   get formControls() { 
-    console.log(this.insertForm.controls)
     return this.insertForm.controls; 
   }
 
   onSubmit(){
     this.mainService.createClinician(this.insertForm.value).then( data => {
-      debugger;
-      console.log(data);
       if(this.insertForm.invalid){
         return;
       }

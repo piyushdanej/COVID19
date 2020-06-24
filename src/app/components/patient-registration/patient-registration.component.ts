@@ -16,6 +16,8 @@ export class PatientRegistrationComponent implements OnInit {
   patients: Patient[];
   insertForm: FormGroup;
 
+  nextClicked = false;
+
   states: any=["Alabama", 
   "Alaska", 
   "Arizona", 
@@ -67,13 +69,7 @@ export class PatientRegistrationComponent implements OnInit {
   "Wisconsin", 
   "Wyoming"];
 
-  tempState='California';
-  constructor(
-    private mainService: MainService, 
-    private formBuilder: FormBuilder,
-    public firestore: AngularFirestore,
-    private router: Router
-  ) {}
+  constructor(private mainService: MainService, private formBuilder: FormBuilder, public firestore: AngularFirestore, private router: Router) {}
 
   ngOnInit(): void {
     this.insertForm = this.formBuilder.group({
@@ -82,31 +78,40 @@ export class PatientRegistrationComponent implements OnInit {
       sex: ['', Validators.required],
       age: ['', Validators.required],
       city: ['', Validators.required],
-      state: ['California', Validators.required],
+      state: ['Alabama', Validators.required],
       zipCode: ['', Validators.required],
       mobileNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
       emailId: ['', Validators.required],
       password: ['', Validators.required],
-      fullName: ['', Validators.required],
-      familyMemberAge: ['', Validators.required],
-      relation: ['', Validators.required], 
+      fullName: '',
+      familyMemberAge: '',
+      relation: '',
       userType : ['patient'],
       category : ['Pending']
     });
   }
 
   get formControls() { 
-    console.log(this.insertForm.controls)
     return this.insertForm.controls; 
+  }  
+
+  public onNextClick(): void {
+    this.nextClicked = true;
   }
-  
+
+  public onPreviousClick(): void {
+    this.nextClicked = false;
+  }
 
   onSubmit(){
     this.mainService.createPatient(this.insertForm.value).then( data => {
       if(this.insertForm.invalid){
         return;
       }
-      this.router.navigate(["/login"]);
+      
+      if(this.nextClicked) {
+        this.router.navigate(["/login"]);
+      }
     });
   }
 }
