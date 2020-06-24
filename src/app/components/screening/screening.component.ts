@@ -22,16 +22,16 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 })
 export class ScreeningComponent implements OnInit {
   dataQA = {};
-  tabId : number = 1;
-  isShow:boolean = true;
-  isShow1:boolean = true;
-  isShow2:boolean = true;
-  isShow3:boolean = true;
-  showSurvey : boolean = false;
-  showModal: boolean ;
-  showQue:boolean = false;
-  @ViewChild('modal')  modalControl : ElementRef;
-  @ViewChildren('tab') elTabs : QueryList<ElementRef>;
+  tabId: number = 1;
+  isShow: boolean = true;
+  isShow1: boolean = true;
+  isShow2: boolean = true;
+  isShow3: boolean = true;
+  showSurvey: boolean = false;
+  showModal: boolean;
+  showQue: boolean = false;
+  @ViewChild("modal") modalControl: ElementRef;
+  @ViewChildren("tab") elTabs: QueryList<ElementRef>;
   disableQue: boolean = false;
 
   loggedInPatient: Patient;
@@ -124,17 +124,23 @@ export class ScreeningComponent implements OnInit {
 
   sendPatientDataToSharePoint(patientDetails: Patient, dataQA) {
     let patientObj = this.formPatientObject(patientDetails, dataQA);
-    let requestHeaders: HttpHeaders = new HttpHeaders();
+    // let requestHeaders: HttpHeaders = new HttpHeaders();
 
-    requestHeaders.set("content-type", "application/json");
-    requestHeaders.set("client_id", "ZUfVUZuKhaNoOq2wxtO9NkDEGCsa");
-    requestHeaders.set("client_secret", "UeUtzpx4rKTptJ85SRdMBK2wWr0b");
+    let headers2 = {
+      "content-type": "application/json",
+      client_id: "ZUfVUZuKhaNoOq2wxtO9NkDEGCsa",
+      client_secret: "UeUtzpx4rKTptJ85SRdMBK2wWr0b",
+    };
+
+    // requestHeaders.set("content-type", "application/json");
+    // requestHeaders.set("client_id", "ZUfVUZuKhaNoOq2wxtO9NkDEGCsa");
+    // requestHeaders.set("client_secret", "UeUtzpx4rKTptJ85SRdMBK2wWr0b");
 
     const pateintSharePointUrl =
       "https://muralapp.eastus.cloudapp.azure.com/api/1.0.0/mtec/patient";
 
     this.http
-      .post(pateintSharePointUrl, patientObj, { headers: requestHeaders })
+      .post(pateintSharePointUrl, patientObj, { headers: headers2 })
       .subscribe((response) => {
         console.log(response);
       });
