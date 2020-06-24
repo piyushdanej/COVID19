@@ -84,6 +84,7 @@ input#email{
     border-radius: 0 0 14px 14px;
 }
 input#login {
+    font-family: "SF Pro Text";
     color:#ffffff;
     margin-top: 20px;
     border: none;
@@ -138,6 +139,7 @@ input#email,input#pass,input#login {
     color: #fff;
 }
 #register {
+    font-family: "SF Pro Text";
     border-radius: 28px;
     padding: 6px 30px;
     background: #355E93;
@@ -161,8 +163,16 @@ input#email,input#pass,input#login {
 }
 
 .last-sec .first-time-user{
+    font-family: "SF Pro Text";
     color:black;
 }
-.end-content{
- 
-} 
+
+.ge-image {
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.login-form-title {
+    font-family: "SF Pro Text";
+    padding-left: 5px;
+}    

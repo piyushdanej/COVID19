@@ -97,7 +97,7 @@ export class ClinicianRegistrationComponent implements OnInit {
       if(this.insertForm.invalid){
         return;
       }
-      this.router.navigate(["/clinician-home"]);
+      this.router.navigate(["/login"]);
     });
   }
 
