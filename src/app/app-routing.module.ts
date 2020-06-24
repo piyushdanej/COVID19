@@ -22,8 +22,7 @@ const routes: Routes = [
   { path: 'available-clinicians', component: AvailableCliniciansComponent },
   { path: 'my-profile' , component : PatientDetailsComponent},
   { path: 'patient-screening' , component : ScreeningComponent},
-  { path: 'patient-registration' , component : PatientRegistrationComponent},
-  { path: 'clinician-registration' , component : ClinicianRegistrationComponent}
+  { path: 'patient-registration' , component : PatientRegistrationComponent}
 ];
 
 @NgModule({

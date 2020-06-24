@@ -36,3 +36,7 @@ div.validation-error {
   font-size: 80%;
   color: #dc3545;
 }
+
+.patient-clinician-label {
+  margin-left: 5px;
+}
