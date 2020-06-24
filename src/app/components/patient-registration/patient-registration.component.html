@@ -6,12 +6,12 @@
         <div class="center row">
             <div class="col-xs-5">
                 <input name="options" [(ngModel)]="options" type="radio" value="As patient" />
-                <label class="radio-inline"> As patient </label>
+                <label class="radio-inline patient-clinician-label"> As patient</label>
             </div>
 
             <div class="col-xs-5" style="margin-right: 50px;">
                 <input name="options" [(ngModel)]="options" type="radio" value="As Clinician" />
-                <label>As Clinician</label>
+                <label class="radio-inline patient-clinician-label"> As clinician</label>
             </div>
         </div>
 
@@ -127,15 +127,18 @@
                         </div>
 
                         <div>
-                            <button class="btn-block btn-lg btn-info" mat-button matStepperNext>Next</button>
+                            <button class="button1" mat-button matStepperNext>Next</button>
                         </div>
 
                     </mat-step>
                     <mat-step label="Family Details">
 
+                        <button type="submit" class="button1">+ Add family member</button>
+                            
                         <div>
                             
                             <div class="form-group">
+                                <br>
                                 <input formControlName="fullName" name="fullName" id="fullName"
                                     class="form-control col-xs-12 col-md-12" placeholder="Full Name" />
                             </div>
@@ -151,11 +154,11 @@
                         </div>
 
                         <div>
-                            <button mat-button matStepperPrevious class="btn-block btn-lg btn-info">Back</button>
+                            <button mat-button matStepperPrevious class="button1">Back</button>
                         </div>
                         <br>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-lg btn-block btn-info" [disabled]="!insertForm.valid">
+                            <button type="submit" class="button1">
                                 SUBMIT
                             </button>
                         </div>

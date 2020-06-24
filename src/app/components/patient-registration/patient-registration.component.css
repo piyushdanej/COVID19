@@ -11,6 +11,16 @@
   
 }
 
+.button1{
+  color: #ffffff;
+    margin-top: 20px;
+    border: none;
+    border-radius: 28px;
+    background: #355E93;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
 
 .form-body{
   border-top:1px solid transparent;
@@ -35,4 +45,8 @@ div.validation-error {
   margin-top: 0.25rem;
   font-size: 80%;
   color: #dc3545;
+}
+
+.patient-clinician-label {
+  margin-left: 5px;
 }

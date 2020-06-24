@@ -22,16 +22,16 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 })
 export class ScreeningComponent implements OnInit {
   dataQA = {};
-  tabId: number = 1;
-  isShow: boolean = true;
-  isShow1: boolean = true;
-  isShow2: boolean = true;
-  isShow3: boolean = true;
-  showSurvey: boolean = false;
-  showModal: boolean;
-  showQue: boolean = false;
-  @ViewChild("modal") modalControl: ElementRef;
-  @ViewChildren("tab") elTabs: QueryList<ElementRef>;
+  tabId : number = 1;
+  isShow:boolean = true;
+  isShow1:boolean = true;
+  isShow2:boolean = true;
+  isShow3:boolean = true;
+  showSurvey : boolean = false;
+  showModal: boolean ;
+  showQue:boolean = false;
+  @ViewChild('modal')  modalControl : ElementRef;
+  @ViewChildren('tab') elTabs : QueryList<ElementRef>;
   disableQue: boolean = false;
 
   loggedInPatient: Patient;

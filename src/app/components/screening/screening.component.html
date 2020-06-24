@@ -57,6 +57,7 @@
                   value="Yes"
                   (change)="ChangeVisiblity($event)"
                   name="radioChk"
+                  
                 />
                 <span class="checkmark"></span>
               </label>
@@ -68,6 +69,7 @@
                   value="No"
                   (change)="ChangeVisiblity($event)"
                   name="radioChk"
+                  [checked]= "true"
                 />
                 <span class="checkmark"></span>
               </label>
