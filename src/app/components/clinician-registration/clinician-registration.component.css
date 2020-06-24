@@ -8,3 +8,14 @@ div.validation-error{
     font-size: 80%;
     color: #dc3545;
 }
+
+.button1{
+    color: #ffffff;
+      margin-top: 20px;
+      border: none;
+      border-radius: 28px;
+      background: #355E93;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+  }
