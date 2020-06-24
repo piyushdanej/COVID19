@@ -146,7 +146,7 @@
             <input type="submit" name="Submit" (click)="submitData()" />
           </div>
         </div>
-        <div #modal class="modalContainer modal-dialog-centered display-none">
+        <div #modal *ngIf="false" class="modalContainer modal-dialog-centered">
           <div class="modalBody">
             <img
               src="../../../assets/Green-Circle-Tick.svg"
@@ -156,7 +156,8 @@
               Thank You for submitting the survey.We will get back to you soon.
             </p>
             <p>Have a nice day!</p>
-            <button class="modalClose" (click)="closeModal()">OK</button>
+            <button  (click)="closeModal()">OK</button>
+            <!-- class="modalClose" -->
           </div>
         </div>
       </div>

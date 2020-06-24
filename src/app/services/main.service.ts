@@ -16,6 +16,7 @@ import { filter} from "rxjs/operators";
 export class MainService { 
   selectedPatient : BehaviorSubject<any> = new BehaviorSubject<any>({});
   loggedInUser : any ;
+  allPatients : Patient[];
 
   
 
@@ -86,7 +87,7 @@ export class MainService {
    return this.router.events
         .pipe(filter((event : any) =>  event instanceof NavigationEnd))
         .subscribe(data =>{
-          debugger;
+         
           console.log("*****" ,data);
           return data;
         })
@@ -98,5 +99,13 @@ export class MainService {
 
   getAllStoredClinicians(){
     return this.allClinicians;
+  }
+
+
+  storeAllPatients(patients : Patient[]){
+    this.allPatients = patients;
+  } 
+  getAllPatients(){
+    return this.allPatients
   }
 }

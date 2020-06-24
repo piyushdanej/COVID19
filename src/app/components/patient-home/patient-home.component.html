@@ -6,10 +6,16 @@
   <div>      
     <ul>
       <li class="liItem">
-        <div class="button-card" routerLink="/patient-screening">
-          <div class="card-icon"><img src="../../../assets/images/icon-screening.svg"></div>
+        <div class="button-card go-screening-div" (click)="routeToScreeing()">
+          <img *ngIf="!allowTriageQuestionsRouting"
+                src="../../../assets/Green-Circle-Tick.svg" 
+                alt="Survey Done" 
+                class="green-tick" >
+
+          <div class="card-icon"><img  src="../../../assets/images/icon-screening.svg"></div>
           <p class="dark-text">COVID19 Screening</p>
-          <p class="light-text">Have a Quick Access</p>
+          <p *ngIf="allowTriageQuestionsRouting" class="light-text">Have a Quick Access</p>
+          <p *ngIf="!allowTriageQuestionsRouting" class="light-text">Survey already taken.</p>
           <!-- <a class="right-arrow-icon" routerLink="/patient-screening"><fa-icon [icon]="faChevronRight"></fa-icon></a> -->
         </div>
         <div class="button-card" routerLink="/available-clinicians">

@@ -48,12 +48,12 @@ export class LoginComponent implements OnInit {
         });
         
         this.mainService.storeAllClinicians(clinicians);
-        
+        this.mainService.storeAllPatients(patients);
         let person;
 
         let users = [...patients, ...clinicians];
   
-        debugger;
+        
         person = users.find((existingUser) => {
           return ((existingUser.emailId === this.userName && existingUser.password === this.password) ||
                   (existingUser.mobileNumber === this.userName && existingUser.password === this.password));

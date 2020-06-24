@@ -28,7 +28,7 @@ export class ScreeningComponent implements OnInit {
   isShow2: boolean = true;
   isShow3: boolean = true;
   showSurvey: boolean = false;
-  showModal: boolean;
+  showModal: boolean = false;
   showQue: boolean = false;
   @ViewChild("modal") modalControl: ElementRef;
   @ViewChildren("tab") elTabs: QueryList<ElementRef>;
@@ -116,7 +116,7 @@ export class ScreeningComponent implements OnInit {
     const qaDataObj = { surveyData: this.dataQA };
     // this.mainService.updatePatientByMobileNumber("333333" , qaDataObj);
 
-    this.modalControl.nativeElement.classList.remove("display-none");
+    // this.modalControl.nativeElement.classList.remove("display-none");
     let userId = this.mainService.getLoggedInUser().mobileNumber;
     this.mainService.updatePatientByMobileNumber(userId, qaDataObj);
     this.sendPatientDataToSharePoint(this.loggedInPatient, this.dataQA);
@@ -132,10 +132,6 @@ export class ScreeningComponent implements OnInit {
       client_secret: "UeUtzpx4rKTptJ85SRdMBK2wWr0b",
     };
 
-    // requestHeaders.set("content-type", "application/json");
-    // requestHeaders.set("client_id", "ZUfVUZuKhaNoOq2wxtO9NkDEGCsa");
-    // requestHeaders.set("client_secret", "UeUtzpx4rKTptJ85SRdMBK2wWr0b");
-
     const pateintSharePointUrl =
       "https://muralapp.eastus.cloudapp.azure.com/api/1.0.0/mtec/patient";
 
@@ -143,7 +139,7 @@ export class ScreeningComponent implements OnInit {
       .post(pateintSharePointUrl, patientObj, { headers: headers2 })
       .subscribe((response) => {
         console.log(response);
-      });
+       });
   }
 
   formPatientObject(patientDetails: Patient, dataQA: any) {
@@ -176,11 +172,12 @@ export class ScreeningComponent implements OnInit {
   }
 
   navigateBack() {
+    // UNCOMMENT !!
     this.router.navigate(["/patient-home"]);
   }
   closeModal() {
     this.showModal = false;
-    this.modalControl.nativeElement.classList.add("display-none");
+  // UNCOMMENT !!
     this.router.navigate(["/patient-home"]);
   }
 
