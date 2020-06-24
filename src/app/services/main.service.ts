@@ -15,7 +15,9 @@ import { filter} from "rxjs/operators";
 })
 export class MainService { 
   selectedPatient : BehaviorSubject<any> = new BehaviorSubject<any>({});
-  loggedInPatient : Patient ;
+  loggedInUser : any ;
+
+  
 
   allClinicians : Clinician[] = [];
   constructor(private firestore: AngularFirestore ,
@@ -70,15 +72,15 @@ export class MainService {
     this.selectedPatient.next(patient);
   }
 
-  setLoggedInPatient(patient:Patient){
+  setLoggedInUser(user:Patient | Clinician){
 
-    this.loggedInPatient = patient;
-    console.log(this.loggedInPatient);  
+    this.loggedInUser = user;
+    console.log(this.loggedInUser);  
   }
 
-    getLoggedInPatient(){
-      return this.loggedInPatient;
-    }
+  getLoggedInUser(){
+    return this.loggedInUser;
+  }
 
   getLastRoute(){
    return this.router.events

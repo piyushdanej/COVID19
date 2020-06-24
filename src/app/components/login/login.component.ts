@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
         });
   
         if (person) {
-          this.mainService.setLoggedInPatient(person);
+          this.mainService.setLoggedInUser(person);
         } else {
           return;
         }

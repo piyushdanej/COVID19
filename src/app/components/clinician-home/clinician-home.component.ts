@@ -19,7 +19,8 @@ export class ClinicianHomeComponent implements OnInit {
   constructor(private mainService : MainService , private router :Router) { }
 
   ngOnInit() {
-    this.userDetails = this.mainService.getLoggedInPatient()
+    
+    this.userDetails = this.mainService.getLoggedInUser()
     console.log(this.userDetails);
 
   }

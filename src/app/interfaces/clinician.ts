@@ -10,4 +10,6 @@ export interface Clinician {
     emailId: string;
     password: string;
     userType : string;
+    dob : string;
+    sex : string;
 }
