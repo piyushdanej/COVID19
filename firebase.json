@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/state-demo",
+    "public": "dist/",
     "site": "mtec-covid19",
     "ignore": [
       "firebase.json",

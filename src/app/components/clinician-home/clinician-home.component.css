@@ -7,7 +7,7 @@
   
 .title {
     text-align: center;
-    background-image: url(../../../assets/images/bg-pattern.svg);
+    background-image: url('../../../assets/images/bg-pattern.svg');
     background-repeat: no-repeat;
     background-position: center;
     height: 150px;
@@ -96,7 +96,7 @@ li {
 
 .profile-settings-button.profile-button {
     /* background: #355E93; */
-    background: url('../../../assets/btn_profile.png');
+    background: url('../../../assets/btn-profile.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;
@@ -104,7 +104,7 @@ li {
 
 .profile-settings-button.settings-button {
     /* background: #6898D5;     */
-    background: url('../../../assets/btn_settings.png');
+    background: url('../../../assets/btn-settings.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;
@@ -114,7 +114,7 @@ li {
     position: relative;
     width: 353px;
     height: 197px;
-    background: url('../../../assets/btn_homescreen.png');
+    background: url('../../../assets/btn-homescreen.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;
