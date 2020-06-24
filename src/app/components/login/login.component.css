@@ -55,6 +55,9 @@ html , body{
 .login-sec{
     /* position: relative;
     bottom:4rem; */
+    margin-bottom: 9rem;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .login-sec p {
