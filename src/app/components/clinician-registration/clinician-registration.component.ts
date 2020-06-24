@@ -1,3 +1,4 @@
+import { HttpClient ,  HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -15,7 +16,8 @@ export class ClinicianRegistrationComponent implements OnInit {
   clinicians: Clinician[];
   insertForm: FormGroup;
 
-  states: any=["Alabama", 
+  states: any=[
+  "Alabama", 
   "Alaska", 
   "Arizona", 
   "Arkansas", 
@@ -27,7 +29,8 @@ export class ClinicianRegistrationComponent implements OnInit {
   "Georgia", 
   "Hawaii", 
   "Idaho", 
-  "IllinoisIndiana", 
+  "Illinois",
+  "Indiana", 
   "Iowa", 
   "Kansas", 
   "Kentucky", 
@@ -39,7 +42,8 @@ export class ClinicianRegistrationComponent implements OnInit {
   "Minnesota", 
   "Mississippi", 
   "Missouri", 
-  "MontanaNebraska", 
+  "Montana",
+  "Nebraska", 
   "Nevada", 
   "New Hampshire", 
   "New Jersey", 
@@ -50,7 +54,8 @@ export class ClinicianRegistrationComponent implements OnInit {
   "Ohio", 
   "Oklahoma", 
   "Oregon", 
-  "PennsylvaniaRhode Island", 
+  "Pennsylvania",
+  "Rhode Island", 
   "South Carolina", 
   "South Dakota", 
   "Tennessee", 
@@ -65,7 +70,11 @@ export class ClinicianRegistrationComponent implements OnInit {
 
   tempState='California';
 
-  constructor(private mainService: MainService, private formBuilder: FormBuilder, public firestore:AngularFirestore , private router : Router) { }
+  constructor(private mainService: MainService,
+              private formBuilder: FormBuilder,
+              public firestore:AngularFirestore ,
+              private router : Router ,
+              private http : HttpClient) { }
 
   ngOnInit(): void {
     this.insertForm = this.formBuilder.group({
@@ -78,24 +87,67 @@ export class ClinicianRegistrationComponent implements OnInit {
       mobileNumber: ['', [Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
       emailId: ['', Validators.required],
       password: ['', Validators.required],
-      userType : ['clinician']
+      userType : ['clinician'],
+      dob : ['' , Validators.required],
+      sex : ['' , Validators.required]
     });
   }
 
   get formControls() { 
-    console.log(this.insertForm.controls)
+   
     return this.insertForm.controls; 
   }
 
   onSubmit(){
     this.mainService.createClinician(this.insertForm.value).then( data => {
-      debugger;
-      console.log(data);
+    
       if(this.insertForm.invalid){
         return;
       }
-      this.router.navigate(["/clinician-home"]);
+      this.router.navigate(["/login"]);
     });
+    this.sendClinicianDataToSharePoint(this.insertForm.value)
   }
+
+  
+  sendClinicianDataToSharePoint(clinicianDetails : Clinician) {
+    let patientObj = this.formClinicianObject(clinicianDetails);
+    let requestHeaders: HttpHeaders = new HttpHeaders();
+
+    requestHeaders.set("content-type", "application/json");
+    requestHeaders.set("client_id", "ZUfVUZuKhaNoOq2wxtO9NkDEGCsa");
+    requestHeaders.set("client_secret", "UeUtzpx4rKTptJ85SRdMBK2wWr0b");
+
+    const clinicianSharePointUrl =
+      "https://muralapp.eastus.cloudapp.azure.com/api/1.0.0/mtec/clinician";
+
+    this.http
+      .post(clinicianSharePointUrl, patientObj, { headers: requestHeaders })
+      .subscribe((response) => {
+        console.log(response);
+      });
+  }
+
+  formClinicianObject(clinicianDetails: Clinician) {
+   
+    return {
+      givenName: clinicianDetails.firstName,
+      familyName: clinicianDetails.lastName,
+      gender: clinicianDetails.sex,
+      mobileNumber: clinicianDetails.mobileNumber,
+      email: clinicianDetails.emailId,
+      dateOfBirth: clinicianDetails.dob,
+      ssn: "123-45-6789",
+      address: {
+        street1: "9900 West",
+        street2: "innovation Drive",
+        city: clinicianDetails.city,
+        state: clinicianDetails.state,
+        zipCode: clinicianDetails.zipCode,
+      }
+    };
+  }
+
+
 
 }

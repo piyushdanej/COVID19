@@ -19,7 +19,7 @@ export class PatientHomeComponent implements OnInit {
               private router :Router) { }
 
   ngOnInit() {
-    this.patientName = this.mainService.getLoggedInPatient().firstName;
+    this.patientName = this.mainService.getLoggedInUser().firstName;
   }
 
   routeToProfile(){

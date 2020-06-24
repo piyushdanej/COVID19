@@ -103,7 +103,7 @@ export class PatientRegistrationComponent implements OnInit {
       if(this.insertForm.invalid){
         return;
       }
-      this.router.navigate(["/patient-home"]);
+      this.router.navigate(["/login"]);
     });
   }
 }

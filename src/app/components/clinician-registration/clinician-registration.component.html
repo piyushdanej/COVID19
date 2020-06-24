@@ -31,6 +31,33 @@
 
     <div class="form-group">
         <input
+            formControlName="sex"
+            name="sex" 
+            id="sex"
+            class="form-control col-xs-12 col-md-12"
+            placeholder="Gender"
+        />
+
+        <div *ngIf="formControls.sex.touched && formControls.sex.invalid" class="alert alert-danger">
+            <div *ngIf="formControls.sex.errors.required">Gender is required.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input formControlName="dob"
+                name="dob"
+                id="dob"
+                class="form-control col-xs-12 col-md-12"
+                placeholder="dob" 
+                type="date" />
+
+        <div *ngIf="formControls.dob.touched && formControls.dob.invalid" class="alert alert-danger">
+            <div *ngIf="formControls.dob.errors.required">Date of Birth is required.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input
             formControlName="city"
             name="city" 
             id="city"

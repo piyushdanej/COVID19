@@ -1,4 +1,5 @@
-import { Clinician } from "./../../interfaces/clinician";
+import { Clinician } from "src/app/interfaces/clinician";
+
 import { locationDetails } from "./../../interfaces/locationDetails";
 import { surveyQuestion } from "./../../interfaces/surveyQuestion";
 import { MainService } from "./../../services/main.service";
@@ -30,6 +31,9 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
   meterList;
   surveyData: any;
   patientDetails: Patient;
+
+  // loggedInClinician: Clinician;
+
   id: any;
   firstName: string = "hello";
   lastName: string = "";
@@ -40,7 +44,7 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
   quesArray = [];
   getPatientsSubscription: Subscription;
 
-  patientAge : number ; 
+  patientAge: number;
 
   facilityDetails: locationDetails = {
     facility: "",
@@ -71,34 +75,39 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
 
     this.route.queryParams.subscribe((params) => {
       let path = params["path"];
-      if (path == "home") {
-        this.patientDetails = this.mainService.getLoggedInPatient();
 
-        this.patientAge = new Date().getFullYear() - new Date(this.patientDetails.age).getFullYear()
-        
-        this.feedback =
-          this.patientDetails.category == undefined ||
-          this.patientDetails.category === "Pending"
-            ? ""
-            : this.patientDetails.category;
-        this.calculateFacilityDetails(this.feedback, this.patientDetails);
-        this.id = this.patientDetails.id;
-        this.healthScore = this.getHealthScore(this.patientDetails);
-        this.surveyData = this.surveyData;
-        console.log("Survey Daayta1", this.surveyData);
-      } else if (path == "view-screenings") {
+      // this.loggedInClinician = this.mainService.getLoggedInUser();
+
+
+      // if (path == "home") {
+      //   this.loggedInClinician = this.mainService.getloggedInClinician();
+
+      //   this.patientAge = new Date().getFullYear() - new Date(this.patientDetails.age).getFullYear()
+
+      //   this.feedback =
+      //     this.patientDetails.category == undefined ||
+      //     this.patientDetails.category === "Pending"
+      //       ? ""
+      //       : this.patientDetails.category;
+      //   this.calculateFacilityDetails(this.feedback, this.patientDetails);
+      //   this.id = this.patientDetails.id;
+      //   this.healthScore = this.getHealthScore(this.patientDetails);
+      //   this.surveyData = this.surveyData;
+      //   console.log("Survey Daayta1", this.surveyData);
+      // }
+      if (path == "view-screenings") {
         this.getPatientsSubscription = this.mainService
           .getSelectedPatient()
           .subscribe((data) => {
             this.patientDetails = data;
-            this.patientAge = new Date().getFullYear() - new Date(this.patientDetails.age).getFullYear();
+            this.patientAge =
+              new Date().getFullYear() -
+              new Date(this.patientDetails.age).getFullYear();
             console.log("Patient details : ", this.firstName);
             this.feedback =
-              this.patientDetails.category == undefined ||
-              this.patientDetails.category == "Pending"
-                ? ""
-                : this.patientDetails.category;
-            this.calculateFacilityDetails(this.feedback, this.patientDetails);
+              this.patientDetails.category == undefined || this.patientDetails.category == "Pending" ? "" : this.patientDetails.category;
+            
+              this.calculateFacilityDetails(this.feedback, this.patientDetails);
 
             this.healthScore = this.getHealthScore(this.patientDetails);
             this.surveyData = this.patientDetails.surveyData;
@@ -154,9 +163,8 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
         this.patientDetails.mobileNumber,
         { category: this.feedback, location: this.facilityDetails }
       );
-      
-      // let requestObject = this.formRequestObject(patientDetails , clinicianDetails);
 
+      // let requestObject = this.formRequestObject(this.patientDetails,this.loggedInClinician);
     }
 
     let calculateRouteParam;
@@ -218,11 +226,10 @@ export class PatientDetailsComponent implements OnInit, OnDestroy {
 
   //   let mainRequestObject = {
   //     ...patientDetailsObj,
-  //     "admittingDoctor":{...admittingDoctorDetailsObj },
-  //     "attendingDoctor":{...admittingDoctorDetailsObj}
-  //   }
+  //     admittingDoctor: { ...admittingDoctorDetailsObj },
+  //     attendingDoctor: { ...admittingDoctorDetailsObj },
+  //   };
   //   return mainRequestObject;
-
   // }
 
   changeTravelHistory(e) {

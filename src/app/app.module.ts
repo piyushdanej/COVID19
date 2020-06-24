@@ -33,6 +33,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +66,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatStepperModule,
     MatAutocompleteModule,
     MatDatepickerModule,
+    HttpClientModule
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]
