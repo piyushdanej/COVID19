@@ -13,7 +13,7 @@ export interface Patient {
     fullName: string;
     relation:string;
     familyMobileNumber:string;
-    familyMemberAge:string;
+    // familyMemberAge:string;
     
     surveyData?: any;
     userType : string;
