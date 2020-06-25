@@ -14,7 +14,7 @@ import { Clinician } from "src/app/interfaces/clinician";
 export class ClinicianRegistrationComponent implements OnInit {
   clinicians: Clinician[];
   insertForm: FormGroup;
-
+  showModal :boolean = false;
   states: any = [
     "Alabama",
     "Alaska",
@@ -113,7 +113,9 @@ export class ClinicianRegistrationComponent implements OnInit {
       if (this.insertForm.invalid) {
         return;
       }
-      this.router.navigate(["/login"]);
+      else{
+        this.showModal = true;
+      }
     });
     this.sendClinicianDataToSharePoint(this.insertForm.value);
   }
@@ -160,5 +162,10 @@ export class ClinicianRegistrationComponent implements OnInit {
         zipCode: clinicianDetails.zipCode,
       },
     };
+  }
+
+
+  closeModal(){
+    this.router.navigate(["/login"]);
   }
 }

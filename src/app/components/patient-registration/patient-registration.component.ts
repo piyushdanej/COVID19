@@ -15,7 +15,7 @@ export class PatientRegistrationComponent implements OnInit {
 
   patients: Patient[];
   insertForm: FormGroup;
-
+  showModal :boolean = false;
   nextClicked = false;
 
   states: any=["Alabama", 
@@ -109,10 +109,16 @@ export class PatientRegistrationComponent implements OnInit {
       if(this.insertForm.invalid){
         return;
       }
-      
-      if(this.nextClicked) {
-        this.router.navigate(["/login"]);
-      }
+      else
+        this.showModal = true;        
+    
     });
   }
+
+  closeModal(){
+    this.showModal=false;
+    this.router.navigate(["/login"]);
+    
+  }
+
 }

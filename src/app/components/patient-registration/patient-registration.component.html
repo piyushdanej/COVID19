@@ -16,16 +16,11 @@
         </div>
 
         <div *ngIf="options === 'As patient'">
-            <form [formGroup]="insertForm" (ngSubmit)="onSubmit()" autocomplete="off">
-
+            <form [formGroup]="insertForm" autocomplete="off">
+<!--  (ngSubmit)="onSubmit()" -->
                 <mat-horizontal-stepper>
 
-
-
                     <mat-step label="Personal Details">
-
-
-
 
                         <div class="form-group">
                             <input formControlName="firstName" name="firstName" id="firstName"
@@ -134,7 +129,7 @@
                         </div>
 
                         <div>
-                            <button class="button1" (click)="onPreviousClick()" mat-button matStepperNext>Next</button>
+                            <button class="button1"  (click)="onPreviousClick()" mat-button matStepperNext>Next</button>
                         </div>
 
                     </mat-step>
@@ -178,7 +173,7 @@
                         </div>
                         <br>
                         <div class="form-group">
-                            <button type="submit" class="button1" (click)="onNextClick()">
+                            <button type="submit" class="button1" (click)="onSubmit()">
                                 SUBMIT
                             </button>
                         </div>
@@ -187,10 +182,24 @@
 
                 </mat-horizontal-stepper>
             </form>
-        </div>
 
+            <div #modal *ngIf="showModal" class="modalContainer modal-dialog-centered">
+                <div class="modalBody">
+                  <img src="../../../assets/Green-Circle-Tick.svg"
+                       class="tick-complt"/>
+                  <p>
+                    Your registration has been submitted successfully . Thank you.
+                  </p>
+                  <p>Have a nice day!</p>
+                  <button class="modalClose" (click)="closeModal()">OK</button>
+                  <!-- class="modalClose" -->
+                </div>
+              </div>
+
+        </div>
 
     </div>
     <div *ngIf="options === 'As Clinician'">
         <app-clinician-registration></app-clinician-registration>
     </div>
+    
