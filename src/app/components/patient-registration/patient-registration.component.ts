@@ -115,6 +115,11 @@ export class PatientRegistrationComponent implements OnInit {
     });
   }
 
+  openModal(){
+    this.showModal = true;
+  }
+
+
   closeModal(){
     this.showModal=false;
     this.router.navigate(["/login"]);

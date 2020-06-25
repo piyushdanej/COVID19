@@ -151,6 +151,15 @@ export class ScreeningComponent implements OnInit {
       };
     });
 
+    let surveyScore = qaDataArray.reduce((score , qaObject) =>{
+        if(qaObject.answer == "Yes")
+          score = score+1;
+        return score;
+    },0)
+
+    surveyScore = Math.round((surveyScore/28)*100);
+
+
     console.log("QA data array: ", qaDataArray);
     return {
       givenName: patientDetails.firstName,
@@ -168,6 +177,7 @@ export class ScreeningComponent implements OnInit {
         zipCode: patientDetails.zipCode,
       },
       triageSurvey: [...qaDataArray],
+      riskScore: surveyScore
     };
   }
 

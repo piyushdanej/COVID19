@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { MainService } from "src/app/services/main.service";
@@ -68,11 +68,14 @@ export class ClinicianRegistrationComponent implements OnInit {
     "Wyoming",
   ];
 
-  typeofClinicians: any=["Nurse",
-  "Nurse Practitionar",
-  "Physician"];
+  typeofClinicians: any=[
+  "Nurse",
+  "Nurse Practitioner",
+  "Physician"
+];
 
   // tempState = "California";
+  @Output() modalOpen :EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
     private mainService: MainService,
@@ -114,7 +117,8 @@ export class ClinicianRegistrationComponent implements OnInit {
         return;
       }
       else{
-        this.showModal = true;
+        // this.showModal = true;
+        this.modalOpen.emit();
       }
     });
     this.sendClinicianDataToSharePoint(this.insertForm.value);
@@ -161,11 +165,16 @@ export class ClinicianRegistrationComponent implements OnInit {
         state: clinicianDetails.state,
         zipCode: clinicianDetails.zipCode,
       },
+      specialization: clinicianDetails.specialization,
+      serviceType: clinicianDetails.serviceType,
+    
     };
   }
 
+  // specialization: "Nurse | Nurse Practitioner | Physician",
+  // serviceType: "Local Care Giver | Remote Expert"
 
-  closeModal(){
-    this.router.navigate(["/login"]);
-  }
+  // closeModal(){
+  //   this.router.navigate(["/login"]);
+  // }
 }
