@@ -380,9 +380,11 @@
       <img src="../../../assets/Green-Circle-Tick.svg"
            class="tick-complt"/>
       <p>
-        Your registration has been submitted successfully . Thank you.
+        Your registration has been submitted successfully.
       </p>
-      <p>Have a nice day!</p>
+      <p *ngIf="options === 'As patient'"> Plese login to take screening.</p>
+      <p *ngIf="options === 'As Clinician'">Please check your registered email.</p>
+      <p>Thank you</p>
       <button class="modalClose" (click)="closeModal()">OK</button>
       <!-- class="modalClose" -->
     </div>
