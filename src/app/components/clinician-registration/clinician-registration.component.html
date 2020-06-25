@@ -48,8 +48,7 @@
                 name="dob"
                 id="dob"
                 class="form-control col-xs-12 col-md-12"
-                placeholder="dob" 
-                type="date" />
+                placeholder="Date of Birth" type="date" value="" onChange="this.setAttribute('value', this.value)" />
 
         <div *ngIf="formControls.dob.touched && formControls.dob.invalid" class="alert alert-danger">
             <div *ngIf="formControls.dob.errors.required">Date of Birth is required.</div>
