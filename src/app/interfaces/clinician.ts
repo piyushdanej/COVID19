@@ -12,4 +12,6 @@ export interface Clinician {
     userType : string;
     dob : string;
     sex : string;
+    serviceType:string;
+    specialization:string;
 }

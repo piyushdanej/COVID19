@@ -68,7 +68,11 @@ export class ClinicianRegistrationComponent implements OnInit {
     "Wyoming",
   ];
 
-  tempState = "California";
+  typeofClinicians: any=["Nurse",
+  "Nurse Practitionar",
+  "Physician"];
+
+  // tempState = "California";
 
   constructor(
     private mainService: MainService,
@@ -95,6 +99,8 @@ export class ClinicianRegistrationComponent implements OnInit {
       userType: ["clinician"],
       dob: ["", Validators.required],
       sex: ["", Validators.required],
+      serviceType: ["", Validators.required],
+      specialization: ["Nurse", Validators.required]
     });
   }
 

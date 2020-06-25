@@ -70,6 +70,33 @@
         
     </div>
 
+
+    <label for="serviceType" style="margin-left: 5px;">Service type</label>
+
+    <div class="form-group col-md-6">
+        <label class="radio-inline">
+            <input formControlName="serviceType" name="serviceType" id="localCaregiver" type="radio" value="Local Care Giver"
+                style="margin: 0 0px 0 10px;" /> Local caregiver
+        </label>
+
+        <label class="radio-inline">
+            <input formControlName="serviceType" name="serviceType" id="remoteExpert" type="radio" value="Remote Expert"
+                style="margin: 0 0px 0 10px;" /> Remote expert
+        </label>
+
+    </div>
+
+
+    <div class="form-group">
+        <select
+          formControlName="specialization"
+          name="specialization" 
+          id="specialization"
+          class="form-control col-xs-12 col-md-12"
+        ><option  *ngFor="let specialization of typeofClinicians" [ngValue]="specialization" >{{specialization}}</option> </select>
+    </div>
+
+
     <div class="form-group">
         <select
           formControlName="state"
