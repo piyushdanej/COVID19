@@ -13,13 +13,34 @@ div.validation-error{
     color: #dc3545;
 }
 
-.button1{
+.button1 {
     color: #ffffff;
-      margin-top: 20px;
-      border: none;
-      border-radius: 28px;
-      background: #355E93;
-      width: 100%;
-      box-sizing: border-box;
-      padding: 10px;
-  }
+    margin-top: 20px;
+    border: none;
+    border-radius: 28px;
+    background: #355E93;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+input[type="date"]:before {
+    content: attr(placeholder);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    color: rgba(0, 0, 0, 0.65);
+    pointer-events: none;
+    line-height: 1.5;
+    padding: 0 0.5rem;
+    width: 85%;
+    transform: translate(1px,-9px);
+}
+
+input[type="date"]:focus:before,
+input[type="date"]:not([value=""]):before {
+    display: none;
+}

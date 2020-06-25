@@ -50,3 +50,29 @@ div.validation-error {
 .patient-clinician-label {
   margin-left: 5px;
 }
+
+input[type="date"] {
+  position: relative;
+}
+
+input[type="date"]:before {
+  content: attr(placeholder);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  color: rgba(0, 0, 0, 0.65);
+  pointer-events: none;
+  line-height: 1.5;
+  padding: 0 0.5rem;
+  width: 85%;
+  transform: translate(1px,-9px);
+}
+
+input[type="date"]:focus:before,
+input[type="date"]:not([value=""]):before
+{
+  display: none;
+}
