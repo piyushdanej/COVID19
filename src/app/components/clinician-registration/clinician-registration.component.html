@@ -174,3 +174,17 @@
     </div>
 
 </form>
+
+
+<div #modal *ngIf="showModal" class="modalContainer modal-dialog-centered">
+    <div class="modalBody">
+      <img src="../../../assets/Green-Circle-Tick.svg"
+           class="tick-complt"/>
+      <p>
+        Your registration has been submitted successfully . Thank you.
+      </p>
+      <p>Have a nice day!</p>
+      <button class="modalClose" (click)="closeModal()">OK</button>
+      <!-- class="modalClose" -->
+    </div>
+  </div>
