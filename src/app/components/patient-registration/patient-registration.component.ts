@@ -84,8 +84,8 @@ export class PatientRegistrationComponent implements OnInit {
       emailId: ['', Validators.required],
       password: ['', Validators.required],
       fullName: '',
-      familyMemberAge: '',
       relation: '',
+      familyMobileNumber: ['', Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")],
       userType : ['patient'],
       category : ['Pending']
     });

@@ -11,8 +11,9 @@ export interface Patient {
     sex: string;
     password: string;
     fullName: string;
-    familyMemberAge:string;
     relation:string;
+    familyMobileNumber:string;
+    
     surveyData?: any;
     userType : string;
     category?: "Pending" | "Healthy" | "Virtual Ward" | "ICU";
