@@ -47,8 +47,7 @@ export class MainService {
   }
 
   updatePatientByMobileNumber(mobileNum : string ,  QAData){
-    this.firestore.collection('patients').doc(mobileNum).update(QAData);
-    // doc('patients/' + patient.id).update(patient);
+    return this.firestore.collection('patients').doc(mobileNum).update(QAData);
   }
 
 

@@ -121,7 +121,14 @@ li {
     height:2.5rem;
 }
 
+.success-message{
+    margin:2px 0;
 
+}
+
+.success-box{
+    margin-top:-5px;
+}
 
 .button-card {
     position: relative;
