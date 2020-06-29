@@ -4,6 +4,7 @@ export interface Patient {
     lastName: string;
     city: string;
     state: string;
+    patientLocation:string;
     zipCode: string;
     mobileNumber: string;
     emailId: string;

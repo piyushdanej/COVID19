@@ -14,7 +14,7 @@
         <label class="radio-inline patient-clinician-label"> As patient</label>
       </div>
 
-      <div class="col-xs-5" style="margin-right: 50px;">
+      <div class="col-xs-5" style="margin-right: 60px;">
         <input
           name="options"
           [(ngModel)]="options"
@@ -93,20 +93,42 @@
                 </div>
               </div>
             </div>
+
             <div class="form-group">
               <select
                 formControlName="state"
                 name="state"
                 id="state"
                 class="form-control col-xs-12 col-md-12"
-                placeholder="State/Province"
               >
-                <option *ngFor="let state of states" value="state">{{
+                <option label="State/Province" disabled></option>
+                <option *ngFor="let state of states">{{
                   state
                 }}</option>
               </select>
             </div>
 
+
+
+          <div class="form-group">
+            <input
+              formControlName="patientLocation"
+              name="patientLocation"
+              id="patientLocation"
+              class="form-control col-xs-12 col-md-12"
+              placeholder="Location"
+            />
+
+            <div
+              *ngIf="formControls.patientLocation.touched && formControls.patientLocation.invalid"
+              class="alert alert-danger"
+            >
+              <div *ngIf="formControls.patientLocation.errors.required">
+                Location is required.
+              </div>
+            </div>
+          </div>
+          
             <div class="form-group">
               <input
                 formControlName="zipCode"
@@ -288,19 +310,8 @@
                 />
               </div>
 
+             
               <!-- <div class="form-group">
-                <input
-                  formControlName="familyMemberAge"
-                  name="familyMemberAge"
-                  id="familyMemberAge"
-                  class="form-control col-xs-12 col-md-12"
-                  placeholder="Date of Birth"
-                  type="date"
-                  value=""
-                  onChange="this.setAttribute('value', this.value)"
-                />
-              </div> -->
-              <div class="form-group">
                 <input
                   formControlName="relation"
                   name="relation"
@@ -309,10 +320,24 @@
                   placeholder="Relation"
                 />
               </div>
-              <div class="form-group">
-                <!-- <input formControlName="familyMemberAge" name="familyMemberAge" id="familyMemberAge"
-                                    class="form-control col-xs-12 col-md-12" placeholder="Age" type="date" /> -->
+              <div class="form-group"> -->
 
+
+                <div class="form-group">
+                  <select
+                    formControlName="relation"
+                    name="relation"
+                    id="relation"
+                    class="form-control col-xs-12 col-md-12"
+                  >
+                    <option label="Relation" disabled></option>
+                    <option *ngFor="let relationObj of relationA">{{
+                      relationObj
+                    }}</option>
+                  </select>
+                </div>
+
+               
                 <input
                   formControlName="familyMobileNumber"
                   name="familyMobileNumber"
@@ -333,7 +358,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            
 
             <div>
               <button mat-button matStepperPrevious class="button1">

@@ -69,6 +69,7 @@ export class PatientRegistrationComponent implements OnInit {
   "Wisconsin", 
   "Wyoming"];
 
+  relationA: any=["Spouse","Partner","Sibling","Friend","Parent","Guardian","Child"];
   constructor(private mainService: MainService, private formBuilder: FormBuilder, public firestore: AngularFirestore, private router: Router) {}
 
   ngOnInit(): void {
@@ -78,13 +79,14 @@ export class PatientRegistrationComponent implements OnInit {
       sex: ['', Validators.required],
       age: ['', Validators.required],
       city: ['', Validators.required],
-      state: ['Alabama', Validators.required],
+      state: ['', Validators.required],
+      patientLocation: ['', Validators.required],
       zipCode: ['', Validators.required],
       mobileNumber: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
       emailId: ['', Validators.required],
       password: ['', Validators.required],
       fullName: '',
-      relation: '',
+      relation: ['', Validators.required],
       familyMobileNumber: ['', Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")],
       // familyMemberAge:'',
       userType : ['patient'],

@@ -111,8 +111,29 @@
           id="state"
           class="form-control col-xs-12 col-md-12"
           placeholder="State/Province"
-        ><option  *ngFor="let state of states" value="state" >{{state}}</option> </select>
+        >
+        <option label="State/Province" disabled></option>
+        <option  *ngFor="let state of states" >{{state}}</option> </select>
     </div>
+
+    <div class="form-group">
+        <input
+          formControlName="clinicianLocation"
+          name="clinicianLocation"
+          id="clinicianLocation"
+          class="form-control col-xs-12 col-md-12"
+          placeholder="Location"
+        />
+
+        <div
+          *ngIf="formControls.clinicianLocation.touched && formControls.clinicianLocation.invalid"
+          class="alert alert-danger"
+        >
+          <div *ngIf="formControls.clinicianLocation.errors.required">
+            Location is required.
+          </div>
+        </div>
+      </div>
 
     <div class="form-group">
         <input
@@ -159,12 +180,53 @@
     </div>
 
 
+    <!-- <div class="form-group col-md-6">
+
+        <label>Have you worked in any of the following areas related to critical care:</label>
+        <label class="checkbox-inline">
+            <input formControlName="criticalCare" name="criticalCare" id="er" type="checkbox"
+                style="margin: 0 0px 0 10px;" [ngValue]="ER" /> ER
+        </label>
+
+        <label class="checkbox-inline">
+            <input formControlName="criticalCare" name="criticalCare" id="icu" type="checkbox"
+                style="margin: 0 0px 0 10px;" [ngValue]="ICU" /> ICU
+        </label>
+
+        <label class="checkbox-inline">
+            <input formControlName="criticalCare" name="criticalCare" id="or" type="checkbox"
+                style="margin: 0 0px 0 10px;" [ngValue]="OR" /> OR
+        </label>
+
+        <label class="checkbox-inline">
+            <input formControlName="criticalCare" name="criticalCare" id="acute_care" type="checkbox"
+                style="margin: 0 0px 0 10px;" [ngValue]="ACUTE CARE" /> ACUTE CARE
+        </label>
+
+        <label class="checkbox-inline">
+            <input formControlName="criticalCare" name="criticalCare" id="pediatrics" type="checkbox"
+                style="margin: 0 0px 0 10px;" [ngValue]="PEDIATRICS" /> PEDIATRICS 
+        </label>
+
+    </div> -->
+
+
+    <div class="form-group">
+        <label>Have you worked in any of the following areas related to critical care:</label>
+        <div  *ngFor="let cCritical of temp">
+            <input name="criticalCare" type="checkbox"
+                style="margin: 0 0px 0 10px;" [value]="cCritical.name" (change)="Checked($event)"/> {{cCritical.name}}
+        </div>
+    </div>
+
+
     <div class="form-group">
         <select
           formControlName="specialization"
           name="specialization" 
           id="specialization"
           class="form-control col-xs-12 col-md-12">
+          <option label="Professional role type" disabled></option>
           <option  *ngFor="let specialization of typeofClinicians" [ngValue]="specialization" >{{specialization}}</option> </select>
     </div>
 

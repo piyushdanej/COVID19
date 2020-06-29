@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from "@angular/forms";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { MainService } from "src/app/services/main.service";
 import { Clinician } from "src/app/interfaces/clinician";
@@ -71,12 +71,51 @@ export class ClinicianRegistrationComponent implements OnInit {
   typeofClinicians: any=[
   "Nurse",
   "Nurse Practitioner",
-  "Physician"
+  "Physician",
+  "EMT",
+  "EMT-P",
+  "PA",
+  "NP",
+  "MD/DO",
+  "LPN",
+  "RN",
+  "CNA",
+  "CRNA",
+  "RT",
+  "RX"
 ];
 
+  
+
+  temp: any=[
+    {
+      id:'1',
+      name:'ER',
+      checked:false
+    }, 
+    {
+      id:'2',
+      name:'ICU',
+      checked:false
+    },
+    {
+      id:'3',
+      name:'OR',
+      checked:false
+    },
+    {
+      id:'4',
+      name:'ACUTE CARE',
+      checked:false
+    },
+    {
+      id:'5',
+      name:'PEDIATRICS',
+      checked:false
+    }];
   // tempState = "California";
   @Output() modalOpen :EventEmitter<any> = new EventEmitter<any>();
-
+ 
   constructor(
     private mainService: MainService,
     private formBuilder: FormBuilder,
@@ -90,7 +129,8 @@ export class ClinicianRegistrationComponent implements OnInit {
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
       city: ["", Validators.required],
-      state: ["California", Validators.required],
+      state: ["", Validators.required],
+      clinicianLocation: ["", Validators.required],
       registrationNo: ["", Validators.required],
       zipCode: ["", Validators.required],
       mobileNumber: [
@@ -103,7 +143,8 @@ export class ClinicianRegistrationComponent implements OnInit {
       dob: ["", Validators.required],
       sex: ["", Validators.required],
       serviceType: ["", Validators.required],
-      specialization: ["Nurse", Validators.required]
+      criticalCare: this.formBuilder.array([], [Validators.required]),
+      specialization: ["", Validators.required]
     });
   }
 
@@ -171,10 +212,16 @@ export class ClinicianRegistrationComponent implements OnInit {
     };
   }
 
-  // specialization: "Nurse | Nurse Practitioner | Physician",
-  // serviceType: "Local Care Giver | Remote Expert"
+ 
 
-  // closeModal(){
-  //   this.router.navigate(["/login"]);
-  // }
+  Checked(e) { 
+    const criticalCare: FormArray = this.insertForm.get('criticalCare') as FormArray; 
+     
+    if (e.target.checked) { 
+    criticalCare.push(new FormControl(e.target.value)); 
+    } else { 
+    const index = criticalCare.controls.findIndex(x => x.value === e.target.value); 
+    criticalCare.removeAt(index); 
+    } 
+    }
 }

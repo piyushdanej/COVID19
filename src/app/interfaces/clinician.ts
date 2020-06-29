@@ -4,6 +4,7 @@ export interface Clinician {
     lastName: string;
     city: string;
     state: string;
+    clinicianLocation:string;
     registrationNo: string;
     zipCode: string;
     mobileNumber: string;
@@ -13,5 +14,6 @@ export interface Clinician {
     dob : string;
     sex : string;
     serviceType:string;
+    criticalCare:any;
     specialization:string;
 }

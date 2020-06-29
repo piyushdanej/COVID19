@@ -45,15 +45,16 @@ export class ScreeningComponent implements OnInit {
   questionsForTab1: string[] = [
     "I share the same house with a person infected with the virus or is a member of my family",
     "You have been in the same closed space for more than 20 minutes with an infected person (Such as house, joint residential unit, work place, class room, vehicle or plane)",
-    "You have been face-to-face  with a person infected with the virus for more than 20 minutes , less than 1.5 meters away from each other",
+    "You have been face-to-face  with a person infected with the virus for more than 20 minutes , less than 5 feet away from each other",
     "I have medical history like Diabetes , Heart problems ,  blood pressure1You have touched or been exposed to the respiratory secretions of an infected person.",
     "I am working in a health facility where I have contacted a positive case without protection ( neither he nor I were wearing masks)",
-    "You have been face-to-face with a person infected with the virus, less (more) than 1.5 meters away from each other.",
+    "You have been face-to-face with a person infected with the virus, less (more) than 5 feet away from each other.",
     "You have been  in the same closed space for less than 20 minutes with an infected person (Such as house, same residential unit, work place, class room or vehicle)",
+    "I am not a health practitioner and have visited a health facility (Clinic, hospital, inpatient, waiting area), in the last 14 days"
   ];
 
   questionsForTab2: string[] = [
-    "I have been outside the Kingdom during the past 14 days",
+    "I have been outside the United State during the past 14 days",
     "I leave my house and interact with people a lot",
     "I am not a health practitioner  and have visited a health facility (Clinic, hospital, inpatient, waiting area)",
     "I am a health practitioner or working in a health facility or providing services to patients and following required preventive measures.",
@@ -65,8 +66,7 @@ export class ScreeningComponent implements OnInit {
     "Sore throat",
     " Shortness of breath (First time or more than usual)",
     "Tremors and body pain (First time)",
-    "Cough (First time or more than usual) ",
-    "Cognitive disorder (First time especially the elderly)",
+    "Confusion",
   ];
 
   questionsForTab4: string[] = [
