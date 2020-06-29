@@ -62,7 +62,7 @@ export class ScreeningComponent implements OnInit {
 
   questionsForTab3: string[] = [
     "High fever",
-    "Cough (First time or more than usual)",
+    "Cough (New or more than usual)",
     "Sore throat",
     " Shortness of breath (First time or more than usual)",
     "Tremors and body pain (First time)",
