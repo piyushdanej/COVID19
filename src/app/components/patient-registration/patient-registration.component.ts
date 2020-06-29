@@ -86,7 +86,7 @@ export class PatientRegistrationComponent implements OnInit {
       emailId: ['', Validators.required],
       password: ['', Validators.required],
       fullName: '',
-      relation: ['', Validators.required],
+      relation: '',
       familyMobileNumber: ['', Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")],
       // familyMemberAge:'',
       userType : ['patient'],
