@@ -17,7 +17,7 @@ export class PatientRegistrationComponent implements OnInit {
   insertForm: FormGroup;
   showModal :boolean = false;
   nextClicked = false;
-
+  consent :boolean = false;
   states: any=["Alabama", 
   "Alaska", 
   "Arizona", 
@@ -126,6 +126,10 @@ export class PatientRegistrationComponent implements OnInit {
     this.showModal=false;
     this.router.navigate(["/login"]);
     
+  }
+
+  changeConsent(){
+    this.consent = !this.consent;
   }
 
 }

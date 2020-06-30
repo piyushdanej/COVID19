@@ -15,7 +15,7 @@ export class ClinicianRegistrationComponent implements OnInit {
   clinicians: Clinician[];
   insertForm: FormGroup;
   showModal :boolean = false;
-  consent : boolean = false;
+ 
 
   states: any = [
     "Alabama",
@@ -225,7 +225,5 @@ export class ClinicianRegistrationComponent implements OnInit {
     } 
     }
 
-    changeConsent(){
-      this.consent = !this.consent;
-    }
+
 }

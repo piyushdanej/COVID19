@@ -117,3 +117,20 @@ input[type="date"]:not([value=""]):before
 }
 
 input[type="radio"]:checked+label {font-weight: bold;}
+
+.opacityHalf{
+  opacity:0.5;
+}
+
+.opacityFull{
+  opacity : 1;
+}
+
+.consent-div{
+  margin-top: .4rem;
+  padding : 0 .5rem;
+}
+
+#consent{
+  /* margin:0 .5rem; */
+}
