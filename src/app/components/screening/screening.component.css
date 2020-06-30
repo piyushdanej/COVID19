@@ -231,13 +231,28 @@ span.tick-mark img {
   height: 17px;
 }
 
-.questionarie-list.true {
+/* .questionarie-list.true {
   opacity: 1;
 }
+
+
 .questionarie-list.false {
   opacity: 0.5;
   pointer-events: none;
+} */
+/* Modified classes */
+
+.questionarie-list-true {
+  opacity: 1;
 }
+
+
+.questionarie-list-false {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+
 
 /* Modal */
 

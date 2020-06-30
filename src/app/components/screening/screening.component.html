@@ -45,40 +45,81 @@
         </div>
         <div class="screen-carea">
           <div class="screen-que">
-            <p class="p1">
-              Do you have any of the following disease or risk factors?(Choose
-              all that apply)
-            </p>
-            <div class="radio-sec">
-              <label class="container-chk">
-                Yes
-                <input
-                  type="radio"
-                  value="Yes"
-                  (change)="ChangeVisiblity($event)"
-                  name="radioChk"
-                  
-                />
-                <span class="checkmark"></span>
-              </label>
+            <div *ngIf="tabId ==1"> 
+              <p class="p1">
+                During the past 14 days: Have you been in close contact with a person diagnosed with COVID-19?
+              </p>
+              <div class="radio-sec">
+                <label class="container-chk">
+                  Yes
+                  <input type="radio" value="Yes" (change)="ChangeVisiblity($event , tabId)" name="radioChk"/>
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container-chk">
+                  No
+                  <input type="radio" value="No" (change)="ChangeVisiblity($event , tabId)" name="radioChk" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
 
-              <label class="container-chk">
-                No
-                <input
-                  type="radio"
-                  value="No"
-                  (change)="ChangeVisiblity($event)"
-                  name="radioChk"
-                />   
-                 <!-- [checked]= "true" -->
-                <span class="checkmark"></span>
-              </label>
+            <div *ngIf="tabId ==2"> 
+              <p class="p1">
+                During the past 14 days: Have you been outside the Kingdom or contacted many people or worked/presented at a health facility?
+              </p>
+              <div class="radio-sec">
+                <label class="container-chk">
+                  Yes
+                  <input type="radio" value="Yes" (change)="ChangeVisiblity($event , tabId)" name="radioChk"/>
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container-chk">
+                  No
+                  <input type="radio" value="No" (change)="ChangeVisiblity($event , tabId)" name="radioChk" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+            
+            <div *ngIf="tabId ==3"> 
+              <p class="p1">
+                Have you experienced any of the following symptoms during the past 14 days (Choose all that apply)
+              </p>
+              <div class="radio-sec">
+                <label class="container-chk">
+                  Yes
+                  <input type="radio" value="Yes" (change)="ChangeVisiblity($event , tabId)" name="radioChk"/>
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container-chk">
+                  No
+                  <input type="radio" value="No" (change)="ChangeVisiblity($event , tabId)" name="radioChk" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+
+            <div *ngIf="tabId ==4 "> 
+              <p class="p1">
+                Do you have any of the following disease or risk factors?(Choose all that apply)
+              </p>
+              <div class="radio-sec">
+                <label class="container-chk">
+                  Yes
+                  <input type="radio" value="Yes" (change)="ChangeVisiblity($event , tabId)" name="radioChk"/>
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container-chk">
+                  No
+                  <input type="radio" value="No" (change)="ChangeVisiblity($event , tabId)" name="radioChk" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
             </div>
 
             <div class="comn-cnt">
-              <p>
-                If your answer is yes, choose all that apply from the
-                following.
+              <p> 
+                If your answer is yes, choose all that apply from the following.
               </p>
             </div>
             <!-- <div class="radio-btn">
@@ -92,7 +133,8 @@
 
             <div
               *ngIf="tabId == 1"
-              class="questionarie-list {{ this.showQue }}"
+              
+              [ngClass]="showQues[1] === true ? 'questionarie-list-true' : 'questionarie-list-false' "
             >
               <div *ngFor="let question of questionsForTab1">
                 <question
@@ -104,9 +146,10 @@
             </div>
 
             <div
-              *ngIf="tabId == 2"
-              class="questionarie-list {{ this.showQue }}"
+              *ngIf="tabId == 2"             
+              [ngClass]="showQues[2] === true ? 'questionarie-list-true' : 'questionarie-list-false' "
             >
+            <!-- class="questionarie-list {{ this.showQue }}" -->
               <div *ngFor="let question of questionsForTab2">
                 <question
                   [questionText]="question"
@@ -118,8 +161,9 @@
 
             <div
               *ngIf="tabId == 3"
-              class="questionarie-list {{ this.showQue }}"
+              [ngClass]="showQues[3] === true ? 'questionarie-list-true' : 'questionarie-list-false' "
             >
+            <!-- class="questionarie-list {{ this.showQue }}" -->
               <div *ngFor="let question of questionsForTab3">
                 <question
                   [questionText]="question"
@@ -130,9 +174,8 @@
             </div>
 
             <div
-              *ngIf="tabId == 4"
-              class="questionarie-list {{ this.showQue }}"
-            >
+              *ngIf="tabId == 4"              
+              [ngClass]="showQues[4] === true ? 'questionarie-list-true' : 'questionarie-list-false'" >
               <div *ngFor="let question of questionsForTab4">
                 <question
                   [questionText]="question"
@@ -150,13 +193,16 @@
           <div class="modalBody">
             <img
               src="../../../assets/Green-Circle-Tick.svg"
-              class="tick-complt"/>
-            <p>Please accept the invitation in your e-mail and complete registration</p>
-            <button class="modalClose"  (click)="closeModal()">OK</button>
+              class="tick-complt"
+            />
+            <p>
+              Please accept the invitation in your e-mail and complete
+              registration
+            </p>
+            <button class="modalClose" (click)="closeModal()">OK</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-

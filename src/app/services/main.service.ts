@@ -17,7 +17,7 @@ export class MainService {
   selectedPatient : BehaviorSubject<any> = new BehaviorSubject<any>({});
   loggedInUser : any ;
   allPatients : Patient[];
-
+  hideShowScreeingPopOver : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   
 
   allClinicians : Clinician[] = [];
@@ -106,5 +106,14 @@ export class MainService {
   } 
   getAllPatients(){
     return this.allPatients
+  }
+
+  getHideShowScreeingPopOver(){
+    return this.hideShowScreeingPopOver;
+  }
+
+  
+  setHideShowScreeingPopOver(val : boolean){
+    this.hideShowScreeingPopOver.next(val);
   }
 }

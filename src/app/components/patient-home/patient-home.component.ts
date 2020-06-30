@@ -20,15 +20,17 @@ export class PatientHomeComponent implements OnInit {
   loggedInPatient : Patient;
 
   allowTriageQuestionsRouting :boolean = true;
-
+  displaySuccessPopOver : boolean = false;
 
   constructor(private mainService : MainService ,
               private router :Router) { }
 
   ngOnInit() {
     this.loggedInPatient = this.mainService.getLoggedInUser();
-    this.patientName = this.mainService.getLoggedInUser().firstName;
+    this.patientName = this.mainService.getLoggedInUser()?.firstName;
     this.allowTriageQuestionsRouting  = this.loggedInPatient.surveyData ? false : true;
+    this.mainService.getHideShowScreeingPopOver().subscribe(boolVal=>this.displaySuccessPopOver = boolVal);
+
   }
 
   routeToProfile(){
@@ -41,5 +43,8 @@ export class PatientHomeComponent implements OnInit {
     if(this.allowTriageQuestionsRouting){
       this.router.navigate(["/patient-screening"]);
     }
+  }
+  closeModal(){
+    this.mainService.setHideShowScreeingPopOver(false);
   }
 }

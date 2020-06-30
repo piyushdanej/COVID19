@@ -203,3 +203,50 @@ li {
     color:#282C35;
     font-size:.8rem;
   }
+
+
+  
+.modalContainer {
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+  }
+  
+  .modal-dialog-centered {
+    /* width: 300px; */
+    margin: 0 auto !important;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .modalBody {
+    padding: 3rem;
+    background-color: white;
+    color: black;
+    font-size: 1.4rem;
+  }
+  
+  .modalClose {
+    background-color: #2a4b76;
+    color: white;
+    padding: 0.8rem 1.6rem;
+    font-size: 1.4rem;
+    text-align: center;
+    border: 1px solid #2a4b76;
+    border-radius: 1rem;
+  }
+  
+  .modalBody img {
+    height: 42px;
+    margin-bottom: 28px;
+  }
+  
+  .scre-button input:focus {
+    outline: none;
+  }

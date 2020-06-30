@@ -179,8 +179,7 @@ export class ClinicianRegistrationComponent implements OnInit {
       client_secret: "UeUtzpx4rKTptJ85SRdMBK2wWr0b",
     };
 
-    const clinicianSharePointUrl =
-      "https://muralapp.eastus.cloudapp.azure.com/api/1.0.0/mtec/clinician";
+    const clinicianSharePointUrl ="https://muralapp.eastus.cloudapp.azure.com/api/1.0.0/mtec/clinician";
 
     this.http
       .post(clinicianSharePointUrl, clinicianObj, { headers: requestHeaders })
@@ -200,15 +199,14 @@ export class ClinicianRegistrationComponent implements OnInit {
       registrationNumber: clinicianDetails.registrationNo,
       ssn: "123-45-6789",
       address: {
-        street1: "9900 West",
-        street2: "innovation Drive",
+        location: clinicianDetails.clinicianLocation,
         city: clinicianDetails.city,
         state: clinicianDetails.state,
         zipCode: clinicianDetails.zipCode,
       },
       specialization: clinicianDetails.specialization,
       serviceType: clinicianDetails.serviceType,
-    
+      ccExperiences : clinicianDetails.criticalCare
     };
   }
 

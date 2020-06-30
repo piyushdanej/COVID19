@@ -36,11 +36,21 @@ export class ScreeningComponent implements OnInit {
 
   loggedInPatient: Patient;
 
+  showQues: boolean[] = [false , false , false ,false];
+
   constructor(
     private router: Router,
     private mainService: MainService,
     private http: HttpClient
   ) {}
+
+  tabParentQuestions :string[] = [
+    "During the past 14 days: Have you been in close contact with a person diagnosed with COVID-19?",
+    "During the past 14 days: Have you been outside the United States or contacted many people or worked/presented at a health facility?",
+    "Have you experienced any of the following symptoms during the past 14 days (Choose all that apply)",
+    "Do you have any of the following disease or risk factors?(Choose all that apply)"
+  ]
+
 
   questionsForTab1: string[] = [
     "I share the same house with a person infected with the virus or is a member of my family",
@@ -115,7 +125,7 @@ export class ScreeningComponent implements OnInit {
     console.log(this.dataQA);
     const qaDataObj = { surveyData: this.dataQA };
     // this.mainService.updatePatientByMobileNumber("333333" , qaDataObj);
-
+    this.mainService.setHideShowScreeingPopOver(true);
     // this.modalControl.nativeElement.classList.remove("display-none");
     let userId = this.mainService.getLoggedInUser().mobileNumber;
     this.mainService.updatePatientByMobileNumber(userId, qaDataObj);
@@ -132,8 +142,8 @@ export class ScreeningComponent implements OnInit {
       client_secret: "UeUtzpx4rKTptJ85SRdMBK2wWr0b",
     };
 
-    const pateintSharePointUrl =
-      "https://muralapp.eastus.cloudapp.azure.com/api/1.0.0/mtec/patient";
+    const pateintSharePointUrl = "https://muralapp.eastus.cloudapp.azure.com/api/1.0.0/mtec/patient";
+    //"https://muralapp.eastus.cloudapp.azure.com/api/1.0.0/mtec/patient";
 
     this.http
       .post(pateintSharePointUrl, patientObj, { headers: headers2 })
@@ -170,14 +180,18 @@ export class ScreeningComponent implements OnInit {
       dateOfBirth: patientDetails.age,
       ssn: "123-45-6789",
       address: {
-        street1: "9900 West",
-        street2: "innovation Drive",
+        location : patientDetails.location,
         city: patientDetails.city,
         state: patientDetails.state,
         zipCode: patientDetails.zipCode,
       },
       triageSurvey: [...qaDataArray],
-      riskScore: surveyScore
+      riskScore: surveyScore,
+      emergencyContacts : [{
+        name: patientDetails.fullName || "name",
+        mobileNumber : patientDetails.familyMobileNumber || "number",
+        relation : patientDetails.relation || "none"
+      }]
     };
   }
 
@@ -191,11 +205,14 @@ export class ScreeningComponent implements OnInit {
     this.router.navigate(["/patient-home"]);
   }
 
-  ChangeVisiblity(e) {
+  ChangeVisiblity(e , tabId) {
+
     if (e.target.value == "Yes") {
       this.showQue = true;
+      this.showQues[tabId] = true;
     } else {
       this.showQue = false;
+      this.showQues[tabId] = false;
     }
   }
 }

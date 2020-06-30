@@ -39,4 +39,13 @@
   <div class="footer">
     <p> Powered by ReCCaMP</p>
   </div>
+  <div #modal *ngIf="displaySuccessPopOver" class="modalContainer modal-dialog-centered">
+    <div class="modalBody">
+      <img
+        src="../../../assets/Green-Circle-Tick.svg"
+        class="tick-complt"/>
+      <p>Thank you for registering. You will receive an email invitation within 30 minutes where you can complete your registration and access care.</p>
+      <button class="modalClose"  (click)="closeModal()">OK</button>
+    </div>
+  </div>
 </div>
