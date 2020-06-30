@@ -297,7 +297,24 @@
     </div>
 
     <div class="form-group">
-        <button type="submit" class="button1" [disabled]="!insertForm.valid">SUBMIT</button>
+      <input 
+        (change)="changeConsent()"      
+        type="checkbox"
+      />
+      <label>
+        I hereby consent to allow NETCCN to use my information for clinical decision making.
+      </label>  
+      <div *ngIf="formControls.password.touched && formControls.password.invalid" class="alert alert-danger">
+          <div *ngIf="formControls.password.errors.required">Confirm Password is required.</div>
+      </div>
+  </div>
+
+
+    <div class="form-group">
+        <button type="submit" 
+                class="button1" 
+                [ngClass]="consent === false  ? 'opacityHalf' : 'opacityFull'"
+                [disabled]="!insertForm.valid && !consent">SUBMIT</button>
     </div>
 
 </form>

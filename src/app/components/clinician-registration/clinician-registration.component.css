@@ -81,3 +81,12 @@ text-align:center;
 border : 1px solid #2A4B76 ;
 border-radius : 1rem;
 }
+
+
+.opacityHalf{
+    opacity:0.5;
+}
+
+.opacityFull{
+    opacity : 1;
+}

@@ -15,6 +15,8 @@ export class ClinicianRegistrationComponent implements OnInit {
   clinicians: Clinician[];
   insertForm: FormGroup;
   showModal :boolean = false;
+  consent : boolean = false;
+
   states: any = [
     "Alabama",
     "Alaska",
@@ -221,5 +223,9 @@ export class ClinicianRegistrationComponent implements OnInit {
     const index = criticalCare.controls.findIndex(x => x.value === e.target.value); 
     criticalCare.removeAt(index); 
     } 
+    }
+
+    changeConsent(){
+      this.consent = !this.consent;
     }
 }
