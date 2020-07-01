@@ -142,7 +142,7 @@ export class ScreeningComponent implements OnInit {
       client_secret: "UeUtzpx4rKTptJ85SRdMBK2wWr0b",
     };
 
-    const pateintSharePointUrl = "https://muralapp.eastus.cloudapp.azure.com/api/1.0.0/mtec/patient";
+    const pateintSharePointUrl = "https://mscha.mtec.mural-gehc.com/api/1.0.0/mtec/patient";
     //"https://muralapp.eastus.cloudapp.azure.com/api/1.0.0/mtec/patient";
 
     this.http

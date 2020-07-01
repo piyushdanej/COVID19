@@ -181,7 +181,7 @@ export class ClinicianRegistrationComponent implements OnInit {
       client_secret: "UeUtzpx4rKTptJ85SRdMBK2wWr0b",
     };
 
-    const clinicianSharePointUrl ="https://muralapp.eastus.cloudapp.azure.com/api/1.0.0/mtec/clinician";
+    const clinicianSharePointUrl ="https://mscha.mtec.mural-gehc.com/api/1.0.0/mtec/clinician";
 
     this.http
       .post(clinicianSharePointUrl, clinicianObj, { headers: requestHeaders })
