@@ -180,7 +180,7 @@ export class ScreeningComponent implements OnInit {
       dateOfBirth: patientDetails.age,
       ssn: "123-45-6789",
       address: {
-        location : patientDetails.location,
+        location: patientDetails.patientLocation,
         city: patientDetails.city,
         state: patientDetails.state,
         zipCode: patientDetails.zipCode,
